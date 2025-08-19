@@ -143,6 +143,7 @@ html,body{
     /* Medio de venta electrónico */
     colgroup col:nth-child(7){width:220px}
     /* Nº de comercio */
+    colgroup col:nth-child(8){width:250px}
     @media print{
       @page{size:A4 landscape;margin:16mm}
       .page{max-width:none;margin:0;padding:0}
@@ -241,7 +242,7 @@ html,body{
     <div class="card">
       <table>
         <colgroup>
-          <col><col><col><col><col><col><col>
+          <col><col><col><col><col><col><col><col>
         </colgroup>
         <thead>
           <tr>
@@ -252,7 +253,7 @@ html,body{
             <th>Tarjetas aplicables</th>
             <th>Medio de venta físico</th>
             <th>Medio de venta electrónico</th>
-            <!-- columna Nº de comercio eliminada para clientes -->
+            <th>Nº de comercio (POSNET / LINK DE PAGOS)</th>
           </tr>
         </thead>
         <tbody>
@@ -271,6 +272,7 @@ html,body{
             <td>POSNET Clover · +Pagos Nación (con QR)</td>
             <!-- Actualización: medio de venta electrónico no disponible -->
             <td>No disponible</td>
+            <td>No aplica</td>
           </tr>
 
           <!-- Banco Santa Fe -->
@@ -282,6 +284,7 @@ html,body{
             <td>Visa y Mastercard</td>
             <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
             <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
+            <td>No aplica</td>
           </tr>
 
           <!-- Banco Municipal -->
@@ -295,6 +298,7 @@ html,body{
             <td>Visa y Mastercard</td>
             <td>POSNET Clover · FISERV (blanco)</td>
             <td>LINK DE PAGOS · FISERV</td>
+            <td>28902302 (POSNET) / 28924031 (LINK DE PAGOS)</td>
           </tr>
 
           <!-- Banco Macro (VIUMI) -->
@@ -306,6 +310,7 @@ html,body{
             <td>Visa y Mastercard</td>
             <td>POSNET · VIUMI</td>
             <td>No disponible</td>
+            <td>No aplica</td>
           </tr>
 
           <!-- Otros Bancos (3 y 6) -->
@@ -317,6 +322,7 @@ html,body{
             <td>Visa y Mastercard</td>
             <td>POSNET NAVE</td>
             <td>LINK DE PAGOS NAVE</td>
+            <td>No aplica</td>
           </tr>
 
           <!-- Otros Bancos (12 cuotas, recargo) -->
@@ -331,6 +337,7 @@ html,body{
             <td>Visa y Mastercard</td>
             <td>POSNET Clover · FISERV (blanco)</td>
             <td>LINK DE PAGOS · FISERV</td>
+            <td>31095781 (POSNET y LINK DE PAGOS si aplica)</td>
           </tr>
         </tbody>
       </table>
