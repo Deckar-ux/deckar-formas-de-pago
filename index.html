@@ -224,6 +224,7 @@ html,body{
     table td{
       display:block;
       padding:8px 12px;
+      word-break:break-word;
     }
     /* Las etiquetas (pseudoelementos) se ubican en su propia línea */
     table td::before{
@@ -269,6 +270,12 @@ html,body{
       content:'Nº de comercio';
       font-weight:600;
       color:var(--muted);
+    }
+    /* Ajuste de tamaño de fuente en celdas y etiquetas para móvil */
+    table td,
+    table td::before{
+      font-size:13px;
+      line-height:1.4;
     }
   }
   </style>
