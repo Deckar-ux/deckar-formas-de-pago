@@ -203,6 +203,70 @@ html,body{
       background:#E8F5E9;
       color:#00695C;
     }
+  /* Responsive table for mobile screens */
+  @media (max-width: 768px){
+    table thead{
+      display:none;
+    }
+    table, table tbody, table tr, table td{
+      display:block;
+      width:100%;
+    }
+    table tr{
+      margin-bottom:1rem;
+      border:1px solid var(--border);
+      border-radius:12px;
+      background:var(--bg);
+      box-shadow:0 1px 3px rgba(0,0,0,0.1);
+      overflow:hidden;
+    }
+    table td{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:8px 12px;
+    }
+    table td:nth-of-type(1)::before{
+      content:'Entidad financiera';
+      font-weight:600;
+      color:var(--muted);
+    }
+    table td:nth-of-type(2)::before{
+      content:'Vigencia';
+      font-weight:600;
+      color:var(--muted);
+    }
+    table td:nth-of-type(3)::before{
+      content:'Beneficio';
+      font-weight:600;
+      color:var(--muted);
+    }
+    table td:nth-of-type(4)::before{
+      content:'Días aplicables';
+      font-weight:600;
+      color:var(--muted);
+    }
+    table td:nth-of-type(5)::before{
+      content:'Tarjetas aplicables';
+      font-weight:600;
+      color:var(--muted);
+    }
+    table td:nth-of-type(6)::before{
+      content:'Medio de venta físico';
+      font-weight:600;
+      color:var(--muted);
+    }
+    table td:nth-of-type(7)::before{
+      content:'Medio de venta electrónico';
+      font-weight:600;
+      color:var(--muted);
+    }
+    table td:nth-of-type(8)::before{
+      content:'Nº de comercio';
+      font-weight:600;
+      color:var(--muted);
+    }
+  }
   </style>
 </head>
 <body>
