@@ -1,145 +1,386 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Formas de pago tarjetas de crédito Deckar Revestimientos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Promociones bancarias - Deckar Revestimientos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f9fafc;
-      margin: 0;
-      padding: 20px;
+    :root{
+      --deckar-blue:#0A6CFF;
+      --deckar-blue-600:#0A56C9;
+      --deckar-blue-100:#E9F1FF;
+      --text:#0F172A;
+      --muted:#64748B;
+      --border:#E2E8F0;
+      --bg:#FFFFFF;
+      --row:#F8FAFC;
     }
-    h1 {
-      font-size: 20pt;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: #003366;
+    *{box-sizing:border-box}
+html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue','Noto Sans',Arial,'Apple Color Emoji','Segoe UI Emoji';
+      /* Use the Deckar corporate image as a background.  The JPEG has been converted
+         directly into a base64-encoded data URI so the image always loads regardless of
+         hosting location.  It is scaled to cover the viewport, centered and fixed in place.
+         If you wish to replace the background image later, simply update the data URI below. */
+      background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAeAB4AAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAGfAZ8DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//2Q==);
+      background-repeat:no-repeat;
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+
+      /* Override the long base64 background with a simple JPEG file.  The
+         local DECKAR.jpg image should reside alongside this HTML file.  This
+         property is declared last so that it overrides any earlier
+         background-image definitions. */
+      background-image:url('DECKAR.jpg');
+
+      /* Override sizing for the logo: show the entire logo without tiling */
+      background-size:contain;
+      background-repeat:no-repeat;
+      background-position:center;
     }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    .page{max-width:1200px;margin:24px auto;padding:0 16px}
+    h1{font-size:24px;margin:0 0 12px 0;font-weight:700;letter-spacing:-0.01em}
+    .sub{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+    .badge{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:6px 10px;border-radius:999px;
+      font-size:12px;font-weight:600;background:var(--deckar-blue-100);color:var(--deckar-blue-600);
     }
-    thead th {
-      background: #00509E;
-      color: white;
-      text-align: left;
-      padding: 10px;
-      position: sticky;
-      top: 0;
+    .muted{color:var(--muted);font-size:13px}
+
+    /* Layout for the filter controls */
+    .filters{
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:12px;
     }
-    td, th {
-      padding: 10px;
-      border: 1px solid #ddd;
-      vertical-align: top;
+
+    /* Stylised button/link for the Deckar homepage */
+    .link-button{
+      margin-left:auto;
+      /* Make the call-to-action more prominent with extra padding and a colour gradient */
+      padding:8px 16px;
+      border-radius:20px;
+      background:linear-gradient(90deg, #0A6CFF 0%, #69B5FF 100%);
+      color:#fff;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:600;
+      line-height:1;
+      box-shadow:0 2px 4px rgba(0,0,0,.12);
     }
-    tr:nth-child(even) {
-      background: #f2f6fa;
+    .link-button:hover{
+      /* Slightly raise and darken on hover */
+      transform:translateY(-1px);
+      box-shadow:0 3px 6px rgba(0,0,0,.16);
     }
-    .badge {
-      display: inline-block;
-      padding: 2px 6px;
-      border-radius: 8px;
-      font-size: 0.85em;
-      color: white;
+    /* Card with accent border and subtle shadow */
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      box-shadow:0 4px 20px rgba(0,32,128,.08);
+      border-top:4px solid var(--deckar-blue-600);
+      overflow:hidden;
     }
-    .municipal { background: #0074D9; }
-    .santafe { background: #2ECC40; }
-    .nacion { background: #FF4136; }
-    .macro { background: #B10DC9; }
-    .otros { background: #FF851B; }
-    td:nth-child(7):hover {
-      background: #ffeaa7;
+    table{width:100%;border-collapse:separate;border-spacing:0}
+    thead th{
+      text-align:left;
+      background:#F5F7FF;
+      position:sticky;
+      top:0;
+      z-index:1;
+      border-bottom:1px solid var(--border);
+      font-size:12px;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+      color:#334155;
+      opacity:.95;
+      padding:10px 12px;
     }
-    /* Column widths */
-    colgroup col:nth-child(1) { width: 15ch; }
-    colgroup col:nth-child(2) { width: 15ch; }
-    colgroup col:nth-child(3) { width: 25ch; }
-    colgroup col:nth-child(4) { width: 18ch; }
-    colgroup col:nth-child(5) { width: 26ch; }
-    colgroup col:nth-child(6) { width: 24ch; }
-    colgroup col:nth-child(7) { width: 20ch; }
-    tr {
-      height: 40px;
+    tbody td{
+      padding:10px 12px;
+      border-bottom:1px solid #e5e7eb;
+      font-size:14px;
+      line-height:20px;
+      vertical-align:middle;
+      height:40px;
+    }
+    tbody tr:nth-child(even){background:var(--row)}
+    tbody tr:hover{background:#EFF6FF}
+    .bank{font-weight:600}
+    .tag{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:600;background:var(--deckar-blue-100);color:var(--deckar-blue-600)}
+    .tag.secondary{background:#ECFDF5;color:#059669}
+    .nowrap{white-space:nowrap}
+    .copyable{position:relative;cursor:pointer;transition:background .2s ease;}
+    .copyable:hover{background:#FEF3C7}
+    .caption{font-size:12px;color:var(--muted);margin-top:10px}
+    .kicker{font-size:12px;color:var(--muted);margin-top:2px}
+    .foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+    .foot .muted{font-size:12px}
+    .legend{display:flex;gap:10px;flex-wrap:wrap}
+    .legend .legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+    .legend .swatch{width:10px;height:10px;border-radius:2px;background:var(--deckar-blue-100);border:1px solid var(--deckar-blue-600);}
+    .legend .swatch2{background:#ECFDF5;border:1px solid #059669}
+    /* fixed column widths */
+    colgroup col:nth-child(1){width:190px}
+    colgroup col:nth-child(2){width:130px}
+    colgroup col:nth-child(3){width:220px}
+    colgroup col:nth-child(4){width:150px}
+    /* Tarjetas aplicables */
+    colgroup col:nth-child(5){width:150px}
+    /* Medio de venta físico */
+    colgroup col:nth-child(6){width:220px}
+    /* Medio de venta electrónico */
+    colgroup col:nth-child(7){width:220px}
+    /* Nº de comercio */
+    colgroup col:nth-child(8){width:250px}
+    @media print{
+      @page{size:A4 landscape;margin:16mm}
+      .page{max-width:none;margin:0;padding:0}
+      .card{box-shadow:none}
+    }
+    /* Filter controls */
+    .filters{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:16px}
+    .filters label{font-size:14px;font-weight:500;color:var(--text)}
+    .filters input,
+    .filters select{
+      padding:6px 10px;
+      border:1px solid #D0D7FF;
+      border-radius:8px;
+      font-size:14px;
+      background:#F5F7FF;
+      color:var(--text);
+      box-shadow:0 1px 2px rgba(0,0,0,.05) inset;
+    }
+    .filters input::placeholder{color:var(--muted)}
+    .filters select{
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      appearance:none;
+      background-image:url('data:image/svg+xml;utf8,<svg fill="%230A6CFF" height="16" viewBox="0 0 20 20" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 7.5l4.5 4.5 4.5-4.5H5.5z"/></svg>');
+      background-repeat:no-repeat;
+      background-position:right 8px center;
+      background-size:12px 12px;
+      padding-right:24px;
+    }
+    /* Number cell formatting */
+    .numcell{
+      font-family:monospace;
+      background:#EEF2FF;
+      padding:4px 8px;
+      border-radius:6px;
+      display:inline-block;
+    }
+
+    /* Tag colour variants */
+    .tag-9{
+      background:#FCE4EC;
+      color:#C2185B;
+    }
+    .tag-12{
+      background:#E3F2FD;
+      color:#1565C0;
+    }
+    .tag-3y6{
+      background:#E8F5E9;
+      color:#2E7D32;
+    }
+    .tag-recargo{
+      background:#FFF3E0;
+      color:#EF6C00;
+    }
+    .tag-reintegro{
+      background:#E8F5E9;
+      color:#00695C;
     }
   </style>
 </head>
 <body>
-  <h1>Formas de pago tarjetas de crédito Deckar Revestimientos (Actualizado 19/08/2025)</h1>
-  <table>
-    <colgroup>
-      <col><col><col><col><col><col><col>
-    </colgroup>
-    <thead>
-      <tr>
-        <th>Entidad Financiera</th>
-        <th>Vigencia</th>
-        <th>Beneficio</th>
-        <th>Días aplicables</th>
-        <th>Medio de Venta Físico</th>
-        <th>Medio de Venta Electrónico</th>
-        <th>Nº de Comercio asociado a posnet</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="badge municipal">Banco Municipal</span></td>
-        <td>hasta 30/09/25</td>
-        <td>Hasta 9 cuotas sin interés</td>
-        <td>Viernes y Sábados</td>
-        <td>POSNET Clover FISERV Blanco</td>
-        <td>Link de pagos FISERV</td>
-        <td>28902302 (POSNET) / 28924031 (Link)</td>
-      </tr>
-      <tr>
-        <td><span class="badge santafe">Banco Santa Fe</span></td>
-        <td>hasta 31/12/25</td>
-        <td>Hasta 12 cuotas sin interés</td>
-        <td>Todos los días</td>
-        <td>Plataforma Plus Pagos – Billetera SF (incluye QR)</td>
-        <td>Plataforma Plus Pagos – Billetera SF (incluye QR)</td>
-        <td>No aplica</td>
-      </tr>
-      <tr>
-        <td><span class="badge nacion">Banco Nación</span></td>
-        <td>hasta 30/09/25</td>
-        <td>Hasta 12 cuotas sin interés + 15% reintegro</td>
-        <td>Todos los días</td>
-        <td>POSNET Clover +Pagos Nación</td>
-        <td>Link de pagos +Pagos Nación</td>
-        <td>No aplica</td>
-      </tr>
-      <tr>
-        <td><span class="badge macro">Banco Macro (Viumi)</span></td>
-        <td>A confirmar</td>
-        <td>Hasta 12 cuotas sin interés cuando disponga la entidad financiera</td>
-        <td>Según disponga la entidad financiera Macro</td>
-        <td>POSNET VIUMI</td>
-        <td>No disponible</td>
-        <td>No aplica</td>
-      </tr>
-      <tr>
-        <td><span class="badge otros">Otros Bancos</span></td>
-        <td>hasta 31/12/25</td>
-        <td>3 y 6 cuotas sin interés</td>
-        <td>Todos los días</td>
-        <td>POSNET NAVE</td>
-        <td>Link de pagos NAVE</td>
-        <td>No aplica</td>
-      </tr>
-      <tr>
-        <td><span class="badge otros">Otros Bancos</span></td>
-        <td>A confirmar</td>
-        <td>12 cuotas con recargo financiero de +10% sobre PRECIO DE LISTA</td>
-        <td>Todos los días</td>
-        <td>POSNET Clover FISERV Blanco</td>
-        <td>Link de pagos FISERV</td>
-        <td>31095781 (posnet y link de pagos en caso de ser aplicable)</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="page">
+    <h1>Formas de pago tarjetas de crédito — Deckar Revestimientos</h1>
+    <div class="sub">
+      <span class="badge">Actualizado: 19/08/2025</span>
+      <span class="muted">Cuotas sin interés, vigencias y condiciones por entidad</span>
+    </div>
+
+    <!-- Controles de filtrado -->
+    <div class="filters">
+      <label for="searchInput">Buscar:</label>
+      <input type="text" id="searchInput" placeholder="Buscar...">
+      <label for="vigenciaFilter">Vigencia:</label>
+      <select id="vigenciaFilter">
+        <option value="">Todas</option>
+        <option value="Sin plazo definido">Sin plazo definido</option>
+        <option value="Hasta 30/09/2025">Hasta 30/09/2025</option>
+        <option value="Hasta 31/12/2025">Hasta 31/12/2025</option>
+      </select>
+      <label for="beneficioFilter">Beneficio:</label>
+      <select id="beneficioFilter">
+        <option value="">Todos</option>
+        <!-- Reordered so that "3 y 6 cuotas sin interés" appears before "Hasta 9 cuotas sin interés" -->
+        <option value="3y6">3 y 6 cuotas sin interés</option>
+        <option value="9">Hasta 9 cuotas sin interés</option>
+        <option value="12">Hasta 12 cuotas sin interés</option>
+        <option value="recargo">Recargo financiero</option>
+      </select>
+
+      <!-- Botón/link para ir al sitio principal de Deckar.  Se muestra como un botón de color para mejor
+           visibilidad y se posiciona al final de la fila de filtros. -->
+      <a href="https://www.deckar.com.ar/inicio" class="link-button" target="_blank">deckar.com.ar/inicio</a>
+    </div>
+
+    <div class="card">
+      <table>
+        <colgroup>
+          <col><col><col><col><col><col><col><col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Entidad financiera</th>
+            <th>Vigencia</th>
+            <th>Beneficio</th>
+            <th>Días aplicables</th>
+            <th>Tarjetas aplicables</th>
+            <th>Medio de venta físico</th>
+            <th>Medio de venta electrónico</th>
+            <th>Nº de comercio (POSNET / LINK DE PAGOS)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Banco Nación -->
+          <tr data-vigencia="Hasta 30/09/2025" data-beneficio="12">
+            <td class="bank">Banco Nación</td>
+            <td class="nowrap">Hasta 30/09/2025</td>
+            <td>
+              <!-- Cambio solicitado: quitar “Hasta” y usar minúsculas -->
+              <span class="tag tag-12">12 cuotas sin interes</span>
+              &nbsp;<span class="tag tag-reintegro">+15% REINTEGRO</span>
+            </td>
+            <td>Todos los días</td>
+            <td>Visa y Mastercard</td>
+            <!-- Se actualiza medio de venta físico para Banco Nación -->
+            <td>POSNET Clover · +Pagos Nación (con QR)</td>
+            <!-- Actualización: medio de venta electrónico no disponible -->
+            <td>No disponible</td>
+            <td>No aplica</td>
+          </tr>
+
+          <!-- Banco Santa Fe -->
+          <tr data-vigencia="Hasta 31/12/2025" data-beneficio="12">
+            <td class="bank">Banco Santa Fe</td>
+            <td class="nowrap">Hasta 31/12/2025</td>
+            <td><span class="tag tag-12">Hasta 12 CUOTAS SIN INTERÉS</span></td>
+            <td>Todos los días</td>
+            <td>Visa y Mastercard</td>
+            <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
+            <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
+            <td>No aplica</td>
+          </tr>
+
+          <!-- Banco Municipal -->
+          <tr data-vigencia="Hasta 30/09/2025" data-beneficio="9">
+            <td class="bank">Banco Municipal</td>
+            <td class="nowrap">Hasta 30/09/2025</td>
+            <td>
+              <span class="tag tag-9">Hasta 9 CUOTAS SIN INTERÉS</span>
+            </td>
+            <td>Viernes y sábados</td>
+            <td>Visa y Mastercard</td>
+            <td>POSNET Clover · FISERV (blanco)</td>
+            <td>LINK DE PAGOS · FISERV</td>
+            <td>28902302 (POSNET) / 28924031 (LINK DE PAGOS)</td>
+          </tr>
+
+          <!-- Banco Macro (VIUMI) -->
+          <tr data-vigencia="Sin plazo definido" data-beneficio="12">
+            <td class="bank">Banco Macro (VIUMI)</td>
+            <td class="nowrap">Sin plazo definido</td>
+            <td><span class="tag tag-12">Hasta 12 CUOTAS SIN INTERÉS*</span><div class="kicker">*cuando disponga la entidad financiera</div></td>
+            <td>Según disponga la entidad financiera</td>
+            <td>Visa y Mastercard</td>
+            <td>POSNET · VIUMI</td>
+            <td>No disponible</td>
+            <td>No aplica</td>
+          </tr>
+
+          <!-- Otros Bancos (3 y 6) -->
+          <tr data-vigencia="Hasta 31/12/2025" data-beneficio="3y6">
+            <td class="bank">Otros Bancos</td>
+            <td class="nowrap">Hasta 31/12/2025</td>
+            <td><span class="tag tag-3y6">3 y 6 CUOTAS SIN INTERÉS</span></td>
+            <td>Todos los días</td>
+            <td>Visa y Mastercard</td>
+            <td>POSNET NAVE</td>
+            <td>LINK DE PAGOS NAVE</td>
+            <td>No aplica</td>
+          </tr>
+
+          <!-- Otros Bancos (12 cuotas, recargo) -->
+          <tr data-vigencia="Sin plazo definido" data-beneficio="recargo">
+            <td class="bank">Otros Bancos</td>
+            <td class="nowrap">Sin plazo definido</td>
+            <td>
+              <span class="tag tag-recargo">12 CUOTAS</span>
+              <div class="kicker">Recargo financiero <strong>+ 10% sobre PRECIO DE LISTA</strong></div>
+            </td>
+            <td>Todos los días</td>
+            <td>Visa y Mastercard</td>
+            <td>POSNET Clover · FISERV (blanco)</td>
+            <td>LINK DE PAGOS · FISERV</td>
+            <td>31095781 (POSNET y LINK DE PAGOS si aplica)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="foot">
+      <div class="legend">
+        <div class="legend-item"><span class="swatch"></span> Cuotas sin interés</div>
+        <div class="legend-item"><span class="swatch2"></span> Beneficio adicional (reintegros)</div>
+      </div>
+      <!-- The link to deckar.com.ar has been moved to the filter bar for greater prominence. -->
+    </div>
+  </div>
+
+  <script>
+    // Filtrado de filas
+    const searchInput = document.getElementById('searchInput');
+    const vigenciaFilter = document.getElementById('vigenciaFilter');
+    const beneficioFilter = document.getElementById('beneficioFilter');
+    const tableRows = document.querySelectorAll('tbody tr');
+
+    function filterTable() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const vigencia = vigenciaFilter.value;
+      const beneficio = beneficioFilter.value;
+      tableRows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        const rowVigencia = row.dataset.vigencia;
+        const rowBeneficio = row.dataset.beneficio;
+        const matchesSearch = text.includes(searchTerm);
+        const matchesVigencia = !vigencia || rowVigencia === vigencia;
+        const matchesBeneficio = !beneficio || rowBeneficio === beneficio;
+        if (matchesSearch && matchesVigencia && matchesBeneficio) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    searchInput.addEventListener('input', filterTable);
+    vigenciaFilter.addEventListener('change', filterTable);
+    beneficioFilter.addEventListener('change', filterTable);
+  </script>
 </body>
 </html>
