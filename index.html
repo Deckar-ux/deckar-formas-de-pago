@@ -271,6 +271,16 @@ html,body{
       font-weight:600;
       color:var(--muted);
     }
+    /*
+     * On narrow screens hide the eighth cell entirely. The column
+     * "Nº de comercio" is not essential for mobile and can be omitted
+     * to prevent content from wrapping uncomfortably. We hide
+     * both the cell and its generated label (pseudoelement).
+     */
+    table td:nth-of-type(8),
+    table td:nth-of-type(8)::before{
+      display:none;
+    }
     /* Ajuste de tamaño de fuente en celdas y etiquetas para móvil */
     table td,
     table td::before{
