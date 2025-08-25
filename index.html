@@ -203,6 +203,44 @@ html,body{
       background:#E8F5E9;
       color:#00695C;
     }
+
+    /* Styles for card-based layout (mobile) */
+    .cards-container{
+      display:none;
+      width:100%;
+    }
+    .card-row{
+      margin-bottom:1rem;
+      border:1px solid var(--border);
+      border-radius:12px;
+      background:var(--bg);
+      box-shadow:0 1px 3px rgba(0,0,0,0.1);
+      overflow:hidden;
+    }
+    .card-item{
+      display:flex;
+      justify-content:space-between;
+      padding:8px 12px;
+      border-bottom:1px solid var(--border);
+    }
+    .card-item:last-child{
+      border-bottom:0;
+    }
+    .card-label{
+      font-weight:600;
+      color:var(--muted);
+      margin-right:8px;
+    }
+    .card-value{
+      flex:1;
+      text-align:right;
+    }
+
+    /* When on mobile screens, hide the table and show the cards */
+    @media (max-width: 768px){
+      table{ display:none; }
+      .cards-container{ display:block; }
+    }
   /* Responsive table for mobile screens */
   @media (max-width: 768px){
     table thead{
@@ -426,6 +464,8 @@ html,body{
           </tr>
         </tbody>
       </table>
+        <!-- Container for card-style layout; cards are generated via JavaScript for mobile -->
+        <div id="cardsContainer" class="cards-container"></div>
     </div>
 
     <div class="foot">
@@ -438,12 +478,65 @@ html,body{
   </div>
 
   <script>
-    // Filtrado de filas
+    // Filtrado de filas y construcción de tarjetas para vista móvil
     const searchInput = document.getElementById('searchInput');
     const vigenciaFilter = document.getElementById('vigenciaFilter');
     const beneficioFilter = document.getElementById('beneficioFilter');
     const tableRows = document.querySelectorAll('tbody tr');
+    const cardsContainer = document.getElementById('cardsContainer');
+    let cardRows;
 
+    // Construye tarjetas a partir de las filas de la tabla (excepto la 8ª columna)
+    function buildCards() {
+      cardsContainer.innerHTML = '';
+      tableRows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const cardRow = document.createElement('div');
+        cardRow.className = 'card-row';
+        cardRow.dataset.vigencia = row.dataset.vigencia;
+        cardRow.dataset.beneficio = row.dataset.beneficio;
+        const labels = [
+          'Entidad financiera',
+          'Vigencia',
+          'Beneficio',
+          'Días aplicables',
+          'Tarjetas aplicables',
+          'Medio de venta físico',
+          'Medio de venta electrónico'
+        ];
+        for (let i = 0; i < 7; i++) {
+          const cardItem = document.createElement('div');
+          cardItem.className = 'card-item';
+          const labelSpan = document.createElement('span');
+          labelSpan.className = 'card-label';
+          labelSpan.textContent = labels[i];
+          const valueSpan = document.createElement('span');
+          valueSpan.className = 'card-value';
+          valueSpan.innerHTML = cells[i].innerHTML;
+          cardItem.appendChild(labelSpan);
+          cardItem.appendChild(valueSpan);
+          cardRow.appendChild(cardItem);
+        }
+        cardsContainer.appendChild(cardRow);
+      });
+      cardRows = cardsContainer.querySelectorAll('.card-row');
+    }
+
+    // Cambia entre la tabla y las tarjetas en función del ancho de la ventana
+    function toggleLayout() {
+      if (window.innerWidth <= 768) {
+        if (!cardsContainer.innerHTML) {
+          buildCards();
+        }
+        document.querySelector('table').style.display = 'none';
+        cardsContainer.style.display = 'block';
+      } else {
+        document.querySelector('table').style.display = '';
+        cardsContainer.style.display = 'none';
+      }
+    }
+
+    // Filtra tanto las filas de la tabla como las tarjetas
     function filterTable() {
       const searchTerm = searchInput.value.toLowerCase();
       const vigencia = vigenciaFilter.value;
@@ -461,11 +554,30 @@ html,body{
           row.style.display = 'none';
         }
       });
+      // Filtra las tarjetas si se están mostrando
+      if (cardsContainer.style.display === 'block' && cardRows) {
+        cardRows.forEach(card => {
+          const text = card.innerText.toLowerCase();
+          const rowVigencia = card.dataset.vigencia;
+          const rowBeneficio = card.dataset.beneficio;
+          const matchesSearch = text.includes(searchTerm);
+          const matchesVigencia = !vigencia || rowVigencia === vigencia;
+          const matchesBeneficio = !beneficio || rowBeneficio === beneficio;
+          if (matchesSearch && matchesVigencia && matchesBeneficio) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
     }
 
     searchInput.addEventListener('input', filterTable);
     vigenciaFilter.addEventListener('change', filterTable);
     beneficioFilter.addEventListener('change', filterTable);
+    // Inicializa el diseño y escucha cambios de tamaño
+    toggleLayout();
+    window.addEventListener('resize', toggleLayout);
   </script>
 </body>
 </html>
