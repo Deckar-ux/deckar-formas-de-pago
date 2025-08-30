@@ -46,9 +46,26 @@ html,body{
       background-repeat:no-repeat;
       background-position:center;
     }
-    .page{max-width:1200px;margin:24px auto;padding:0 16px}
-    h1{font-size:24px;margin:0 0 12px 0;font-weight:700;letter-spacing:-0.01em}
-    .sub{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+    /* Allow the table to expand across the page on desktop.  Remove the 1200px max-width and center margin */
+    /* Center the table and controls horizontally on the page.  The page now takes 90% of the viewport width and is centered using auto margins. */
+    .page{max-width:none;margin:24px auto;padding:0 40px;}
+    h1{
+      font-size:24px;
+      margin:0 0 12px 0;
+      font-weight:700;
+      letter-spacing:-0.01em;
+      /* Center the title text */
+      text-align:center;
+    }
+    /* Center the date badge and subtitle under the heading */
+    .sub{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
+      justify-content:center;
+      text-align:center;
+    }
     .badge{
       display:inline-flex;align-items:center;gap:6px;
       padding:6px 10px;border-radius:999px;
@@ -62,11 +79,14 @@ html,body{
       align-items:center;
       flex-wrap:wrap;
       gap:12px;
+      /* Center the filter controls horizontally */
+      justify-content:center;
     }
 
     /* Stylised button/link for the Deckar homepage */
     .link-button{
-      margin-left:auto;
+      /* Remove the auto margin so that it doesn't push itself to the right when centring */
+      margin-left:0;
       /* Make the call-to-action more prominent with extra padding and a colour gradient */
       padding:8px 16px;
       border-radius:20px;
@@ -133,24 +153,30 @@ html,body{
     .legend .swatch2{background:#ECFDF5;border:1px solid #059669}
     /* fixed column widths */
     colgroup col:nth-child(1){width:190px}
-    colgroup col:nth-child(2){width:130px}
-    colgroup col:nth-child(3){width:220px}
+    /* Vigencia column width */
+    colgroup col:nth-child(2){width:150px}
+    /* Beneficio column width */
+    colgroup col:nth-child(3){width:300px}
+    /* Días aplicables */
     colgroup col:nth-child(4){width:150px}
     /* Tarjetas aplicables */
     colgroup col:nth-child(5){width:150px}
+    /* Tarjetas NO aplicables */
+    colgroup col:nth-child(6){width:180px}
     /* Medio de venta físico */
-    colgroup col:nth-child(6){width:220px}
-    /* Medio de venta electrónico */
     colgroup col:nth-child(7){width:220px}
+    /* Medio de venta electrónico */
+    colgroup col:nth-child(8){width:220px}
     /* Nº de comercio */
-    colgroup col:nth-child(8){width:250px}
+    colgroup col:nth-child(9){width:200px}
     @media print{
       @page{size:A4 landscape;margin:16mm}
       .page{max-width:none;margin:0;padding:0}
       .card{box-shadow:none}
     }
     /* Filter controls */
-    .filters{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:16px}
+    /* Preserve margins on filter controls without overriding the centering defined earlier */
+    .filters{margin-bottom:16px}
     .filters label{font-size:14px;font-weight:500;color:var(--text)}
     .filters input,
     .filters select{
@@ -198,6 +224,17 @@ html,body{
     .tag-recargo{
       background:#FFF3E0;
       color:#EF6C00;
+    }
+
+    /* Highlight for \"NO\" in column header */
+    .highlight-no{
+      color:#C62828;
+      font-weight:600;
+    }
+
+    /* Allow wrapping in the Vigencia column to fit narrower width on desktop */
+    table td:nth-child(2) {
+      white-space:normal;
     }
     .tag-reintegro{
       background:#E8F5E9;
@@ -294,28 +331,33 @@ html,body{
       color:var(--muted);
     }
     table td:nth-of-type(6)::before{
-      content:'Medio de venta físico';
+      content:'Tarjetas NO aplicables';
       font-weight:600;
       color:var(--muted);
     }
     table td:nth-of-type(7)::before{
-      content:'Medio de venta electrónico';
+      content:'Medio de venta físico';
       font-weight:600;
       color:var(--muted);
     }
     table td:nth-of-type(8)::before{
+      content:'Medio de venta electrónico';
+      font-weight:600;
+      color:var(--muted);
+    }
+    table td:nth-of-type(9)::before{
       content:'Nº de comercio';
       font-weight:600;
       color:var(--muted);
     }
     /*
-     * On narrow screens hide the eighth cell entirely. The column
+     * On narrow screens hide the ninth cell entirely. The column
      * "Nº de comercio" is not essential for mobile and can be omitted
      * to prevent content from wrapping uncomfortably. We hide
      * both the cell and its generated label (pseudoelement).
      */
-    table td:nth-of-type(8),
-    table td:nth-of-type(8)::before{
+    table td:nth-of-type(9),
+    table td:nth-of-type(9)::before{
       display:none;
     }
     /* Ajuste de tamaño de fuente en celdas y etiquetas para móvil */
@@ -331,7 +373,7 @@ html,body{
   <div class="page">
     <h1>Formas de pago tarjetas de crédito — Deckar Revestimientos</h1>
     <div class="sub">
-      <span class="badge">Actualizado: 19/08/2025</span>
+      <span class="badge">Actualizado: 27/08/2025</span>
       <span class="muted">Cuotas sin interés, vigencias y condiciones por entidad</span>
     </div>
 
@@ -345,6 +387,10 @@ html,body{
         <option value="Sin plazo definido">Sin plazo definido</option>
         <option value="Hasta 30/09/2025">Hasta 30/09/2025</option>
         <option value="Hasta 31/12/2025">Hasta 31/12/2025</option>
+        <!-- Nueva vigencia para Banco Francés -->
+        <option value="Del 02/09/2025 al 25/12/2025">Del 02/09/2025 al 25/12/2025</option>
+        <!-- Nueva vigencia para Banco Macro (FiserV) -->
+        <option value="Del 09/09/2025 al 24/10/2025">Del 09/09/2025 al 24/10/2025</option>
       </select>
       <label for="beneficioFilter">Beneficio:</label>
       <select id="beneficioFilter">
@@ -364,7 +410,7 @@ html,body{
     <div class="card">
       <table>
         <colgroup>
-          <col><col><col><col><col><col><col><col>
+          <col><col><col><col><col><col><col><col><col>
         </colgroup>
         <thead>
           <tr>
@@ -373,6 +419,7 @@ html,body{
             <th>Beneficio</th>
             <th>Días aplicables</th>
             <th>Tarjetas aplicables</th>
+            <th>Tarjetas <span class="highlight-no">NO</span> aplicables</th>
             <th>Medio de venta físico</th>
             <th>Medio de venta electrónico</th>
             <th>Nº de comercio (POSNET / LINK DE PAGOS)</th>
@@ -385,11 +432,13 @@ html,body{
             <td class="nowrap">Hasta 30/09/2025</td>
             <td>
               <!-- Cambio solicitado: quitar “Hasta” y usar minúsculas -->
-              <span class="tag tag-12">12 cuotas sin interes</span>
+              <span class="tag tag-12">12 CUOTAS SIN INTERÉS</span>
               &nbsp;<span class="tag tag-reintegro">+15% REINTEGRO</span>
             </td>
             <td>Todos los días</td>
             <td>Visa y Mastercard</td>
+            <!-- Nueva columna: Tarjetas no aplicables -->
+            <td></td>
             <!-- Se actualiza medio de venta físico para Banco Nación -->
             <td>POSNET · +Pagos Nación (con QR)</td>
             <!-- Actualización: medio de venta electrónico no disponible -->
@@ -404,9 +453,24 @@ html,body{
             <td><span class="tag tag-12">Hasta 12 CUOTAS SIN INTERÉS</span></td>
             <td>Todos los días</td>
             <td>Visa y Mastercard</td>
+            <!-- Nueva columna: Tarjetas no aplicables -->
+            <td></td>
             <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
             <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
             <td>No aplica</td>
+          </tr>
+
+          <!-- Banco Macro (FiserV) -->
+          <tr data-vigencia="Del 09/09/2025 al 24/10/2025" data-beneficio="12">
+            <td class="bank">Banco Macro (FiserV)</td>
+            <td class="nowrap">Del 09/09/2025 al 24/10/2025</td>
+            <td><span class="tag tag-12">Hasta 12 CUOTAS SIN INTERÉS</span></td>
+            <td>Todos los días</td>
+            <td>Visa y Mastercard</td>
+            <td>Visa y Mastercard Business/Corporativa y American Express</td>
+            <td>POSNET Clover · FISERV (blanco)</td>
+            <td>POSNET Clover · FISERV (blanco) venta por llamada telefónica</td>
+            <td>19184686 (POSNET)</td>
           </tr>
 
           <!-- Banco Municipal -->
@@ -418,22 +482,31 @@ html,body{
             </td>
             <td>Viernes y sábados</td>
             <td>Visa y Mastercard</td>
+            <!-- Nueva columna: Tarjetas no aplicables -->
+            <td></td>
             <td>POSNET Clover · FISERV (blanco)</td>
             <td>LINK DE PAGOS · FISERV</td>
             <td>28902302 (POSNET) / 28924031 (LINK DE PAGOS)</td>
           </tr>
 
-          <!-- Banco Macro (VIUMI) -->
-          <tr data-vigencia="Sin plazo definido" data-beneficio="12">
-            <td class="bank">Banco Macro (VIUMI)</td>
-            <td class="nowrap">Sin plazo definido</td>
-            <td><span class="tag tag-12">Hasta 12 CUOTAS SIN INTERÉS*</span><div class="kicker">*cuando disponga la entidad financiera</div></td>
-            <td>Según disponga la entidad financiera</td>
+          <!-- Banco Francés -->
+          <tr data-vigencia="Del 02/09/2025 al 25/12/2025" data-beneficio="3y6">
+            <td class="bank">Banco Francés</td>
+            <td class="nowrap">Del 02/09/2025 al 25/12/2025</td>
+            <td>
+              <span class="tag tag-3y6">6 CUOTAS SIN INTERÉS</span>
+              &nbsp;<span class="tag secondary">+30% REINTEGRO</span>
+              <div class="kicker">con tope $14.000 mensuales</div>
+            </td>
+            <td>Jueves</td>
             <td>Visa y Mastercard</td>
-            <td>POSNET · VIUMI</td>
-            <td>No disponible</td>
+            <td></td>
+            <td>POSNET Lapos PAYWAY (blanco)</td>
+            <td>LINK DE PAGOS PAYWAY y QR</td>
             <td>No aplica</td>
           </tr>
+
+
 
           <!-- Otros Bancos (3 y 6) -->
           <tr data-vigencia="Hasta 31/12/2025" data-beneficio="3y6">
@@ -442,25 +515,13 @@ html,body{
             <td><span class="tag tag-3y6">3 y 6 CUOTAS SIN INTERÉS</span></td>
             <td>Todos los días</td>
             <td>Visa y Mastercard</td>
+            <!-- Nueva columna: Tarjetas no aplicables -->
+            <td></td>
             <td>POSNET NAVE</td>
-            <td>LINK DE PAGOS NAVE</td>
+            <td>LINK DE PAGOS NAVE y QR</td>
             <td>No aplica</td>
           </tr>
 
-          <!-- Otros Bancos (12 cuotas, recargo) -->
-          <tr data-vigencia="Sin plazo definido" data-beneficio="recargo">
-            <td class="bank">Otros Bancos</td>
-            <td class="nowrap">Sin plazo definido</td>
-            <td>
-              <span class="tag tag-recargo">12 CUOTAS</span>
-              <div class="kicker">Recargo financiero <strong>+ 10% sobre PRECIO DE LISTA</strong></div>
-            </td>
-            <td>Todos los días</td>
-            <td>Visa y Mastercard</td>
-            <td>POSNET Clover · FISERV (blanco)</td>
-            <td>LINK DE PAGOS · FISERV</td>
-            <td>31095781 (POSNET y Venta por llamada telefónica)</td>
-          </tr>
         </tbody>
       </table>
         <!-- Container for card-style layout; cards are generated via JavaScript for mobile -->
@@ -485,7 +546,7 @@ html,body{
     const cardsContainer = document.getElementById('cardsContainer');
     let cardRows;
 
-    // Construye tarjetas a partir de las filas de la tabla (excepto la 8ª columna)
+    // Construye tarjetas a partir de las filas de la tabla (excepto la 9ª columna)
     function buildCards() {
       cardsContainer.innerHTML = '';
       tableRows.forEach(row => {
