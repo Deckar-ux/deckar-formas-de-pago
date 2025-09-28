@@ -19,391 +19,86 @@
       --row:#F8FAFC;
     }
     *{box-sizing:border-box}
-html,body{
-      margin:0;
-      padding:0;
-      background:var(--bg);
-      color:var(--text);
+    html,body{
+      margin:0; padding:0; background:var(--bg); color:var(--text);
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue','Noto Sans',Arial,'Apple Color Emoji','Segoe UI Emoji';
-      /* Use the Deckar corporate image as a background.  The JPEG has been converted
-         directly into a base64-encoded data URI so the image always loads regardless of
-         hosting location.  It is scaled to cover the viewport, centered and fixed in place.
-         If you wish to replace the background image later, simply update the data URI below. */
-      background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAeAB4AAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAGfAZ8DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//2Q==);
-      background-repeat:no-repeat;
-      background-size:cover;
-      background-position:center;
-      background-attachment:fixed;
-
-      /* Override the long base64 background with a simple JPEG file.  The
-         local DECKAR.jpg image should reside alongside this HTML file.  This
-         property is declared last so that it overrides any earlier
-         background-image definitions. */
       background-image:url('DECKAR.jpg');
-
-      /* Override sizing for the logo: show the entire logo without tiling */
-      background-size:contain;
-      background-repeat:no-repeat;
-      background-position:center;
+      background-size:contain; background-repeat:no-repeat; background-position:center;
     }
-    /* Allow the table to expand across the page on desktop.  Remove the 1200px max-width and center margin */
-    /* Center the table and controls horizontally on the page.  The page now takes 90% of the viewport width and is centered using auto margins. */
     .page{max-width:none;margin:24px auto;padding:0 40px;}
-    h1{
-      font-size:24px;
-      margin:0 0 12px 0;
-      font-weight:700;
-      letter-spacing:-0.01em;
-      /* Center the title text */
-      text-align:center;
-    }
-    /* Center the date badge and subtitle under the heading */
-    .sub{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:18px;
-      justify-content:center;
-      text-align:center;
-    }
-    .badge{
-      display:inline-flex;align-items:center;gap:6px;
-      padding:6px 10px;border-radius:999px;
-      font-size:12px;font-weight:600;background:var(--deckar-blue-100);color:var(--deckar-blue-600);
-    }
+    h1{text-align:center;font-size:24px;margin:0 0 12px 0;font-weight:700;letter-spacing:-0.01em}
+    .sub{display:flex;align-items:center;gap:12px;margin-bottom:18px;justify-content:center;text-align:center}
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600;background:var(--deckar-blue-100);color:var(--deckar-blue-600)}
     .muted{color:var(--muted);font-size:13px}
 
-    /* Layout for the filter controls */
-    .filters{
-      display:flex;
-      align-items:center;
-      flex-wrap:wrap;
-      gap:12px;
-      /* Center the filter controls horizontally */
-      justify-content:center;
-    }
+    /* Controles de filtrado */
+    .filters{display:flex;align-items:center;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:16px}
+    .filters label{font-size:14px;font-weight:500;color:var(--text)}
+    .filters input,.filters select{padding:6px 10px;border:1px solid #D0D7FF;border-radius:8px;font-size:14px;background:#F5F7FF;color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.05) inset}
+    .filters input::placeholder{color:var(--muted)}
+    .filters select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:url('data:image/svg+xml;utf8,<svg fill="%230A6CFF" height="16" viewBox="0 0 20 20" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 7.5l4.5 4.5 4.5-4.5H5.5z"/></svg>');background-repeat:no-repeat;background-position:right 8px center;background-size:12px 12px;padding-right:24px}
+    .link-button{padding:8px 16px;border-radius:20px;background:linear-gradient(90deg,#0A6CFF 0%,#69B5FF 100%);color:#fff;text-decoration:none;font-size:14px;font-weight:600;line-height:1;box-shadow:0 2px 4px rgba(0,0,0,.12)}
+    .link-button:hover{transform:translateY(-1px);box-shadow:0 3px 6px rgba(0,0,0,.16)}
 
-    /* Stylised button/link for the Deckar homepage */
-    .link-button{
-      /* Remove the auto margin so that it doesn't push itself to the right when centring */
-      margin-left:0;
-      /* Make the call-to-action more prominent with extra padding and a colour gradient */
-      padding:8px 16px;
-      border-radius:20px;
-      background:linear-gradient(90deg, #0A6CFF 0%, #69B5FF 100%);
-      color:#fff;
-      text-decoration:none;
-      font-size:14px;
-      font-weight:600;
-      line-height:1;
-      box-shadow:0 2px 4px rgba(0,0,0,.12);
-    }
-    .link-button:hover{
-      /* Slightly raise and darken on hover */
-      transform:translateY(-1px);
-      box-shadow:0 3px 6px rgba(0,0,0,.16);
-    }
-    /* Card with accent border and subtle shadow */
-    .card{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:14px;
-      box-shadow:0 4px 20px rgba(0,32,128,.08);
-      border-top:4px solid var(--deckar-blue-600);
-      overflow:hidden;
-    }
+    .card{background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:0 4px 20px rgba(0,32,128,.08);border-top:4px solid var(--deckar-blue-600);overflow:hidden}
     table{width:100%;border-collapse:separate;border-spacing:0}
-    thead th{
-      text-align:left;
-      background:#F5F7FF;
-      position:sticky;
-      top:0;
-      z-index:1;
-      border-bottom:1px solid var(--border);
-      font-size:12px;
-      letter-spacing:.02em;
-      text-transform:uppercase;
-      color:#334155;
-      opacity:.95;
-      padding:10px 12px;
-    }
-    tbody td{
-      padding:10px 12px;
-      border-bottom:1px solid #e5e7eb;
-      font-size:14px;
-      line-height:20px;
-      vertical-align:middle;
-      height:40px;
-    }
+    thead th{text-align:left;background:#F5F7FF;position:sticky;top:0;z-index:1;border-bottom:1px solid var(--border);font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:#334155;opacity:.95;padding:10px 12px}
+    thead th.center{text-align:center}
+    tbody td{padding:10px 12px;border-bottom:1px solid #e5e7eb;font-size:14px;line-height:20px;vertical-align:middle;height:40px}
     tbody tr:nth-child(even){background:var(--row)}
     tbody tr:hover{background:#EFF6FF}
     .bank{font-weight:600}
-    .tag{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:600;background:var(--deckar-blue-100);color:var(--deckar-blue-600)}
-    .tag.secondary{background:#ECFDF5;color:#059669}
+    .tag{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:600}
+    .tag-12{background:#E3F2FD;color:#1565C0}
+    .tag-6{background:#FFF3E0;color:#EF6C00}
+    .tag-3y6{background:#E8F5E9;color:#2E7D32}
+    .tag-reintegro{background:#ECFDF5;color:#059669}
     .nowrap{white-space:nowrap}
-    .copyable{position:relative;cursor:pointer;transition:background .2s ease;}
-    .copyable:hover{background:#FEF3C7}
-    .caption{font-size:12px;color:var(--muted);margin-top:10px}
-    .kicker{font-size:12px;color:var(--muted);margin-top:2px}
-    .foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
-    .foot .muted{font-size:12px}
-    .legend{display:flex;gap:10px;flex-wrap:wrap}
-    .legend .legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
-    .legend .swatch{width:10px;height:10px;border-radius:2px;background:var(--deckar-blue-100);border:1px solid var(--deckar-blue-600);}
-    .legend .swatch2{background:#ECFDF5;border:1px solid #059669}
-    /* fixed column widths */
+    .highlight-no{color:#C62828;font-weight:600}
+
     colgroup col:nth-child(1){width:190px}
-    /* Vigencia column width */
-    colgroup col:nth-child(2){width:150px}
-    /* Beneficio column width */
+    colgroup col:nth-child(2){width:40px}   /* Vigencia -30px (70-30=40) */
     colgroup col:nth-child(3){width:300px}
-    /* Días aplicables */
     colgroup col:nth-child(4){width:150px}
-    /* Tarjetas aplicables */
-    colgroup col:nth-child(5){width:150px}
-    /* Tarjetas NO aplicables */
+    colgroup col:nth-child(5){width:230px}  /* Tarjetas aplicables +30px (200+30) */
     colgroup col:nth-child(6){width:180px}
-    /* Medio de venta físico */
     colgroup col:nth-child(7){width:220px}
-    /* Medio de venta electrónico */
     colgroup col:nth-child(8){width:220px}
-    /* Nº de comercio */
     colgroup col:nth-child(9){width:200px}
-    @media print{
-      @page{size:A4 landscape;margin:16mm}
-      .page{max-width:none;margin:0;padding:0}
-      .card{box-shadow:none}
-    }
-    /* Filter controls */
-    /* Preserve margins on filter controls without overriding the centering defined earlier */
-    .filters{margin-bottom:16px}
-    .filters label{font-size:14px;font-weight:500;color:var(--text)}
-    .filters input,
-    .filters select{
-      padding:6px 10px;
-      border:1px solid #D0D7FF;
-      border-radius:8px;
-      font-size:14px;
-      background:#F5F7FF;
-      color:var(--text);
-      box-shadow:0 1px 2px rgba(0,0,0,.05) inset;
-    }
-    .filters input::placeholder{color:var(--muted)}
-    .filters select{
-      -webkit-appearance:none;
-      -moz-appearance:none;
-      appearance:none;
-      background-image:url('data:image/svg+xml;utf8,<svg fill="%230A6CFF" height="16" viewBox="0 0 20 20" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 7.5l4.5 4.5 4.5-4.5H5.5z"/></svg>');
-      background-repeat:no-repeat;
-      background-position:right 8px center;
-      background-size:12px 12px;
-      padding-right:24px;
-    }
-    /* Number cell formatting */
-    .numcell{
-      font-family:monospace;
-      background:#EEF2FF;
-      padding:4px 8px;
-      border-radius:6px;
-      display:inline-block;
-    }
 
-    /* Tag colour variants */
-    .tag-9{
-      background:#FCE4EC;
-      color:#C2185B;
-    }
-    .tag-12{
-      background:#E3F2FD;
-      color:#1565C0;
-    }
-    .tag-3y6{
-      background:#E8F5E9;
-      color:#2E7D32;
-    }
-    .tag-recargo{
-      background:#FFF3E0;
-      color:#EF6C00;
-    }
-
-    /* Highlight for \"NO\" in column header */
-    .highlight-no{
-      color:#C62828;
-      font-weight:600;
-    }
-
-    /* Allow wrapping in the Vigencia column to fit narrower width on desktop */
-    table td:nth-child(2) {
-      white-space:normal;
-    }
-    .tag-reintegro{
-      background:#E8F5E9;
-      color:#00695C;
-    }
-
-    /* Styles for card-based layout (mobile) */
-    .cards-container{
-      display:none;
-      width:100%;
-    }
-    .card-row{
-      margin-bottom:1rem;
-      border:1px solid var(--border);
-      border-radius:12px;
-      background:var(--bg);
-      box-shadow:0 1px 3px rgba(0,0,0,0.1);
-      overflow:hidden;
-    }
-    .card-item{
-      display:block;
-      padding:8px 12px;
-      border-bottom:1px solid var(--border);
-    }
-    .card-item:last-child{
-      border-bottom:0;
-    }
-    .card-label{
-      display:block;
-      font-weight:600;
-      color:var(--muted);
-      margin-bottom:4px;
-    }
-    .card-value{
-      display:block;
-    }
-
-    /* When on mobile screens, hide the table and show the cards */
-    @media (max-width: 768px){
-      table{ display:none; }
-      .cards-container{ display:block; }
-    }
-  /* Responsive table for mobile screens */
-  @media (max-width: 768px){
-    table thead{
-      display:none;
-    }
-    table, table tbody, table tr, table td{
-      display:block;
-      width:100%;
-    }
-    table tr{
-      margin-bottom:1rem;
-      border:1px solid var(--border);
-      border-radius:12px;
-      background:var(--bg);
-      box-shadow:0 1px 3px rgba(0,0,0,0.1);
-      overflow:hidden;
-    }
-    /* En mobile, cada celda se muestra en bloque para que el texto largo no se superponga */
-    table td{
-      display:block;
-      padding:8px 12px;
-      word-break:break-word;
-    }
-    /* Las etiquetas (pseudoelementos) se ubican en su propia línea */
-    table td::before{
-      display:block;
-      margin-bottom:4px;
-    }
-    table td:nth-of-type(1)::before{
-      content:'Entidad financiera';
-      font-weight:600;
-      color:var(--muted);
-    }
-    table td:nth-of-type(2)::before{
-      content:'Vigencia';
-      font-weight:600;
-      color:var(--muted);
-    }
-    table td:nth-of-type(3)::before{
-      content:'Beneficio';
-      font-weight:600;
-      color:var(--muted);
-    }
-    table td:nth-of-type(4)::before{
-      content:'Días aplicables';
-      font-weight:600;
-      color:var(--muted);
-    }
-    table td:nth-of-type(5)::before{
-      content:'Tarjetas aplicables';
-      font-weight:600;
-      color:var(--muted);
-    }
-    table td:nth-of-type(6)::before{
-      content:'Tarjetas NO aplicables';
-      font-weight:600;
-      color:var(--muted);
-    }
-    table td:nth-of-type(7)::before{
-      content:'Medio de venta físico';
-      font-weight:600;
-      color:var(--muted);
-    }
-    table td:nth-of-type(8)::before{
-      content:'Medio de venta electrónico';
-      font-weight:600;
-      color:var(--muted);
-    }
-    table td:nth-of-type(9)::before{
-      content:'Nº de comercio';
-      font-weight:600;
-      color:var(--muted);
-    }
-    /*
-     * On narrow screens hide the ninth cell entirely. The column
-     * "Nº de comercio" is not essential for mobile and can be omitted
-     * to prevent content from wrapping uncomfortably. We hide
-     * both the cell and its generated label (pseudoelement).
-     */
-    table td:nth-of-type(9),
-    table td:nth-of-type(9)::before{
-      display:none;
-    }
-    /* Ajuste de tamaño de fuente en celdas y etiquetas para móvil */
-    table td,
-    table td::before{
-      font-size:13px;
-      line-height:1.4;
-    }
-  }
+    @media print{@page{size:A4 landscape;margin:16mm}.page{max-width:none;margin:0;padding:0}.card{box-shadow:none}}
   </style>
 </head>
 <body>
   <div class="page">
     <h1>Formas de pago tarjetas de crédito — Deckar Revestimientos</h1>
     <div class="sub">
-      <span class="badge">Actualizado: 27/08/2025</span>
+      <span class="badge">Actualizado: 28/09/2025</span>
       <span class="muted">Cuotas sin interés, vigencias y condiciones por entidad</span>
     </div>
 
-    <!-- Controles de filtrado -->
+    <!-- Filtros interactivos -->
     <div class="filters">
       <label for="searchInput">Buscar:</label>
       <input type="text" id="searchInput" placeholder="Buscar...">
+
       <label for="vigenciaFilter">Vigencia:</label>
       <select id="vigenciaFilter">
         <option value="">Todas</option>
-        <option value="Sin plazo definido">Sin plazo definido</option>
-        <option value="Hasta 30/09/2025">Hasta 30/09/2025</option>
+        <option value="Hasta 31/10/2025">Hasta 31/10/2025</option>
         <option value="Hasta 31/12/2025">Hasta 31/12/2025</option>
-        <!-- Nueva vigencia para Banco Francés -->
         <option value="Del 02/09/2025 al 25/12/2025">Del 02/09/2025 al 25/12/2025</option>
-        <!-- Nueva vigencia para Banco Macro (FiserV) -->
         <option value="Del 09/09/2025 al 24/10/2025">Del 09/09/2025 al 24/10/2025</option>
       </select>
+
       <label for="beneficioFilter">Beneficio:</label>
       <select id="beneficioFilter">
         <option value="">Todos</option>
-        <!-- Reordered so that "3 y 6 cuotas sin interés" appears before "Hasta 9 cuotas sin interés" -->
         <option value="3y6">3 y 6 cuotas sin interés</option>
-        <option value="9">Hasta 9 cuotas sin interés</option>
-        <option value="12">Hasta 12 cuotas sin interés</option>
-        <option value="recargo">Recargo financiero</option>
+        <option value="6">6 cuotas sin interés</option>
+        <option value="12">12 cuotas sin interés</option>
       </select>
 
-      <!-- Botón/link para ir al sitio principal de Deckar.  Se muestra como un botón de color para mejor
-           visibilidad y se posiciona al final de la fila de filtros. -->
       <a href="https://www.deckar.com.ar/inicio" class="link-button" target="_blank">deckar.com.ar/inicio</a>
     </div>
 
@@ -419,7 +114,7 @@ html,body{
             <th>Beneficio</th>
             <th>Días aplicables</th>
             <th>Tarjetas aplicables</th>
-            <th>Tarjetas <span class="highlight-no">NO</span> aplicables</th>
+            <th class="center">Tarjetas <span class="highlight-no">NO</span> aplicables</th>
             <th>Medio de venta físico</th>
             <th>Medio de venta electrónico</th>
             <th>Nº de comercio (POSNET / LINK DE PAGOS)</th>
@@ -427,21 +122,14 @@ html,body{
         </thead>
         <tbody>
           <!-- Banco Nación -->
-          <tr data-vigencia="Hasta 30/09/2025" data-beneficio="12">
+          <tr data-vigencia="Hasta 31/10/2025" data-beneficio="12">
             <td class="bank">Banco Nación</td>
-            <td class="nowrap">Hasta 30/09/2025</td>
-            <td>
-              <!-- Cambio solicitado: quitar “Hasta” y usar minúsculas -->
-              <span class="tag tag-12">12 CUOTAS SIN INTERÉS</span>
-              &nbsp;<span class="tag tag-reintegro">+15% REINTEGRO</span>
-            </td>
+            <td class="nowrap">Hasta 31/10/2025</td>
+            <td><span class="tag tag-12">12 CUOTAS SIN INTERÉS</span></td>
             <td>Todos los días</td>
-            <td>Visa y Mastercard</td>
-            <!-- Nueva columna: Tarjetas no aplicables -->
+            <td>Visa, Mastercard y American Express</td>
             <td></td>
-            <!-- Se actualiza medio de venta físico para Banco Nación -->
             <td>POSNET · +Pagos Nación (con QR)</td>
-            <!-- Actualización: medio de venta electrónico no disponible -->
             <td>No disponible</td>
             <td>No aplica</td>
           </tr>
@@ -452,8 +140,7 @@ html,body{
             <td class="nowrap">Hasta 31/12/2025</td>
             <td><span class="tag tag-12">Hasta 12 CUOTAS SIN INTERÉS</span></td>
             <td>Todos los días</td>
-            <td>Visa y Mastercard</td>
-            <!-- Nueva columna: Tarjetas no aplicables -->
+            <td>Visa, Mastercard y American Express</td>
             <td></td>
             <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
             <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
@@ -473,171 +160,74 @@ html,body{
             <td>19184686 (POSNET)</td>
           </tr>
 
-          <!-- Banco Municipal -->
-          <tr data-vigencia="Hasta 30/09/2025" data-beneficio="9">
-            <td class="bank">Banco Municipal</td>
-            <td class="nowrap">Hasta 30/09/2025</td>
-            <td>
-              <span class="tag tag-9">Hasta 9 CUOTAS SIN INTERÉS</span>
-            </td>
-            <td>Viernes y sábados</td>
-            <td>Visa y Mastercard</td>
-            <!-- Nueva columna: Tarjetas no aplicables -->
+          <!-- Banco Entre Ríos -->
+          <tr data-vigencia="Hasta 31/12/2025" data-beneficio="12">
+            <td class="bank">Banco Entre Ríos</td>
+            <td class="nowrap">Hasta 31/12/2025</td>
+            <td><span class="tag tag-12">Hasta 12 CUOTAS SIN INTERÉS</span></td>
+            <td>Todos los días</td>
+            <td>Visa, Mastercard y American Express</td>
             <td></td>
-            <td>POSNET Clover · FISERV (blanco)</td>
-            <td>LINK DE PAGOS · FISERV</td>
-            <td>28902302 (POSNET) / 28924031 (LINK DE PAGOS)</td>
+            <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
+            <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
+            <td>No aplica</td>
           </tr>
 
           <!-- Banco Francés -->
-          <tr data-vigencia="Del 02/09/2025 al 25/12/2025" data-beneficio="3y6">
+          <tr data-vigencia="Del 02/09/2025 al 25/12/2025" data-beneficio="6">
             <td class="bank">Banco Francés</td>
             <td class="nowrap">Del 02/09/2025 al 25/12/2025</td>
             <td>
-              <span class="tag tag-3y6">6 CUOTAS SIN INTERÉS</span>
-              &nbsp;<span class="tag secondary">+30% REINTEGRO</span>
+              <span class="tag tag-6">6 CUOTAS SIN INTERÉS</span>
+              &nbsp;<span class="tag tag-reintegro">+30% REINTEGRO</span>
               <div class="kicker">con tope $14.000 mensuales</div>
             </td>
             <td>Jueves</td>
-            <td>Visa y Mastercard</td>
+            <td>Visa, Mastercard y American Express</td>
             <td></td>
             <td>POSNET Lapos PAYWAY (blanco)</td>
             <td>LINK DE PAGOS PAYWAY y QR</td>
             <td>No aplica</td>
           </tr>
 
-
-
-          <!-- Otros Bancos (3 y 6) -->
+          <!-- Otros Bancos -->
           <tr data-vigencia="Hasta 31/12/2025" data-beneficio="3y6">
             <td class="bank">Otros Bancos</td>
             <td class="nowrap">Hasta 31/12/2025</td>
             <td><span class="tag tag-3y6">3 y 6 CUOTAS SIN INTERÉS</span></td>
             <td>Todos los días</td>
-            <td>Visa y Mastercard</td>
-            <!-- Nueva columna: Tarjetas no aplicables -->
+            <td>Visa, Mastercard y American Express</td>
             <td></td>
             <td>POSNET NAVE</td>
             <td>LINK DE PAGOS NAVE y QR</td>
             <td>No aplica</td>
           </tr>
-
         </tbody>
       </table>
-        <!-- Container for card-style layout; cards are generated via JavaScript for mobile -->
-        <div id="cardsContainer" class="cards-container"></div>
-    </div>
-
-    <div class="foot">
-      <div class="legend">
-        <div class="legend-item"><span class="swatch"></span> Cuotas sin interés</div>
-        <div class="legend-item"><span class="swatch2"></span> Beneficio adicional (reintegros)</div>
-      </div>
-      <!-- The link to deckar.com.ar has been moved to the filter bar for greater prominence. -->
     </div>
   </div>
 
   <script>
-    // Filtrado de filas y construcción de tarjetas para vista móvil
-    const searchInput = document.getElementById('searchInput');
-    const vigenciaFilter = document.getElementById('vigenciaFilter');
-    const beneficioFilter = document.getElementById('beneficioFilter');
-    const tableRows = document.querySelectorAll('tbody tr');
-    const cardsContainer = document.getElementById('cardsContainer');
-    let cardRows;
+    const searchInput=document.getElementById('searchInput');
+    const vigenciaFilter=document.getElementById('vigenciaFilter');
+    const beneficioFilter=document.getElementById('beneficioFilter');
+    const tableRows=document.querySelectorAll('tbody tr');
 
-    // Construye tarjetas a partir de las filas de la tabla (excepto la 9ª columna)
-    function buildCards() {
-      cardsContainer.innerHTML = '';
-      tableRows.forEach(row => {
-        const cells = row.querySelectorAll('td');
-        const cardRow = document.createElement('div');
-        cardRow.className = 'card-row';
-        cardRow.dataset.vigencia = row.dataset.vigencia;
-        cardRow.dataset.beneficio = row.dataset.beneficio;
-        const labels = [
-          'Entidad financiera',
-          'Vigencia',
-          'Beneficio',
-          'Días aplicables',
-          'Tarjetas aplicables',
-          'Medio de venta físico',
-          'Medio de venta electrónico'
-        ];
-        for (let i = 0; i < 7; i++) {
-          const cardItem = document.createElement('div');
-          cardItem.className = 'card-item';
-          const labelSpan = document.createElement('span');
-          labelSpan.className = 'card-label';
-          labelSpan.textContent = labels[i];
-          const valueSpan = document.createElement('span');
-          valueSpan.className = 'card-value';
-          valueSpan.innerHTML = cells[i].innerHTML;
-          cardItem.appendChild(labelSpan);
-          cardItem.appendChild(valueSpan);
-          cardRow.appendChild(cardItem);
-        }
-        cardsContainer.appendChild(cardRow);
+    function filterTable(){
+      const q=(searchInput.value||'').toLowerCase();
+      const v=vigenciaFilter.value; const b=beneficioFilter.value;
+      tableRows.forEach(row=>{
+        const txt=row.innerText.toLowerCase();
+        const matchQ=txt.includes(q);
+        const matchV=!v||row.dataset.vigencia===v;
+        const matchB=!b||row.dataset.beneficio===b;
+        row.style.display=(matchQ&&matchV&&matchB)?'':'none';
       });
-      cardRows = cardsContainer.querySelectorAll('.card-row');
     }
 
-    // Cambia entre la tabla y las tarjetas en función del ancho de la ventana
-    function toggleLayout() {
-      if (window.innerWidth <= 768) {
-        if (!cardsContainer.innerHTML) {
-          buildCards();
-        }
-        document.querySelector('table').style.display = 'none';
-        cardsContainer.style.display = 'block';
-      } else {
-        document.querySelector('table').style.display = '';
-        cardsContainer.style.display = 'none';
-      }
-    }
-
-    // Filtra tanto las filas de la tabla como las tarjetas
-    function filterTable() {
-      const searchTerm = searchInput.value.toLowerCase();
-      const vigencia = vigenciaFilter.value;
-      const beneficio = beneficioFilter.value;
-      tableRows.forEach(row => {
-        const text = row.innerText.toLowerCase();
-        const rowVigencia = row.dataset.vigencia;
-        const rowBeneficio = row.dataset.beneficio;
-        const matchesSearch = text.includes(searchTerm);
-        const matchesVigencia = !vigencia || rowVigencia === vigencia;
-        const matchesBeneficio = !beneficio || rowBeneficio === beneficio;
-        if (matchesSearch && matchesVigencia && matchesBeneficio) {
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
-        }
-      });
-      // Filtra las tarjetas si se están mostrando
-      if (cardsContainer.style.display === 'block' && cardRows) {
-        cardRows.forEach(card => {
-          const text = card.innerText.toLowerCase();
-          const rowVigencia = card.dataset.vigencia;
-          const rowBeneficio = card.dataset.beneficio;
-          const matchesSearch = text.includes(searchTerm);
-          const matchesVigencia = !vigencia || rowVigencia === vigencia;
-          const matchesBeneficio = !beneficio || rowBeneficio === beneficio;
-          if (matchesSearch && matchesVigencia && matchesBeneficio) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      }
-    }
-
-    searchInput.addEventListener('input', filterTable);
-    vigenciaFilter.addEventListener('change', filterTable);
-    beneficioFilter.addEventListener('change', filterTable);
-    // Inicializa el diseño y escucha cambios de tamaño
-    toggleLayout();
-    window.addEventListener('resize', toggleLayout);
+    searchInput.addEventListener('input',filterTable);
+    vigenciaFilter.addEventListener('change',filterTable);
+    beneficioFilter.addEventListener('change',filterTable);
   </script>
 </body>
 </html>
