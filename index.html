@@ -41,10 +41,11 @@
     .link-button:hover{transform:translateY(-1px);box-shadow:0 3px 6px rgba(0,0,0,.16)}
 
     .card{background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:0 4px 20px rgba(0,32,128,.08);border-top:4px solid var(--deckar-blue-600);overflow:hidden}
-    table{width:100%;border-collapse:separate;border-spacing:0}
-    thead th{text-align:left;background:#F5F7FF;position:sticky;top:0;z-index:1;border-bottom:1px solid var(--border);font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:#334155;opacity:.95;padding:10px 12px}
-    thead th.center{text-align:center}
-    tbody td{padding:10px 12px;border-bottom:1px solid #e5e7eb;font-size:14px;line-height:20px;vertical-align:middle;height:40px}
+    table{width:100%;border-collapse:collapse;border-spacing:0}
+    thead th{text-align:center;background:#F5F7FF;position:sticky;top:0;z-index:1;border-bottom:2px solid black;border-right:2px solid black;font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:#334155;opacity:.95;padding:10px 12px}
+    thead th:last-child{border-right:none}
+    tbody td{padding:10px 12px;border-bottom:1px solid #e5e7eb;border-right:2px solid black;font-size:14px;line-height:20px;vertical-align:middle;height:40px}
+    tbody td:last-child{border-right:none}
     tbody tr:nth-child(even){background:var(--row)}
     tbody tr:hover{background:#EFF6FF}
     .bank{font-weight:600}
@@ -57,10 +58,10 @@
     .highlight-no{color:#C62828;font-weight:600}
 
     colgroup col:nth-child(1){width:190px}
-    colgroup col:nth-child(2){width:40px}   /* Vigencia -30px (70-30=40) */
+    colgroup col:nth-child(2){width:40px}
     colgroup col:nth-child(3){width:300px}
     colgroup col:nth-child(4){width:150px}
-    colgroup col:nth-child(5){width:230px}  /* Tarjetas aplicables +30px (200+30) */
+    colgroup col:nth-child(5){width:230px}
     colgroup col:nth-child(6){width:180px}
     colgroup col:nth-child(7){width:220px}
     colgroup col:nth-child(8){width:220px}
@@ -114,7 +115,7 @@
             <th>Beneficio</th>
             <th>Días aplicables</th>
             <th>Tarjetas aplicables</th>
-            <th class="center">Tarjetas <span class="highlight-no">NO</span> aplicables</th>
+            <th>Tarjetas <span class="highlight-no">NO</span> aplicables</th>
             <th>Medio de venta físico</th>
             <th>Medio de venta electrónico</th>
             <th>Nº de comercio (POSNET / LINK DE PAGOS)</th>
