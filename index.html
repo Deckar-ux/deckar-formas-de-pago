@@ -31,6 +31,7 @@
     .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600;background:var(--deckar-blue-100);color:var(--deckar-blue-600)}
     .muted{color:var(--muted);font-size:13px}
 
+    /* Controles de filtrado */
     .filters{display:flex;align-items:center;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:16px}
     .filters label{font-size:14px;font-weight:500;color:var(--text)}
     .filters input,.filters select{padding:6px 10px;border:1px solid #D0D7FF;border-radius:8px;font-size:14px;background:#F5F7FF;color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.05) inset}
@@ -73,10 +74,11 @@
   <div class="page">
     <h1>Formas de pago tarjetas de crédito — Deckar Revestimientos</h1>
     <div class="sub">
-      <span class="badge">Actualizado: 04/10/2025</span>
+      <span class="badge">Actualizado: 10/11/2025</span>
       <span class="muted">Cuotas sin interés, vigencias y condiciones por entidad</span>
     </div>
 
+    <!-- Filtros interactivos -->
     <div class="filters">
       <label for="searchInput">Buscar:</label>
       <input type="text" id="searchInput" placeholder="Buscar...">
@@ -84,6 +86,9 @@
       <label for="vigenciaFilter">Vigencia:</label>
       <select id="vigenciaFilter">
         <option value="">Todas</option>
+        <option value="Hasta el 31/12/2025">Hasta el 31/12/2025</option>
+        <option value="Renovación automática">Renovación automática</option>
+        <option value="Hasta 30/11/2025">Hasta 30/11/2025</option>
         <option value="Hasta 31/10/2025">Hasta 31/10/2025</option>
         <option value="Hasta 31/12/2025">Hasta 31/12/2025</option>
         <option value="Del 02/09/2025 al 25/12/2025">Del 02/09/2025 al 25/12/2025</option>
@@ -120,9 +125,10 @@
           </tr>
         </thead>
         <tbody>
+          <!-- Banco Nación -->
           <tr data-vigencia="Hasta 31/10/2025" data-beneficio="12">
             <td class="bank">Banco Nación</td>
-            <td class="nowrap">Hasta 31/10/2025</td>
+            <td class="nowrap">Hasta el 31/12/2025</td>
             <td><span class="tag tag-12">12 CUOTAS SIN INTERÉS</span></td>
             <td>Todos los días</td>
             <td>Visa, Mastercard y American Express</td>
@@ -132,9 +138,10 @@
             <td>No aplica</td>
           </tr>
 
+          <!-- Banco Santa Fe -->
           <tr data-vigencia="Hasta 31/12/2025" data-beneficio="6">
             <td class="bank">Banco Santa Fe (Billetera Santa Fe)</td>
-            <td class="nowrap">Hasta 31/12/2025</td>
+            <td class="nowrap">Hasta el 01/03/2026</td>
             <td><span class="tag tag-6">Hasta 6 CUOTAS SIN INTERÉS</span></td>
             <td>Todos los días</td>
             <td>Visa, Mastercard y American Express</td>
@@ -143,7 +150,6 @@
             <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
             <td>No aplica</td>
           </tr>
-
           <tr data-vigencia="Hasta 31/12/2025" data-beneficio="12">
             <td class="bank">Banco Santa Fe (FiserV)</td>
             <td class="nowrap">Hasta 31/12/2025</td>
@@ -155,19 +161,21 @@
             <td>POSNET Clover · FISERV (blanco) venta por llamada telefónica</td>
             <td>30162226 (POSNET)</td>
           </tr>
-
-          <tr data-vigencia="Del 09/09/2025 al 24/10/2025" data-beneficio="12">
-            <td class="bank">Banco Macro (FiserV)</td>
-            <td class="nowrap">Del 09/09/2025 al 24/10/2025</td>
-            <td><span class="tag tag-12">Hasta 12 CUOTAS SIN INTERÉS</span></td>
-            <td>Todos los días</td>
-            <td>Visa y Mastercard</td>
-            <td>Visa y Mastercard Business/Corporativa y American Express</td>
+          <!-- Banco Municipal (FiserV) -->
+          <tr data-vigencia="Renovación automática" data-beneficio="12">
+            <td class="bank">Banco Municipal (Fiserv)</td>
+            <td class="nowrap">Renovación automática</td>
+            <td><span class="tag tag-12">9 CUOTAS SIN INTERÉS</span></td>
+            <td>Viernes y Sábados</td>
+            <td>Visa, Mastercard y American Express</td>
+            <td>Visa y Mastercard Business/Corporativa</td>
             <td>POSNET Clover · FISERV (blanco)</td>
-            <td>POSNET Clover · FISERV (blanco) venta por llamada telefónica</td>
-            <td>19184686 (POSNET)</td>
+            <td>LINK DE PAGOS FISERV</td>
+            <td>28902302 (Posnet físicos) / 28924031 (Link de pagos)</td>
           </tr>
 
+
+          <!-- Banco Entre Ríos -->
           <tr data-vigencia="Hasta 31/12/2025" data-beneficio="12">
             <td class="bank">Banco Entre Ríos</td>
             <td class="nowrap">Hasta 31/12/2025</td>
@@ -180,10 +188,15 @@
             <td>No aplica</td>
           </tr>
 
+          <!-- Banco Francés -->
           <tr data-vigencia="Del 02/09/2025 al 25/12/2025" data-beneficio="6">
             <td class="bank">Banco Francés</td>
             <td class="nowrap">Del 02/09/2025 al 25/12/2025</td>
-            <td><span class="tag tag-6">6 CUOTAS SIN INTERÉS</span>&nbsp;<span class="tag tag-reintegro">+30% REINTEGRO</span><div class="kicker">con tope $14.000 mensuales</div></td>
+            <td>
+              <span class="tag tag-6">6 CUOTAS SIN INTERÉS</span>
+              &nbsp;<span class="tag tag-reintegro">+30% REINTEGRO</span>
+              <div class="kicker">con tope $14.000 mensuales</div>
+            </td>
             <td>Jueves</td>
             <td>Visa, Mastercard y American Express</td>
             <td></td>
@@ -192,6 +205,7 @@
             <td>No aplica</td>
           </tr>
 
+          <!-- Otros Bancos -->
           <tr data-vigencia="Hasta 31/12/2025" data-beneficio="3y6">
             <td class="bank">Otros Bancos</td>
             <td class="nowrap">Hasta 31/12/2025</td>
