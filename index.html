@@ -9,30 +9,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --d-blue: #0A6CFF;
-      --d-blue-dark: #074FB8;
-      --d-blue-light: #E9F1FF;
-      --text-main: #0F172A;
-      --text-muted: #334155;
-      --text-sub: #64748B;
-      --border-thin: #E2E8F0;
-      --border-focus: #CBD5E1;
-      --bg-main: #F8FAFC;
-      --bg-card: #FFFFFF;
-      --bg-th: #F1F5F9;
-      --row-even: #F8FAFC;
-      --row-hover: #F0F7FF;
-      --accent-danger: #C62828;
-      --accent-danger-bg: #FFEBEE;
+      --deckar-blue: #0A6CFF;
+      --deckar-blue-700: #074FB8;
+      --deckar-blue-600: #0A56C9;
+      --deckar-blue-100: #E9F1FF;
+      --deckar-blue-50: #F4F8FF;
+      --text: #0F172A;
+      --text-soft: #334155;
+      --muted: #64748B;
+      --border: #CBD5E1;
+      --border-soft: #E2E8F0;
+      --bg: #F6F8FC;
+      --card: #FFFFFF;
+      --row: #F8FAFC;
+      --row-hover: #EEF6FF;
+      --danger: #C62828;
+      --shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
       min-height: 100%;
-      color: var(--text-main);
+      color: var(--text);
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--bg-main);
+      background: var(--bg);
       -webkit-font-smoothing: antialiased;
     }
 
@@ -42,19 +43,19 @@
       padding: 16px;
     }
 
-    /* Barra superior limpia y adaptativa */
+    /* Barra Superior */
     .top-bar {
-      background: var(--bg-card);
-      border: 1px solid var(--border-thin);
+      background: var(--card);
+      border: 1px solid var(--border-soft);
       border-radius: 8px;
       padding: 12px 16px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+      box-shadow: var(--shadow);
     }
 
     .brand-section {
@@ -67,7 +68,7 @@
       font-size: 18px;
       font-weight: 800;
       letter-spacing: -0.02em;
-      color: var(--text-main);
+      color: var(--text);
     }
 
     .meta-info {
@@ -81,17 +82,17 @@
       border-radius: 4px;
       font-size: 10px;
       font-weight: 700;
-      background: var(--d-blue-light);
-      color: var(--d-blue-dark);
+      background: var(--deckar-blue-100);
+      color: var(--deckar-blue-700);
     }
 
     .meta-desc {
-      color: var(--text-sub);
+      color: var(--muted);
       font-size: 12px;
       font-weight: 500;
     }
 
-    /* Contenedor de Filtros */
+    /* Filtros */
     .filter-group {
       display: flex;
       align-items: center;
@@ -108,7 +109,7 @@
     .input-box label {
       font-size: 11px;
       font-weight: 700;
-      color: var(--text-muted);
+      color: var(--text-soft);
       text-transform: uppercase;
       letter-spacing: 0.02em;
     }
@@ -117,18 +118,18 @@
     .filter-group select {
       min-height: 32px;
       padding: 4px 12px;
-      border: 1px solid var(--border-focus);
+      border: 1px solid var(--border);
       border-radius: 6px;
       font-size: 12px;
       background: #FFFFFF;
-      color: var(--text-main);
+      color: var(--text);
       outline: none;
       font-family: inherit;
     }
 
     .filter-group input { width: 180px; }
     .filter-group select { padding-right: 24px; cursor: pointer; }
-    .filter-group input:focus, .filter-group select:focus { border-color: var(--d-blue); }
+    .filter-group input:focus, .filter-group select:focus { border-color: var(--deckar-blue); }
 
     .action-btn {
       min-height: 32px;
@@ -136,22 +137,130 @@
       align-items: center;
       padding: 0 14px;
       border-radius: 6px;
-      background: var(--d-blue);
+      background: var(--deckar-blue);
       color: #FFFFFF;
       text-decoration: none;
       font-size: 12px;
       font-weight: 700;
-      transition: background-color .1s;
     }
 
-    .action-btn:hover { background: var(--d-blue-dark); }
+    .action-btn:hover { background: var(--deckar-blue-700); }
 
-    /* Módulo de la Tabla */
-    .data-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-thin);
+    /* SECCIÓN NUEVA: CALENDARIO SEMANAL */
+    .calendar-card {
+      background: var(--card);
+      border: 1px solid var(--border-soft);
       border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      box-shadow: var(--shadow);
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+
+    .calendar-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .calendar-grid {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .calendar-table-wrapper {
+      width: 100%;
+      min-width: 1100px;
+      display: table;
+      table-layout: fixed;
+      border: 1px solid var(--border-soft);
+      border-radius: 6px;
+      background: #FFFFFF;
+    }
+
+    .calendar-day-col {
+      display: table-cell;
+      width: 14.28%;
+      vertical-align: top;
+      border-right: 1px solid var(--border-soft);
+    }
+
+    .calendar-day-col:last-child {
+      border-right: none;
+    }
+
+    .calendar-day-header {
+      background: var(--bg);
+      padding: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      text-align: center;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .calendar-day-header.today-highlight {
+      background: var(--deckar-blue-100);
+      color: var(--deckar-blue-700);
+    }
+
+    .calendar-day-content {
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-height: 120px;
+    }
+
+    /* Bloques de Promociones en Calendario */
+    .calendar-item {
+      background: var(--row);
+      border: 1px solid var(--border-soft);
+      border-left: 3.5px solid var(--deckar-blue);
+      border-radius: 4px;
+      padding: 5px 7px;
+      font-size: 11px;
+      line-height: 1.3;
+    }
+
+    .calendar-item-bank {
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 1px;
+    }
+
+    .calendar-item-benefit {
+      color: var(--text-soft);
+      font-size: 10.5px;
+    }
+
+    .calendar-item-expired {
+      border-left-color: var(--danger);
+      background: #FFF5F5;
+      opacity: 0.7;
+    }
+
+    .no-promo-text {
+      font-size: 10.5px;
+      color: var(--muted);
+      font-style: italic;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* Módulo de la Tabla Completa */
+    .data-card {
+      background: var(--card);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
       overflow: hidden;
     }
 
@@ -160,7 +269,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 16px;
-      border-bottom: 1px solid var(--border-thin);
+      border-bottom: 1px solid var(--border-soft);
       background: #FFFFFF;
     }
 
@@ -169,20 +278,19 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      color: var(--text-muted);
+      color: var(--text-soft);
     }
 
     .counter-tag {
       font-size: 11px;
       font-weight: 600;
-      background: var(--bg-main);
-      color: var(--text-muted);
+      background: var(--bg);
+      color: var(--text-soft);
       padding: 2px 8px;
       border-radius: 4px;
-      border: 1px solid var(--border-thin);
+      border: 1px solid var(--border-soft);
     }
 
-    /* Vista fluida sin recortes */
     .scroll-container {
       width: 100%;
       overflow-x: auto;
@@ -191,7 +299,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      table-layout: auto; /* Permite que las columnas se estiren según el texto */
+      table-layout: auto;
     }
 
     thead th {
@@ -199,30 +307,29 @@
       position: sticky;
       top: 0;
       z-index: 2;
-      background: var(--bg-th);
-      border-bottom: 2px solid var(--border-focus);
+      background: var(--bg);
+      border-bottom: 2px solid var(--border);
       font-size: 11px;
       letter-spacing: .03em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--text-soft);
       padding: 10px 12px;
       font-weight: 700;
       white-space: nowrap;
     }
 
-    /* Celdas expandibles de alta legibilidad */
     tbody td {
       padding: 8px 12px;
-      border-bottom: 1px solid var(--border-thin);
+      border-bottom: 1px solid var(--border-soft);
       font-size: 12.5px;
       line-height: 1.4;
       vertical-align: middle;
-      color: var(--text-main);
-      white-space: normal; /* Fuerza a que todo texto largo salte de línea y se vea completo */
-      word-break: break-word; /* Evita que palabras ultra largas rompan el layout */
+      color: var(--text);
+      white-space: normal;
+      word-break: break-word;
     }
 
-    tbody tr:nth-child(even) { background: var(--row-even); }
+    tbody tr:nth-child(even) { background: var(--row); }
     tbody tr:hover { background: var(--row-hover); }
 
     .bank-name {
@@ -230,12 +337,11 @@
       color: #000000;
     }
 
-    /* Contenedores de Beneficios */
     .tags-wrapper {
       display: flex;
       gap: 4px;
       align-items: center;
-      flex-wrap: wrap; /* Si hay múltiples tags se ordenan hacia abajo sin ocultarse */
+      flex-wrap: wrap;
     }
 
     .micro-tag {
@@ -257,8 +363,8 @@
     .danger-badge {
       display: inline-block;
       padding: 2px 6px;
-      background: var(--accent-danger-bg);
-      color: var(--accent-danger);
+      background: #FFEBEE;
+      color: var(--danger);
       border-radius: 4px;
       font-size: 11px;
       font-weight: 600;
@@ -268,14 +374,14 @@
     .loading-row td {
       text-align: center;
       padding: 32px 16px;
-      color: var(--text-sub);
+      color: var(--muted);
       font-size: 13px;
     }
 
     code {
       font-family: monospace;
       font-size: 12px;
-      background: #F1F5F9;
+      background: var(--bg);
       padding: 2px 4px;
       border-radius: 3px;
       color: #000000;
@@ -325,6 +431,45 @@
       </div>
     </section>
 
+    <section class="calendar-card">
+      <div class="calendar-title">
+        <span>Distribución de Beneficios Semanales</span>
+        <span style="font-size:11px; text-transform:none; color:var(--muted); font-weight:normal;">Alineado a la vigencia y filtros activos</span>
+      </div>
+      <div class="calendar-grid">
+        <div class="calendar-table-wrapper">
+          <div class="calendar-day-col" data-day="lunes">
+            <div class="calendar-day-header" id="head-lunes">Lunes</div>
+            <div class="calendar-day-content" id="cal-lunes"></div>
+          </div>
+          <div class="calendar-day-col" data-day="martes">
+            <div class="calendar-day-header" id="head-martes">Martes</div>
+            <div class="calendar-day-content" id="cal-martes"></div>
+          </div>
+          <div class="calendar-day-col" data-day="miercoles">
+            <div class="calendar-day-header" id="head-miercoles">Miércoles</div>
+            <div class="calendar-day-content" id="cal-miercoles"></div>
+          </div>
+          <div class="calendar-day-col" data-day="jueves">
+            <div class="calendar-day-header" id="head-jueves">Jueves</div>
+            <div class="calendar-day-content" id="cal-jueves"></div>
+          </div>
+          <div class="calendar-day-col" data-day="viernes">
+            <div class="calendar-day-header" id="head-viernes">Viernes</div>
+            <div class="calendar-day-content" id="cal-viernes"></div>
+          </div>
+          <div class="calendar-day-col" data-day="sabado">
+            <div class="calendar-day-header" id="head-sabado">Sábado</div>
+            <div class="calendar-day-content" id="cal-sabado"></div>
+          </div>
+          <div class="calendar-day-col" data-day="domingo">
+            <div class="calendar-day-header" id="head-domingo">Domingo</div>
+            <div class="calendar-day-content" id="cal-domingo"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="data-card">
       <div class="data-header">
         <div class="data-title">Promociones Activas</div>
@@ -363,16 +508,27 @@
   const tablaPromociones = document.getElementById('tablaPromociones');
   const visibleCount = document.getElementById('visibleCount');
 
+  let rawDataGlobal = [];
   let tableRows = [];
+
+  // Marcar el día de hoy en el calendario de forma nativa
+  const diasSemanaMapa = ['domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado'];
+  const hoyIndex = new Date().getDay();
+  const nombreHoy = diasSemanaMapa[hoyIndex];
+  const headerHoy = document.getElementById(`head-${nombreHoy}`);
+  if(headerHoy) {
+    headerHoy.classList.add('today-highlight');
+    headerHoy.innerText += " (Hoy)";
+  }
 
   async function cargarDatos() {
     try {
       const response = await fetch(CSV_URL, { cache: "no-store" });
       const csv = await response.text();
       const filas = parseCSV(csv);
-      const datos = filas.slice(1).filter(fila => fila.some(celda => (celda || "").trim() !== ""));
+      rawDataGlobal = filas.slice(1).filter(fila => fila.some(celda => (celda || "").trim() !== ""));
 
-      tablaPromociones.innerHTML = datos.map(fila => {
+      tablaPromociones.innerHTML = rawDataGlobal.map(fila => {
         const entidad = fila[0] || "";
         const vigencia = fila[1] || "";
         const beneficio = fila[2] || "";
@@ -389,7 +545,7 @@
           : "—";
 
         return `
-          <tr data-vigencia="${escapeAttr(vigencia)}" data-beneficio="${escapeAttr(tipoBeneficio)}">
+          <tr data-vigencia="${escapeAttr(vigencia)}" data-beneficio="${escapeAttr(tipoBeneficio)}" data-entidad="${escapeAttr(entidad)}" data-dias="${escapeAttr(dias)}" data-beneficiotxt="${escapeAttr(beneficio)}">
             <td class="bank-name">${escapeHTML(entidad)}</td>
             <td>${escapeHTML(vigencia)}</td>
             <td><div class="tags-wrapper">${crearBeneficio(beneficio, tipoBeneficio)}</div></td>
@@ -404,7 +560,7 @@
       }).join("");
 
       tableRows = document.querySelectorAll('#tablaPromociones tr');
-      actualizarFiltrosVigencia(datos);
+      actualizarFiltrosVigencia(rawDataGlobal);
       filterTable();
     } catch (error) {
       console.error(error);
@@ -442,6 +598,74 @@
     vigenciaFilter.innerHTML = opciones;
   }
 
+  // Lógica de mapeo y filtrado del calendario semanal
+  function reconstruirCalendario() {
+    const diasClaves = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
+    
+    // Limpiar contenedores
+    diasClaves.forEach(d => { document.getElementById(`cal-${d}`).innerHTML = ""; });
+
+    let conteoDias = { lunes: 0, martes: 0, miercoles: 0, jueves: 0, viernes: 0, sabado: 0, domingo: 0 };
+    const fechaHoy = new Date();
+    fechaHoy.setHours(0,0,0,0);
+
+    tableRows.forEach(row => {
+      // Solo consideramos los elementos que pasaron los filtros de la tabla principal
+      if (row.style.display === 'none') return;
+
+      const entidad = row.dataset.entidad || "";
+      const beneficio = row.dataset.beneficiotxt || "";
+      const diasString = (row.dataset.dias || "").toLowerCase();
+      const vigenciaStr = row.dataset.vigencia || "";
+
+      // Validar si expiró la promoción respecto al día de hoy
+      let estaExpirada = false;
+      if (vigenciaStr) {
+        const partes = vigenciaStr.split('/');
+        if (partes.length === 3) {
+          const fechaVigencia = new Date(partes[2], partes[1] - 1, partes[0]);
+          fechaVigencia.setHours(0,0,0,0);
+          if (fechaVigencia < fechaHoy) {
+            estaExpirada = true; 
+          }
+        }
+      }
+
+      const itemHtml = `
+        <div class="calendar-item ${estaExpirada ? 'calendar-item-expired' : ''}" title="${estaExpirada ? '¡Atención! Esta promoción ya expiró según su fecha de vigencia.' : ''}">
+          <div class="calendar-item-bank">${escapeHTML(entidad)}</div>
+          <div class="calendar-item-benefit">${escapeHTML(beneficio)} ${estaExpirada ? '<b style="color:var(--danger)">(EXPIRÓ)</b>' : ''}</div>
+        </div>
+      `;
+
+      // Mapeo inteligente según texto de días
+      diasClaves.forEach(dia => {
+        let aplica = false;
+        if (diasString.includes("todos") || diasString.includes("diario")) {
+          aplica = true;
+        } else if (dia === 'miercoles' && (diasString.includes("mié") || diasString.includes("mie") || diasString.includes("miércoles"))) {
+          aplica = true;
+        } else if (dia === 'sabado' && (diasString.includes("sáb") || diasString.includes("sab") || diasString.includes("sábado"))) {
+          aplica = true;
+        } else if (diasString.includes(dia.substring(0, 3))) {
+          aplica = true;
+        }
+
+        if (aplica) {
+          document.getElementById(`cal-${dia}`).insertAdjacentHTML('beforeend', itemHtml);
+          conteoDias[dia]++;
+        }
+      });
+    });
+
+    // Colocar texto de advertencia si no hay promos un día determinado
+    diasClaves.forEach(dia => {
+      if (conteoDias[dia] === 0) {
+        document.getElementById(`cal-${dia}`).innerHTML = `<div class="no-promo-text">Sin promociones</div>`;
+      }
+    });
+  }
+
   function filterTable() {
     const q = (searchInput.value || '').toLowerCase().trim();
     const v = vigenciaFilter.value;
@@ -470,6 +694,9 @@
         `<tr id="emptyRow" class="empty-row"><td colspan="9">No se encontraron promociones coincidentes.</td></tr>`
       );
     }
+
+    // El calendario sigue las mismas directrices de filtrado
+    reconstruirCalendario();
   }
 
   function parseCSV(text) {
@@ -501,3 +728,4 @@
 </script>
 </body>
 </html>
+    
