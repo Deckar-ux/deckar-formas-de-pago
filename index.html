@@ -6,127 +6,438 @@
   <title>Promociones bancarias - Deckar Revestimientos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
       --deckar-blue:#0A6CFF;
+      --deckar-blue-700:#074FB8;
       --deckar-blue-600:#0A56C9;
       --deckar-blue-100:#E9F1FF;
+      --deckar-blue-50:#F4F8FF;
       --text:#0F172A;
+      --text-soft:#334155;
       --muted:#64748B;
-      --border:#E2E8F0;
-      --bg:#FFFFFF;
+      --border:#CBD5E1;
+      --border-soft:#E2E8F0;
+      --bg:#F6F8FC;
+      --card:#FFFFFF;
       --row:#F8FAFC;
+      --row-hover:#EEF6FF;
+      --danger:#C62828;
+      --shadow:0 18px 45px rgba(15,23,42,.10);
     }
+
     *{box-sizing:border-box}
+
     html,body{
-      margin:0; padding:0; background:var(--bg); color:var(--text);
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue','Noto Sans',Arial,'Apple Color Emoji','Segoe UI Emoji';
-      background-image:url('DECKAR.jpg');
-      background-size:contain; background-repeat:no-repeat; background-position:center;
+      margin:0;
+      padding:0;
+      min-height:100%;
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(10,108,255,.11), transparent 34%),
+        linear-gradient(180deg,#FFFFFF 0%,var(--bg) 100%);
     }
-    .page{max-width:none;margin:24px auto;padding:0 40px;}
-    h1{text-align:center;font-size:24px;margin:0 0 12px 0;font-weight:700;letter-spacing:-0.01em}
-    .sub{display:flex;align-items:center;gap:12px;margin-bottom:18px;justify-content:center;text-align:center}
-    .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600;background:var(--deckar-blue-100);color:var(--deckar-blue-600)}
-    .muted{color:var(--muted);font-size:13px}
 
-    /* Controles de filtrado */
-    .filters{display:flex;align-items:center;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:16px}
-    .filters label{font-size:14px;font-weight:500;color:var(--text)}
-    .filters input,.filters select{padding:6px 10px;border:1px solid #D0D7FF;border-radius:8px;font-size:14px;background:#F5F7FF;color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.05) inset}
-    .filters input::placeholder{color:var(--muted)}
-    .filters select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:url('data:image/svg+xml;utf8,<svg fill="%230A6CFF" height="16" viewBox="0 0 20 20" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 7.5l4.5 4.5 4.5-4.5H5.5z"/></svg>');background-repeat:no-repeat;background-position:right 8px center;background-size:12px 12px;padding-right:24px}
-    .link-button{padding:8px 16px;border-radius:20px;background:linear-gradient(90deg,#0A6CFF 0%,#69B5FF 100%);color:#fff;text-decoration:none;font-size:14px;font-weight:600;line-height:1;box-shadow:0 2px 4px rgba(0,0,0,.12)}
-    .link-button:hover{transform:translateY(-1px);box-shadow:0 3px 6px rgba(0,0,0,.16)}
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:url('DECKAR.jpg');
+      background-size:min(720px,80vw);
+      background-repeat:no-repeat;
+      background-position:center 58%;
+      opacity:.035;
+      pointer-events:none;
+      z-index:-1;
+    }
 
-    .card{background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:0 4px 20px rgba(0,32,128,.08);border-top:4px solid var(--deckar-blue-600);overflow:hidden}
-    table{width:100%;border-collapse:collapse;border-spacing:0}
-    thead th{text-align:center;background:#F5F7FF;position:sticky;top:0;z-index:1;border-bottom:2px solid black;border-right:2px solid black;font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:#334155;opacity:.95;padding:10px 12px}
+    .page{
+      width:100%;
+      max-width:1760px;
+      margin:0 auto;
+      padding:26px 34px 42px;
+    }
+
+    .hero{
+      background:rgba(255,255,255,.86);
+      border:1px solid var(--border-soft);
+      border-radius:24px;
+      padding:24px 28px 20px;
+      box-shadow:0 10px 30px rgba(15,23,42,.06);
+      margin-bottom:18px;
+    }
+
+    h1{
+      text-align:center;
+      font-size:clamp(24px,2.2vw,34px);
+      margin:0 0 14px;
+      font-weight:800;
+      letter-spacing:-.035em;
+      line-height:1.14;
+    }
+
+    .sub{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:20px;
+      justify-content:center;
+      text-align:center;
+      flex-wrap:wrap;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:7px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      background:var(--deckar-blue-100);
+      color:var(--deckar-blue-700);
+      border:1px solid #CFE0FF;
+      white-space:nowrap;
+    }
+
+    .muted{
+      color:var(--muted);
+      font-size:14px;
+      font-weight:500;
+    }
+
+    .filters{
+      display:grid;
+      grid-template-columns:minmax(220px,1.1fr) minmax(220px,.9fr) minmax(210px,.8fr) auto;
+      gap:12px;
+      align-items:end;
+      max-width:1120px;
+      margin:0 auto;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .filters label{
+      font-size:12px;
+      font-weight:700;
+      color:var(--text-soft);
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+
+    .filters input,
+    .filters select{
+      width:100%;
+      min-height:42px;
+      padding:9px 12px;
+      border:1px solid #C9D7F5;
+      border-radius:12px;
+      font-size:14px;
+      background:#FFFFFF;
+      color:var(--text);
+      outline:none;
+      box-shadow:0 1px 2px rgba(15,23,42,.04);
+      transition:border-color .18s, box-shadow .18s, background .18s;
+    }
+
+    .filters input:focus,
+    .filters select:focus{
+      border-color:var(--deckar-blue);
+      box-shadow:0 0 0 4px rgba(10,108,255,.12);
+    }
+
+    .filters input::placeholder{color:#94A3B8}
+
+    .filters select{
+      appearance:none;
+      background-image:url('data:image/svg+xml;utf8,<svg fill="%230A6CFF" height="16" viewBox="0 0 20 20" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 7.5l4.5 4.5 4.5-4.5H5.5z"/></svg>');
+      background-repeat:no-repeat;
+      background-position:right 12px center;
+      background-size:14px;
+      padding-right:34px;
+      cursor:pointer;
+    }
+
+    .link-button{
+      min-height:42px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 18px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--deckar-blue) 0%,#55A8FF 100%);
+      color:#fff;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:800;
+      line-height:1;
+      box-shadow:0 8px 18px rgba(10,108,255,.25);
+      white-space:nowrap;
+      transition:transform .16s, box-shadow .16s;
+    }
+
+    .link-button:hover{
+      transform:translateY(-1px);
+      box-shadow:0 10px 22px rgba(10,108,255,.30);
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border-soft);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .table-toolbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:14px 18px;
+      background:linear-gradient(90deg,var(--deckar-blue-700),var(--deckar-blue));
+      color:#fff;
+    }
+
+    .table-title{
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .table-count{
+      font-size:12px;
+      font-weight:700;
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.28);
+      padding:6px 10px;
+      border-radius:999px;
+      white-space:nowrap;
+    }
+
+    .table-wrap{
+      width:100%;
+      overflow-x:auto;
+    }
+
+    table{
+      width:100%;
+      min-width:1320px;
+      border-collapse:separate;
+      border-spacing:0;
+      table-layout:fixed;
+    }
+
+    thead th{
+      text-align:center;
+      position:sticky;
+      top:0;
+      z-index:2;
+      background:#F1F6FF;
+      border-bottom:2px solid #111827;
+      border-right:2px solid #111827;
+      font-size:11px;
+      line-height:1.2;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color:#334155;
+      padding:12px 10px;
+      font-weight:800;
+      vertical-align:middle;
+    }
+
     thead th:last-child{border-right:none}
-    tbody td{padding:10px 12px;border-bottom:1px solid #e5e7eb;border-right:2px solid black;font-size:14px;line-height:20px;vertical-align:middle;height:40px}
+
+    tbody td{
+      padding:11px 12px;
+      border-bottom:1px solid var(--border-soft);
+      border-right:2px solid #111827;
+      font-size:13px;
+      line-height:1.35;
+      vertical-align:middle;
+      min-height:46px;
+      color:#263244;
+      background:transparent;
+      word-break:normal;
+      overflow-wrap:break-word;
+    }
+
     tbody td:last-child{border-right:none}
+
     tbody tr:nth-child(even){background:var(--row)}
-    tbody tr:hover{background:#EFF6FF}
-    .bank{font-weight:600}
-    .tag{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:600}
-    .tag-12{background:#E3F2FD;color:#1565C0}
-    .tag-6{background:#FFF3E0;color:#EF6C00}
-    .tag-3y6{background:#E8F5E9;color:#2E7D32}
-    .tag-reintegro{background:#ECFDF5;color:#059669}
-    .nowrap{white-space:nowrap}
-    .highlight-no{color:#C62828;font-weight:600}
+    tbody tr:hover{background:var(--row-hover)}
 
-    colgroup col:nth-child(1){width:190px}
-    colgroup col:nth-child(2){width:40px}
-    colgroup col:nth-child(3){width:300px}
-    colgroup col:nth-child(4){width:150px}
-    colgroup col:nth-child(5){width:230px}
-    colgroup col:nth-child(6){width:180px}
-    colgroup col:nth-child(7){width:220px}
-    colgroup col:nth-child(8){width:220px}
-    colgroup col:nth-child(9){width:200px}
+    tbody tr:last-child td{border-bottom:none}
 
-    @media print{@page{size:A4 landscape;margin:16mm}.page{max-width:none;margin:0;padding:0}.card{box-shadow:none}}
+    .bank{
+      font-weight:800;
+      color:#0F172A;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:5px 10px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:800;
+      line-height:1.15;
+      text-transform:uppercase;
+      border:1px solid transparent;
+      white-space:normal;
+      max-width:100%;
+    }
+
+    .tag-12{
+      background:#E3F2FD;
+      color:#0B5CAB;
+      border-color:#BBDEFB;
+    }
+
+    .tag-6{
+      background:#FFF3E0;
+      color:#C45A00;
+      border-color:#FFD7A3;
+    }
+
+    .tag-3y6{
+      background:#E8F5E9;
+      color:#217A35;
+      border-color:#BFE7C5;
+    }
+
+    .tag-reintegro{
+      margin-top:5px;
+      background:#ECFDF5;
+      color:#047857;
+      border-color:#B8F1D5;
+    }
+
+    .nowrap{
+      white-space:normal;
+      font-weight:600;
+      color:#334155;
+    }
+
+    .highlight-no{
+      color:var(--danger);
+      font-weight:800;
+    }
+
+    .empty-row td,
+    .loading-row td{
+      text-align:center;
+      padding:30px 16px;
+      color:var(--muted);
+      font-weight:700;
+      background:#fff;
+    }
+
+    colgroup col:nth-child(1){width:13%}
+    colgroup col:nth-child(2){width:12%}
+    colgroup col:nth-child(3){width:18%}
+    colgroup col:nth-child(4){width:9%}
+    colgroup col:nth-child(5){width:13%}
+    colgroup col:nth-child(6){width:11%}
+    colgroup col:nth-child(7){width:12%}
+    colgroup col:nth-child(8){width:12%}
+    colgroup col:nth-child(9){width:12%}
+
+    @media (max-width:980px){
+      .page{padding:18px 14px 30px}
+      .hero{padding:20px 16px}
+      .filters{grid-template-columns:1fr}
+      .link-button{width:100%}
+      .table-toolbar{align-items:flex-start;flex-direction:column}
+    }
+
+    @media print{
+      @page{size:A4 landscape;margin:12mm}
+      body{background:#fff}
+      body::before,.filters,.link-button{display:none}
+      .page{max-width:none;margin:0;padding:0}
+      .hero{box-shadow:none;border:none;padding:0 0 12px;margin:0}
+      .card{box-shadow:none;border-radius:0}
+      .table-toolbar{background:#fff;color:#000;border-bottom:1px solid #000}
+      table{min-width:0}
+      thead th{position:static}
+    }
   </style>
 </head>
 <body>
   <div class="page">
-    <h1>Formas de pago tarjetas de crédito — Deckar Revestimientos</h1>
-    <div class="sub">
-      <span class="badge">Actualizado: 10/11/2025</span>
-      <span class="muted">Cuotas sin interés, vigencias y condiciones por entidad</span>
-    </div>
+    <section class="hero">
+      <h1>Formas de pago tarjetas de crédito — Deckar Revestimientos</h1>
+      <div class="sub">
+        <span class="badge">Actualizado: 10/11/2025</span>
+        <span class="muted">Cuotas sin interés, vigencias y condiciones por entidad</span>
+      </div>
 
-    <!-- Filtros interactivos -->
-    <div class="filters">
-      <label for="searchInput">Buscar:</label>
-      <input type="text" id="searchInput" placeholder="Buscar...">
+      <div class="filters">
+        <div class="field">
+          <label for="searchInput">Buscar</label>
+          <input type="text" id="searchInput" placeholder="Banco, tarjeta, medio de cobro...">
+        </div>
 
-      <label for="vigenciaFilter">Vigencia:</label>
-      <select id="vigenciaFilter">
-        <option value="">Todas</option>
-        <option value="Hasta el 31/12/2025">Hasta el 31/12/2025</option>
-        <option value="Renovación automática">Renovación automática</option>
-        <option value="Hasta 30/11/2025">Hasta 30/11/2025</option>
-        <option value="Hasta 31/10/2025">Hasta 31/10/2025</option>
-        <option value="Hasta 31/12/2025">Hasta 31/12/2025</option>
-        <option value="Del 02/09/2025 al 25/12/2025">Del 02/09/2025 al 25/12/2025</option>
-        <option value="Del 09/09/2025 al 24/10/2025">Del 09/09/2025 al 24/10/2025</option>
-      </select>
+        <div class="field">
+          <label for="vigenciaFilter">Vigencia</label>
+          <select id="vigenciaFilter">
+            <option value="">Todas</option>
+          </select>
+        </div>
 
-      <label for="beneficioFilter">Beneficio:</label>
-      <select id="beneficioFilter">
-        <option value="">Todos</option>
-        <option value="3y6">3 y 6 cuotas sin interés</option>
-        <option value="6">6 cuotas sin interés</option>
-        <option value="12">12 cuotas sin interés</option>
-      </select>
+        <div class="field">
+          <label for="beneficioFilter">Beneficio</label>
+          <select id="beneficioFilter">
+            <option value="">Todos</option>
+            <option value="3y6">3 y 6 cuotas sin interés</option>
+            <option value="6">6 cuotas sin interés</option>
+            <option value="12">Hasta 12 cuotas sin interés</option>
+          </select>
+        </div>
 
-      <a href="https://www.deckar.com.ar/inicio" class="link-button" target="_blank">deckar.com.ar/inicio</a>
-    </div>
+        <a href="https://www.deckar.com.ar/inicio" class="link-button" target="_blank" rel="noopener">deckar.com.ar/inicio</a>
+      </div>
+    </section>
 
-    <div class="card">
-      <table>
-        <colgroup>
-          <col><col><col><col><col><col><col><col><col>
-        </colgroup>
-        <thead>
-          <tr>
-            <th>Entidad financiera</th>
-            <th>Vigencia</th>
-            <th>Beneficio</th>
-            <th>Días aplicables</th>
-            <th>Tarjetas aplicables</th>
-            <th>Tarjetas <span class="highlight-no">NO</span> aplicables</th>
-            <th>Medio de venta físico</th>
-            <th>Medio de venta electrónico</th>
-            <th>Nº de comercio (POSNET / LINK DE PAGOS)</th>
-          </tr>
-        </thead>
-     <tbody id="tablaPromociones"></tbody>
-      </table>
-    </div>
+    <section class="card">
+      <div class="table-toolbar">
+        <div class="table-title">Promociones vigentes</div>
+        <div class="table-count"><span id="visibleCount">0</span> resultados</div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <colgroup>
+            <col><col><col><col><col><col><col><col><col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Entidad financiera</th>
+              <th>Vigencia</th>
+              <th>Beneficio</th>
+              <th>Días aplicables</th>
+              <th>Tarjetas aplicables</th>
+              <th>Tarjetas <span class="highlight-no">NO</span> aplicables</th>
+              <th>Medio de venta físico</th>
+              <th>Medio de venta electrónico</th>
+              <th>Nº de comercio<br>(POSNET / LINK DE PAGOS)</th>
+            </tr>
+          </thead>
+          <tbody id="tablaPromociones">
+            <tr class="loading-row"><td colspan="9">Cargando promociones...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
   </div>
 
 <script>
@@ -136,71 +447,75 @@
   const vigenciaFilter = document.getElementById('vigenciaFilter');
   const beneficioFilter = document.getElementById('beneficioFilter');
   const tablaPromociones = document.getElementById('tablaPromociones');
+  const visibleCount = document.getElementById('visibleCount');
 
   let tableRows = [];
 
   async function cargarDatos() {
-    const response = await fetch(CSV_URL);
-    const csv = await response.text();
-    const filas = parseCSV(csv);
+    try {
+      const response = await fetch(CSV_URL, { cache: "no-store" });
+      const csv = await response.text();
+      const filas = parseCSV(csv);
+      const datos = filas.slice(1).filter(fila => fila.some(celda => (celda || "").trim() !== ""));
 
-    const datos = filas.slice(1);
+      tablaPromociones.innerHTML = datos.map(fila => {
+        const [
+          entidad,
+          vigencia,
+          beneficio,
+          tipoBeneficio,
+          dias,
+          tarjetasAplicables,
+          tarjetasNoAplicables,
+          medioFisico,
+          medioElectronico,
+          numeroComercio
+        ] = fila;
 
-    tablaPromociones.innerHTML = datos.map(fila => {
-      const [
-        entidad,
-        vigencia,
-        beneficio,
-        tipoBeneficio,
-        dias,
-        tarjetasAplicables,
-        tarjetasNoAplicables,
-        medioFisico,
-        medioElectronico,
-        numeroComercio
-      ] = fila;
+        return `
+          <tr data-vigencia="${escapeAttr(vigencia)}" data-beneficio="${escapeAttr(tipoBeneficio)}">
+            <td class="bank">${escapeHTML(entidad)}</td>
+            <td class="nowrap">${escapeHTML(vigencia)}</td>
+            <td>${crearBeneficio(beneficio || "", tipoBeneficio || "")}</td>
+            <td>${escapeHTML(dias)}</td>
+            <td>${escapeHTML(tarjetasAplicables)}</td>
+            <td>${tarjetasNoAplicables ? escapeHTML(tarjetasNoAplicables) : ""}</td>
+            <td>${escapeHTML(medioFisico)}</td>
+            <td>${escapeHTML(medioElectronico)}</td>
+            <td>${escapeHTML(numeroComercio)}</td>
+          </tr>
+        `;
+      }).join("");
 
-      return `
-        <tr data-vigencia="${vigencia}" data-beneficio="${tipoBeneficio}">
-          <td class="bank">${entidad}</td>
-          <td class="nowrap">${vigencia}</td>
-          <td>${crearBeneficio(beneficio, tipoBeneficio)}</td>
-          <td>${dias}</td>
-          <td>${tarjetasAplicables}</td>
-          <td>${tarjetasNoAplicables || ""}</td>
-          <td>${medioFisico}</td>
-          <td>${medioElectronico}</td>
-          <td>${numeroComercio}</td>
-        </tr>
-      `;
-    }).join("");
-
-    tableRows = document.querySelectorAll('tbody tr');
-    actualizarFiltrosVigencia(datos);
-    filterTable();
+      tableRows = document.querySelectorAll('#tablaPromociones tr');
+      actualizarFiltrosVigencia(datos);
+      filterTable();
+    } catch (error) {
+      tablaPromociones.innerHTML = `<tr class="empty-row"><td colspan="9">No se pudieron cargar los datos de Google Sheets.</td></tr>`;
+      visibleCount.textContent = "0";
+    }
   }
 
   function crearBeneficio(beneficio, tipo) {
+    const beneficioSeguro = escapeHTML(beneficio);
+    const tipoLimpio = String(tipo || "").trim();
+
     if (beneficio.toLowerCase().includes("reintegro")) {
+      const partes = beneficio.split("+");
+      const base = partes[0]?.trim() || "6 CUOTAS SIN INTERÉS";
+      const extra = partes.slice(1).join("+").trim();
+
       return `
-        <span class="tag tag-6">6 CUOTAS SIN INTERÉS</span>
-        &nbsp;<span class="tag tag-reintegro">+30% REINTEGRO</span>
+        <span class="tag tag-6">${escapeHTML(base)}</span>
+        ${extra ? `<span class="tag tag-reintegro">+${escapeHTML(extra)}</span>` : ""}
       `;
     }
 
-    if (tipo === "12") {
-      return `<span class="tag tag-12">${beneficio}</span>`;
-    }
+    if (tipoLimpio === "12") return `<span class="tag tag-12">${beneficioSeguro}</span>`;
+    if (tipoLimpio === "6") return `<span class="tag tag-6">${beneficioSeguro}</span>`;
+    if (tipoLimpio === "3y6") return `<span class="tag tag-3y6">${beneficioSeguro}</span>`;
 
-    if (tipo === "6") {
-      return `<span class="tag tag-6">${beneficio}</span>`;
-    }
-
-    if (tipo === "3y6") {
-      return `<span class="tag tag-3y6">${beneficio}</span>`;
-    }
-
-    return beneficio;
+    return beneficioSeguro;
   }
 
   function actualizarFiltrosVigencia(datos) {
@@ -209,23 +524,38 @@
     vigenciaFilter.innerHTML = `<option value="">Todas</option>`;
 
     vigencias.forEach(vigencia => {
-      vigenciaFilter.innerHTML += `<option value="${vigencia}">${vigencia}</option>`;
+      vigenciaFilter.innerHTML += `<option value="${escapeAttr(vigencia)}">${escapeHTML(vigencia)}</option>`;
     });
   }
 
   function filterTable() {
-    const q = (searchInput.value || '').toLowerCase();
+    const q = (searchInput.value || '').toLowerCase().trim();
     const v = vigenciaFilter.value;
     const b = beneficioFilter.value;
+    let visibles = 0;
 
     tableRows.forEach(row => {
       const txt = row.innerText.toLowerCase();
-      const matchQ = txt.includes(q);
+      const matchQ = !q || txt.includes(q);
       const matchV = !v || row.dataset.vigencia === v;
       const matchB = !b || row.dataset.beneficio === b;
+      const visible = matchQ && matchV && matchB;
 
-      row.style.display = (matchQ && matchV && matchB) ? '' : 'none';
+      row.style.display = visible ? '' : 'none';
+      if (visible) visibles++;
     });
+
+    visibleCount.textContent = visibles;
+
+    const oldEmpty = document.getElementById('emptyRow');
+    if (oldEmpty) oldEmpty.remove();
+
+    if (visibles === 0 && tableRows.length > 0) {
+      tablaPromociones.insertAdjacentHTML(
+        'beforeend',
+        `<tr id="emptyRow" class="empty-row"><td colspan="9">Sin resultados para los filtros seleccionados.</td></tr>`
+      );
+    }
   }
 
   function parseCSV(text) {
@@ -244,11 +574,12 @@
       } else if (char === '"') {
         insideQuotes = !insideQuotes;
       } else if (char === "," && !insideQuotes) {
-        row.push(value);
+        row.push(value.trim());
         value = "";
       } else if ((char === "\n" || char === "\r") && !insideQuotes) {
+        if (char === "\r" && nextChar === "\n") i++;
         if (value || row.length) {
-          row.push(value);
+          row.push(value.trim());
           rows.push(row);
           row = [];
           value = "";
@@ -259,11 +590,24 @@
     }
 
     if (value || row.length) {
-      row.push(value);
+      row.push(value.trim());
       rows.push(row);
     }
 
     return rows;
+  }
+
+  function escapeHTML(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function escapeAttr(value) {
+    return escapeHTML(value).replaceAll("`", "&#096;");
   }
 
   searchInput.addEventListener('input', filterTable);
@@ -271,6 +615,6 @@
   beneficioFilter.addEventListener('change', filterTable);
 
   cargarDatos();
-</script>	
+</script>
 </body>
 </html>
