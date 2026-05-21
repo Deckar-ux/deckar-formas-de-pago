@@ -124,125 +124,153 @@
             <th>Nº de comercio (POSNET / LINK DE PAGOS)</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- Banco Nación -->
-          <tr data-vigencia="Hasta 31/10/2025" data-beneficio="12">
-            <td class="bank">Banco Nación</td>
-            <td class="nowrap">Hasta el 31/12/2025</td>
-            <td><span class="tag tag-12">12 CUOTAS SIN INTERÉS</span></td>
-            <td>Todos los días</td>
-            <td>Visa, Mastercard y American Express</td>
-            <td></td>
-            <td>POSNET · +Pagos Nación (con QR)</td>
-            <td>No disponible</td>
-            <td>No aplica</td>
-          </tr>
-
-          <!-- Banco Santa Fe -->
-          <tr data-vigencia="Hasta 31/12/2025" data-beneficio="6">
-            <td class="bank">Banco Santa Fe (Billetera Santa Fe)</td>
-            <td class="nowrap">Hasta el 01/03/2026</td>
-            <td><span class="tag tag-6">Hasta 6 CUOTAS SIN INTERÉS</span></td>
-            <td>Todos los días</td>
-            <td>Visa, Mastercard y American Express</td>
-            <td></td>
-            <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
-            <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
-            <td>No aplica</td>
-          </tr>
-          <tr data-vigencia="Hasta 31/12/2025" data-beneficio="12">
-            <td class="bank">Banco Santa Fe (FiserV)</td>
-            <td class="nowrap">Hasta 31/12/2025</td>
-            <td><span class="tag tag-12">De 7 a 12 CUOTA SIN INTERÉS</span></td>
-            <td>Todos los días</td>
-            <td>Visa, Mastercard y American Express</td>
-            <td></td>
-            <td>POSNET Clover · FISERV (blanco)</td>
-            <td>POSNET Clover · FISERV (blanco) venta por llamada telefónica</td>
-            <td>30162226 (POSNET)</td>
-          </tr>
-          <!-- Banco Municipal (FiserV) -->
-          <tr data-vigencia="Renovación automática" data-beneficio="12">
-            <td class="bank">Banco Municipal (Fiserv)</td>
-            <td class="nowrap">Renovación automática</td>
-            <td><span class="tag tag-12">9 CUOTAS SIN INTERÉS</span></td>
-            <td>Viernes y Sábados</td>
-            <td>Visa, Mastercard y American Express</td>
-            <td>Visa y Mastercard Business/Corporativa</td>
-            <td>POSNET Clover · FISERV (blanco)</td>
-            <td>LINK DE PAGOS FISERV</td>
-            <td>28902302 (Posnet físicos) / 28924031 (Link de pagos)</td>
-          </tr>
-
-
-          <!-- Banco Entre Ríos -->
-          <tr data-vigencia="Hasta 31/12/2025" data-beneficio="12">
-            <td class="bank">Banco Entre Ríos</td>
-            <td class="nowrap">Hasta 31/12/2025</td>
-            <td><span class="tag tag-12">Hasta 12 CUOTAS SIN INTERÉS</span></td>
-            <td>Todos los días</td>
-            <td>Visa, Mastercard y American Express</td>
-            <td></td>
-            <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
-            <td>Plataforma Plus Pagos — Billetera SF (incluye QR)</td>
-            <td>No aplica</td>
-          </tr>
-
-          <!-- Banco Francés -->
-          <tr data-vigencia="Del 02/09/2025 al 25/12/2025" data-beneficio="6">
-            <td class="bank">Banco Francés</td>
-            <td class="nowrap">Del 02/09/2025 al 25/12/2025</td>
-            <td>
-              <span class="tag tag-6">6 CUOTAS SIN INTERÉS</span>
-              &nbsp;<span class="tag tag-reintegro">+30% REINTEGRO</span>
-              <div class="kicker">con tope $14.000 mensuales</div>
-            </td>
-            <td>Jueves</td>
-            <td>Visa, Mastercard y American Express</td>
-            <td></td>
-            <td>POSNET Lapos PAYWAY (blanco)</td>
-            <td>LINK DE PAGOS PAYWAY y QR</td>
-            <td>No aplica</td>
-          </tr>
-
-          <!-- Otros Bancos -->
-          <tr data-vigencia="Hasta 31/12/2025" data-beneficio="3y6">
-            <td class="bank">Otros Bancos</td>
-            <td class="nowrap">Hasta 31/12/2025</td>
-            <td><span class="tag tag-3y6">3 y 6 CUOTAS SIN INTERÉS</span></td>
-            <td>Todos los días</td>
-            <td>Visa, Mastercard y American Express</td>
-            <td></td>
-            <td>POSNET NAVE</td>
-            <td>LINK DE PAGOS NAVE y QR</td>
-            <td>No aplica</td>
-          </tr>
-        </tbody>
+     <tbody id="tablaPromociones"></tbody>
       </table>
     </div>
   </div>
 
-  <script>
-    const searchInput=document.getElementById('searchInput');
-    const vigenciaFilter=document.getElementById('vigenciaFilter');
-    const beneficioFilter=document.getElementById('beneficioFilter');
-    const tableRows=document.querySelectorAll('tbody tr');
+<script>
+  const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQKduNwliZouu0wVEWDfNMFdda_sZ9cCTkFjl6kpKSWPPd07OnDuJG8FXxmyAGTfba7fMVetWmCWbeJ/pub?gid=0&single=true&output=csv";
 
-    function filterTable(){
-      const q=(searchInput.value||'').toLowerCase();
-      const v=vigenciaFilter.value; const b=beneficioFilter.value;
-      tableRows.forEach(row=>{
-        const txt=row.innerText.toLowerCase();
-        const matchQ=txt.includes(q);
-        const matchV=!v||row.dataset.vigencia===v;
-        const matchB=!b||row.dataset.beneficio===b;
-        row.style.display=(matchQ&&matchV&&matchB)?'':'none';
-      });
+  const searchInput = document.getElementById('searchInput');
+  const vigenciaFilter = document.getElementById('vigenciaFilter');
+  const beneficioFilter = document.getElementById('beneficioFilter');
+  const tablaPromociones = document.getElementById('tablaPromociones');
+
+  let tableRows = [];
+
+  async function cargarDatos() {
+    const response = await fetch(CSV_URL);
+    const csv = await response.text();
+    const filas = parseCSV(csv);
+
+    const datos = filas.slice(1);
+
+    tablaPromociones.innerHTML = datos.map(fila => {
+      const [
+        entidad,
+        vigencia,
+        beneficio,
+        tipoBeneficio,
+        dias,
+        tarjetasAplicables,
+        tarjetasNoAplicables,
+        medioFisico,
+        medioElectronico,
+        numeroComercio
+      ] = fila;
+
+      return `
+        <tr data-vigencia="${vigencia}" data-beneficio="${tipoBeneficio}">
+          <td class="bank">${entidad}</td>
+          <td class="nowrap">${vigencia}</td>
+          <td>${crearBeneficio(beneficio, tipoBeneficio)}</td>
+          <td>${dias}</td>
+          <td>${tarjetasAplicables}</td>
+          <td>${tarjetasNoAplicables || ""}</td>
+          <td>${medioFisico}</td>
+          <td>${medioElectronico}</td>
+          <td>${numeroComercio}</td>
+        </tr>
+      `;
+    }).join("");
+
+    tableRows = document.querySelectorAll('tbody tr');
+    actualizarFiltrosVigencia(datos);
+    filterTable();
+  }
+
+  function crearBeneficio(beneficio, tipo) {
+    if (beneficio.toLowerCase().includes("reintegro")) {
+      return `
+        <span class="tag tag-6">6 CUOTAS SIN INTERÉS</span>
+        &nbsp;<span class="tag tag-reintegro">+30% REINTEGRO</span>
+      `;
     }
 
-    searchInput.addEventListener('input',filterTable);
-    vigenciaFilter.addEventListener('change',filterTable);
-    beneficioFilter.addEventListener('change',filterTable);
-  </script>
+    if (tipo === "12") {
+      return `<span class="tag tag-12">${beneficio}</span>`;
+    }
+
+    if (tipo === "6") {
+      return `<span class="tag tag-6">${beneficio}</span>`;
+    }
+
+    if (tipo === "3y6") {
+      return `<span class="tag tag-3y6">${beneficio}</span>`;
+    }
+
+    return beneficio;
+  }
+
+  function actualizarFiltrosVigencia(datos) {
+    const vigencias = [...new Set(datos.map(fila => fila[1]).filter(Boolean))];
+
+    vigenciaFilter.innerHTML = `<option value="">Todas</option>`;
+
+    vigencias.forEach(vigencia => {
+      vigenciaFilter.innerHTML += `<option value="${vigencia}">${vigencia}</option>`;
+    });
+  }
+
+  function filterTable() {
+    const q = (searchInput.value || '').toLowerCase();
+    const v = vigenciaFilter.value;
+    const b = beneficioFilter.value;
+
+    tableRows.forEach(row => {
+      const txt = row.innerText.toLowerCase();
+      const matchQ = txt.includes(q);
+      const matchV = !v || row.dataset.vigencia === v;
+      const matchB = !b || row.dataset.beneficio === b;
+
+      row.style.display = (matchQ && matchV && matchB) ? '' : 'none';
+    });
+  }
+
+  function parseCSV(text) {
+    const rows = [];
+    let row = [];
+    let value = "";
+    let insideQuotes = false;
+
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i];
+      const nextChar = text[i + 1];
+
+      if (char === '"' && insideQuotes && nextChar === '"') {
+        value += '"';
+        i++;
+      } else if (char === '"') {
+        insideQuotes = !insideQuotes;
+      } else if (char === "," && !insideQuotes) {
+        row.push(value);
+        value = "";
+      } else if ((char === "\n" || char === "\r") && !insideQuotes) {
+        if (value || row.length) {
+          row.push(value);
+          rows.push(row);
+          row = [];
+          value = "";
+        }
+      } else {
+        value += char;
+      }
+    }
+
+    if (value || row.length) {
+      row.push(value);
+      rows.push(row);
+    }
+
+    return rows;
+  }
+
+  searchInput.addEventListener('input', filterTable);
+  vigenciaFilter.addEventListener('change', filterTable);
+  beneficioFilter.addEventListener('change', filterTable);
+
+  cargarDatos();
+</script>	
 </body>
 </html>
