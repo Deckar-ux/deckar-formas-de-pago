@@ -13,17 +13,17 @@
       --d-blue-dark: #074FB8;
       --d-blue-light: #E9F1FF;
       --text-main: #0F172A;
-      --text-muted: #475569;
+      --text-muted: #334155;
       --text-sub: #64748B;
       --border-thin: #E2E8F0;
       --border-focus: #CBD5E1;
-      --bg-main: #F1F5F9;
+      --bg-main: #F8FAFC;
       --bg-card: #FFFFFF;
-      --bg-th: #E2E8F0;
+      --bg-th: #F1F5F9;
       --row-even: #F8FAFC;
-      --row-hover: #E8F2FF;
-      --accent-danger: #DF2020;
-      --accent-danger-bg: #FEE2E2;
+      --row-hover: #F0F7FF;
+      --accent-danger: #C62828;
+      --accent-danger-bg: #FFEBEE;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,33 +38,33 @@
 
     .container {
       width: 100%;
-      max-width: 1650px;
-      margin: 0 auto;
-      padding: 10px 14px;
+      max-width: 100%;
+      padding: 16px;
     }
 
-    /* Encabezado compacto estilo Dashboard */
+    /* Barra superior limpia y adaptativa */
     .top-bar {
       background: var(--bg-card);
       border: 1px solid var(--border-thin);
       border-radius: 8px;
-      padding: 10px 14px;
-      margin-bottom: 10px;
+      padding: 12px 16px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 16px;
       flex-wrap: wrap;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
     }
 
     .brand-section {
       display: flex;
       flex-direction: column;
-      gap: 1px;
+      gap: 2px;
     }
 
     .brand-section h1 {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 800;
       letter-spacing: -0.02em;
       color: var(--text-main);
@@ -73,12 +73,12 @@
     .meta-info {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
 
     .date-badge {
-      padding: 1px 5px;
-      border-radius: 3px;
+      padding: 2px 6px;
+      border-radius: 4px;
       font-size: 10px;
       font-weight: 700;
       background: var(--d-blue-light);
@@ -87,69 +87,71 @@
 
     .meta-desc {
       color: var(--text-sub);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 500;
     }
 
-    /* Módulo de filtros en línea */
+    /* Contenedor de Filtros */
     .filter-group {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
     .input-box {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
 
     .input-box label {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
+      letter-spacing: 0.02em;
     }
 
     .filter-group input,
     .filter-group select {
-      min-height: 28px;
-      padding: 2px 8px;
+      min-height: 32px;
+      padding: 4px 12px;
       border: 1px solid var(--border-focus);
-      border-radius: 4px;
-      font-size: 11px;
+      border-radius: 6px;
+      font-size: 12px;
       background: #FFFFFF;
       color: var(--text-main);
       outline: none;
       font-family: inherit;
     }
 
-    .filter-group input { width: 150px; }
-    .filter-group select { padding-right: 20px; cursor: pointer; }
+    .filter-group input { width: 180px; }
+    .filter-group select { padding-right: 24px; cursor: pointer; }
+    .filter-group input:focus, .filter-group select:focus { border-color: var(--d-blue); }
 
     .action-btn {
-      min-height: 28px;
+      min-height: 32px;
       display: inline-flex;
       align-items: center;
-      padding: 0 12px;
-      border-radius: 4px;
+      padding: 0 14px;
+      border-radius: 6px;
       background: var(--d-blue);
       color: #FFFFFF;
       text-decoration: none;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       transition: background-color .1s;
     }
 
     .action-btn:hover { background: var(--d-blue-dark); }
 
-    /* Contenedor principal de la tabla */
+    /* Módulo de la Tabla */
     .data-card {
       background: var(--bg-card);
       border: 1px solid var(--border-thin);
       border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
       overflow: hidden;
     }
 
@@ -157,28 +159,30 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 6px 12px;
+      padding: 10px 16px;
       border-bottom: 1px solid var(--border-thin);
       background: #FFFFFF;
     }
 
     .data-title {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
       color: var(--text-muted);
     }
 
     .counter-tag {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 600;
       background: var(--bg-main);
       color: var(--text-muted);
-      padding: 1px 6px;
-      border-radius: 3px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-thin);
     }
 
+    /* Vista fluida sin recortes */
     .scroll-container {
       width: 100%;
       overflow-x: auto;
@@ -186,38 +190,36 @@
 
     table {
       width: 100%;
-      min-width: 1200px;
       border-collapse: collapse;
-      table-layout: fixed;
+      table-layout: auto; /* Permite que las columnas se estiren según el texto */
     }
 
-    /* Cabeceras de Alta Densidad */
     thead th {
       text-align: left;
       position: sticky;
       top: 0;
       z-index: 2;
       background: var(--bg-th);
-      border-bottom: 1.5px solid var(--border-focus);
-      font-size: 10px;
-      letter-spacing: .02em;
+      border-bottom: 2px solid var(--border-focus);
+      font-size: 11px;
+      letter-spacing: .03em;
       text-transform: uppercase;
       color: var(--text-muted);
-      padding: 5px 8px;
+      padding: 10px 12px;
       font-weight: 700;
+      white-space: nowrap;
     }
 
-    /* Celdas Ultra Acotadas */
+    /* Celdas expandibles de alta legibilidad */
     tbody td {
-      padding: 4px 8px;
+      padding: 8px 12px;
       border-bottom: 1px solid var(--border-thin);
-      font-size: 11.5px;
-      line-height: 1.2;
+      font-size: 12.5px;
+      line-height: 1.4;
       vertical-align: middle;
       color: var(--text-main);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: normal; /* Fuerza a que todo texto largo salte de línea y se vea completo */
+      word-break: break-word; /* Evita que palabras ultra largas rompan el layout */
     }
 
     tbody tr:nth-child(even) { background: var(--row-even); }
@@ -228,19 +230,20 @@
       color: #000000;
     }
 
-    /* Formato micro de etiquetas de cuotas */
+    /* Contenedores de Beneficios */
     .tags-wrapper {
       display: flex;
-      gap: 2px;
+      gap: 4px;
       align-items: center;
+      flex-wrap: wrap; /* Si hay múltiples tags se ordenan hacia abajo sin ocultarse */
     }
 
     .micro-tag {
       display: inline-flex;
       align-items: center;
-      padding: 1px 4px;
-      border-radius: 2px;
-      font-size: 9.5px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -253,40 +256,32 @@
 
     .danger-badge {
       display: inline-block;
-      padding: 1px 4px;
+      padding: 2px 6px;
       background: var(--accent-danger-bg);
       color: var(--accent-danger);
-      border-radius: 2px;
-      font-size: 9.5px;
+      border-radius: 4px;
+      font-size: 11px;
       font-weight: 600;
     }
 
     .empty-row td,
     .loading-row td {
       text-align: center;
-      padding: 20px 10px;
+      padding: 32px 16px;
       color: var(--text-sub);
-      font-size: 11px;
+      font-size: 13px;
     }
 
     code {
       font-family: monospace;
-      font-size: 11px;
+      font-size: 12px;
+      background: #F1F5F9;
+      padding: 2px 4px;
+      border-radius: 3px;
       color: #000000;
     }
 
-    /* Asignación estricta de anchos por columna */
-    table col:nth-child(1) { width: 15%; } /* Entidad Financiera */
-    table col:nth-child(2) { width: 8%; }  /* Vigencia */
-    table col:nth-child(3) { width: 17%; } /* Beneficio */
-    table col:nth-child(4) { width: 8%; }  /* Días */
-    table col:nth-child(5) { width: 15%; } /* Tarjetas Aplicables */
-    table col:nth-child(6) { width: 11%; } /* No Aplica */
-    table col:nth-child(7) { width: 8%; }  /* M. Físico */
-    table col:nth-child(8) { width: 8%; }  /* M. Elec */
-    table col:nth-child(9) { width: 10%; } /* Nº Comercio */
-
-    @media (max-width: 1024px) {
+    @media (max-width: 1100px) {
       .top-bar { flex-direction: column; align-items: flex-start; }
       .filter-group { width: 100%; justify-content: flex-start; }
     }
@@ -299,14 +294,14 @@
         <h1>Tarjetas de Crédito — Deckar Revestimientos</h1>
         <div class="meta-info">
           <span class="date-badge">Act: 10/11/2025</span>
-          <span class="meta-desc">Condiciones y cuotas sin interés por entidad</span>
+          <span class="meta-desc">Condiciones y cuotas sin interés por entidad bancaria</span>
         </div>
       </div>
 
       <div class="filter-group">
         <div class="input-box">
           <label for="searchInput">Buscar</label>
-          <input type="text" id="searchInput" placeholder="Filtrar fila...">
+          <input type="text" id="searchInput" placeholder="Filtrar por término...">
         </div>
 
         <div class="input-box">
@@ -333,29 +328,26 @@
     <section class="data-card">
       <div class="data-header">
         <div class="data-title">Promociones Activas</div>
-        <div class="counter-tag"><span id="visibleCount">0</span> registros</div>
+        <div class="counter-tag"><span id="visibleCount">0</span> registros cargados</div>
       </div>
 
       <div class="scroll-container">
         <table>
-          <colgroup>
-            <col><col><col><col><col><col><col><col><col>
-          </colgroup>
           <thead>
             <tr>
               <th>Entidad Financiera</th>
               <th>Vigencia</th>
               <th>Beneficio</th>
-              <th>Días</th>
-              <th>Tarjetas</th>
+              <th>Días Aplicables</th>
+              <th>Tarjetas Aplicables</th>
               <th>No Aplica</th>
-              <th>M. Físico</th>
-              <th>M. Elec.</th>
+              <th>Medio Físico</th>
+              <th>Medio Elec.</th>
               <th>Nº Comercio</th>
             </tr>
           </thead>
           <tbody id="tablaPromociones">
-            <tr class="loading-row"><td colspan="9">Sincronizando con base de datos...</td></tr>
+            <tr class="loading-row"><td colspan="9">Sincronizando base de datos en tiempo real...</td></tr>
           </tbody>
         </table>
       </div>
@@ -393,19 +385,19 @@
         const numeroComercio = fila[9] || "";
 
         const badgeNoAplicable = tarjetasNoAplicables.trim() 
-          ? `<span class="danger-badge" title="${escapeAttr(tarjetasNoAplicables)}">${escapeHTML(tarjetasNoAplicables)}</span>` 
+          ? `<span class="danger-badge">${escapeHTML(tarjetasNoAplicables)}</span>` 
           : "—";
 
         return `
           <tr data-vigencia="${escapeAttr(vigencia)}" data-beneficio="${escapeAttr(tipoBeneficio)}">
-            <td class="bank-name" title="${escapeAttr(entidad)}">${escapeHTML(entidad)}</td>
+            <td class="bank-name">${escapeHTML(entidad)}</td>
             <td>${escapeHTML(vigencia)}</td>
             <td><div class="tags-wrapper">${crearBeneficio(beneficio, tipoBeneficio)}</div></td>
-            <td title="${escapeAttr(dias)}">${escapeHTML(dias)}</td>
-            <td title="${escapeAttr(tarjetasAplicables)}">${escapeHTML(tarjetasAplicables)}</td>
+            <td>${escapeHTML(dias)}</td>
+            <td>${escapeHTML(tarjetasAplicables)}</td>
             <td>${badgeNoAplicable}</td>
-            <td title="${escapeAttr(medioFisico)}">${escapeHTML(medioFisico) || "—"}</td>
-            <td title="${escapeAttr(medioElectronico)}">${escapeHTML(medioElectronico) || "—"}</td>
+            <td>${escapeHTML(medioFisico) || "—"}</td>
+            <td>${escapeHTML(medioElectronico) || "—"}</td>
             <td><code>${escapeHTML(numeroComercio) || "—"}</code></td>
           </tr>
         `;
@@ -416,7 +408,7 @@
       filterTable();
     } catch (error) {
       console.error(error);
-      tablaPromociones.innerHTML = `<tr class="empty-row"><td colspan="9">Error de conexión con la hoja de cálculo.</td></tr>`;
+      tablaPromociones.innerHTML = `<tr class="empty-row"><td colspan="9">Error al intentar leer la hoja de cálculo.</td></tr>`;
       visibleCount.textContent = "0";
     }
   }
@@ -475,7 +467,7 @@
     if (visibles === 0 && tableRows.length > 0) {
       tablaPromociones.insertAdjacentHTML(
         'beforeend',
-        `<tr id="emptyRow" class="empty-row"><td colspan="9">Sin coincidencias.</td></tr>`
+        `<tr id="emptyRow" class="empty-row"><td colspan="9">No se encontraron promociones coincidentes.</td></tr>`
       );
     }
   }
