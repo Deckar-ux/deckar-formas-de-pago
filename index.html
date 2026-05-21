@@ -1,4 +1,4 @@
-¡Entendido perfectamente! Buscamos una interfaz de alta densidad de datos (tipo panel de control o planilla compacta), donde lo primordial sea meter la mayor cantidad de información en pantalla sin tener que hacer scroll vertical infinito.Para lograrlo, apliqué las siguientes optimizaciones quirúrgicas:Filas ultra acotadas: Reduje el padding vertical de las celdas al mínimo (5px 10px) y forcé una altura de línea (line-height: 1.2) para que los textos no dispersen la fila.Columnas optimizadas y títulos compactos: Modifiqué los nombres de las cabeceras en el HTML por versiones más cortas ("Tarjetas Aprec." $\rightarrow$ "Tarjetas", "Medio de venta electrónico" $\rightarrow$ "M. Elec", etc.) y ajusté sus anchos relativos en el CSS para aprovechar cada píxel.Tipografía condensada: Bajé el tamaño de la fuente a 12px generales (y 11px para datos secundarios) usando grosores de fuente limpios para mantener una legibilidad impecable a escala micro.Tags y Badges miniaturizados: Las etiquetas de beneficios ahora ocupan una sola línea horizontal, usan paddings mínimos y esquinas apenas redondeadas para no estirar la fila hacia abajo.Aquí tienes el código completo modificado para máxima compresión visual:HTML<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
@@ -9,312 +9,314 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --deckar-blue: #0A6CFF;
-      --deckar-blue-700: #074FB8;
-      --deckar-blue-100: #E9F1FF;
-      --text: #1E293B;
-      --text-soft: #475569;
-      --muted: #64748B;
-      --border: #CBD5E1;
-      --border-soft: #E2E8F0;
-      --bg: #F8FAFC;
-      --card: #FFFFFF;
+      --d-blue: #0A6CFF;
+      --d-blue-dark: #074FB8;
+      --d-blue-light: #E9F1FF;
+      --text-main: #0F172A;
+      --text-muted: #475569;
+      --text-sub: #64748B;
+      --border-thin: #E2E8F0;
+      --border-focus: #CBD5E1;
+      --bg-main: #F1F5F9;
+      --bg-card: #FFFFFF;
+      --bg-th: #E2E8F0;
       --row-even: #F8FAFC;
-      --row-hover: #EBF3FF;
-      --danger: #DC2626;
-      --danger-bg: #FEE2E2;
-      --shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05);
+      --row-hover: #E8F2FF;
+      --accent-danger: #DF2020;
+      --accent-danger-bg: #FEE2E2;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
       min-height: 100%;
-      color: var(--text);
+      color: var(--text-main);
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
+      background: var(--bg-main);
       -webkit-font-smoothing: antialiased;
     }
 
-    .page {
+    .container {
       width: 100%;
-      max-width: 1700px;
+      max-width: 1650px;
       margin: 0 auto;
-      padding: 12px 16px;
+      padding: 10px 14px;
     }
 
-    .hero {
-      background: #FFFFFF;
-      border: 1px solid var(--border-soft);
-      border-radius: 10px;
-      padding: 12px 18px;
-      box-shadow: var(--shadow);
-      margin-bottom: 12px;
+    /* Encabezado compacto estilo Dashboard */
+    .top-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-thin);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 10px;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-    }
-
-    .header-titles {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    h1 {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #0F172A;
-    }
-
-    .sub {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .badge {
-      display: inline-flex;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: 700;
-      background: var(--deckar-blue-100);
-      color: var(--deckar-blue-700);
-    }
-
-    .muted {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    .filters {
-      display: flex;
-      align-items: center;
-      gap: 10px;
       flex-wrap: wrap;
     }
 
-    .field {
+    .brand-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .brand-section h1 {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .meta-info {
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    .filters label {
-      font-size: 11px;
+    .date-badge {
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 10px;
       font-weight: 700;
-      color: var(--text-soft);
+      background: var(--d-blue-light);
+      color: var(--d-blue-dark);
+    }
+
+    .meta-desc {
+      color: var(--text-sub);
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    /* Módulo de filtros en línea */
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .input-box {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .input-box label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
       text-transform: uppercase;
     }
 
-    .filters input,
-    .filters select {
-      min-height: 32px;
-      padding: 4px 10px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 12px;
+    .filter-group input,
+    .filter-group select {
+      min-height: 28px;
+      padding: 2px 8px;
+      border: 1px solid var(--border-focus);
+      border-radius: 4px;
+      font-size: 11px;
       background: #FFFFFF;
-      color: var(--text);
+      color: var(--text-main);
       outline: none;
+      font-family: inherit;
     }
 
-    .filters input { width: 180px; }
-    .filters select { padding-right: 24px; cursor: pointer; }
+    .filter-group input { width: 150px; }
+    .filter-group select { padding-right: 20px; cursor: pointer; }
 
-    .filters input:focus,
-    .filters select:focus {
-      border-color: var(--deckar-blue);
-    }
-
-    .link-button {
-      min-height: 32px;
+    .action-btn {
+      min-height: 28px;
       display: inline-flex;
       align-items: center;
-      padding: 0 14px;
-      border-radius: 6px;
-      background: var(--deckar-blue);
-      color: #fff;
+      padding: 0 12px;
+      border-radius: 4px;
+      background: var(--d-blue);
+      color: #FFFFFF;
       text-decoration: none;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
+      transition: background-color .1s;
     }
 
-    .link-button:hover { background: var(--deckar-blue-700); }
+    .action-btn:hover { background: var(--d-blue-dark); }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border-soft);
-      border-radius: 10px;
-      box-shadow: var(--shadow);
+    /* Contenedor principal de la tabla */
+    .data-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-thin);
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       overflow: hidden;
     }
 
-    .table-toolbar {
+    .data-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 14px;
-      border-bottom: 1px solid var(--border-soft);
+      padding: 6px 12px;
+      border-bottom: 1px solid var(--border-thin);
       background: #FFFFFF;
     }
 
-    .table-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: #0F172A;
-    }
-
-    .table-count {
+    .data-title {
       font-size: 11px;
-      font-weight: 600;
-      background: var(--bg);
-      color: var(--text-soft);
-      padding: 2px 8px;
-      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--text-muted);
     }
 
-    .table-wrap {
+    .counter-tag {
+      font-size: 10px;
+      font-weight: 600;
+      background: var(--bg-main);
+      color: var(--text-muted);
+      padding: 1px 6px;
+      border-radius: 3px;
+    }
+
+    .scroll-container {
       width: 100%;
       overflow-x: auto;
     }
 
     table {
       width: 100%;
-      min-width: 1250px;
+      min-width: 1200px;
       border-collapse: collapse;
       table-layout: fixed;
     }
 
+    /* Cabeceras de Alta Densidad */
     thead th {
       text-align: left;
       position: sticky;
       top: 0;
       z-index: 2;
-      background: #EDF2F7;
-      border-bottom: 1.5px solid var(--border);
+      background: var(--bg-th);
+      border-bottom: 1.5px solid var(--border-focus);
       font-size: 10px;
-      letter-spacing: .03em;
+      letter-spacing: .02em;
       text-transform: uppercase;
-      color: var(--text-soft);
-      padding: 6px 10px;
+      color: var(--text-muted);
+      padding: 5px 8px;
       font-weight: 700;
     }
 
+    /* Celdas Ultra Acotadas */
     tbody td {
-      padding: 5px 10px;
-      border-bottom: 1px solid var(--border-soft);
-      font-size: 12px;
-      line-height: 1.25;
+      padding: 4px 8px;
+      border-bottom: 1px solid var(--border-thin);
+      font-size: 11.5px;
+      line-height: 1.2;
       vertical-align: middle;
-      color: var(--text);
+      color: var(--text-main);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    /* Columnas específicas que permiten quiebre por si el texto es largo */
-    tbody td.wrap-cell {
-      white-space: normal;
-      word-break: break-word;
-    }
-
     tbody tr:nth-child(even) { background: var(--row-even); }
     tbody tr:hover { background: var(--row-hover); }
 
-    .bank {
+    .bank-name {
       font-weight: 700;
-      color: #0F172A;
+      color: #000000;
     }
 
-    .tag-container {
+    /* Formato micro de etiquetas de cuotas */
+    .tags-wrapper {
       display: flex;
-      gap: 3px;
+      gap: 2px;
       align-items: center;
-      flex-wrap: wrap;
     }
 
-    .tag {
+    .micro-tag {
       display: inline-flex;
       align-items: center;
-      padding: 1px 5px;
-      border-radius: 3px;
-      font-size: 10px;
+      padding: 1px 4px;
+      border-radius: 2px;
+      font-size: 9.5px;
       font-weight: 700;
       text-transform: uppercase;
     }
 
-    .tag-12 { background: #E0F2FE; color: #0369A1; }
-    .tag-6 { background: #FFEDD5; color: #C2410C; }
-    .tag-3y6 { background: #DCFCE7; color: #15803D; }
-    .tag-default { background: #F1F5F9; color: #475569; }
-    .tag-reintegro { background: #CCFBF1; color: #0F766E; }
+    .t-12 { background: #E0F2FE; color: #0369A1; }
+    .t-6 { background: #FFEDD5; color: #C2410C; }
+    .t-3y6 { background: #DCFCE7; color: #15803D; }
+    .t-def { background: #F1F5F9; color: #475569; }
+    .t-reintegro { background: #CCFBF1; color: #0F766E; }
 
-    .no-applicable {
+    .danger-badge {
       display: inline-block;
       padding: 1px 4px;
-      background: var(--danger-bg);
-      color: var(--danger);
-      border-radius: 3px;
-      font-size: 10px;
+      background: var(--accent-danger-bg);
+      color: var(--accent-danger);
+      border-radius: 2px;
+      font-size: 9.5px;
       font-weight: 600;
     }
 
     .empty-row td,
     .loading-row td {
       text-align: center;
-      padding: 24px 16px;
-      color: var(--muted);
-      font-size: 12px;
+      padding: 20px 10px;
+      color: var(--text-sub);
+      font-size: 11px;
     }
 
-    /* Control estricto de anchos para optimizar espacio horizontal */
-    table th:nth-child(1), table td:nth-child(1) { width: 14%; } /* Entidad */
-    table th:nth-child(2), table td:nth-child(2) { width: 9%; }  /* Vigencia */
-    table th:nth-child(3), table td:nth-child(3) { width: 16%; } /* Beneficio */
-    table th:nth-child(4), table td:nth-child(4) { width: 9%; }  /* Días */
-    table th:nth-child(5), table td:nth-child(5) { width: 15%; } /* Tarjetas */
-    table th:nth-child(6), table td:nth-child(6) { width: 11%; } /* No Apl. */
-    table th:nth-child(7), table td:nth-child(7) { width: 8%; }  /* M. Físico */
-    table th:nth-child(8), table td:nth-child(8) { width: 8%; }  /* M. Elec */
-    table th:nth-child(9), table td:nth-child(9) { width: 10%; } /* Nº Comercio */
+    code {
+      font-family: monospace;
+      font-size: 11px;
+      color: #000000;
+    }
+
+    /* Asignación estricta de anchos por columna */
+    table col:nth-child(1) { width: 15%; } /* Entidad Financiera */
+    table col:nth-child(2) { width: 8%; }  /* Vigencia */
+    table col:nth-child(3) { width: 17%; } /* Beneficio */
+    table col:nth-child(4) { width: 8%; }  /* Días */
+    table col:nth-child(5) { width: 15%; } /* Tarjetas Aplicables */
+    table col:nth-child(6) { width: 11%; } /* No Aplica */
+    table col:nth-child(7) { width: 8%; }  /* M. Físico */
+    table col:nth-child(8) { width: 8%; }  /* M. Elec */
+    table col:nth-child(9) { width: 10%; } /* Nº Comercio */
 
     @media (max-width: 1024px) {
-      .hero { flex-direction: column; align-items: flex-start; }
-      .filters { width: 100%; justify-content: flex-start; }
+      .top-bar { flex-direction: column; align-items: flex-start; }
+      .filter-group { width: 100%; justify-content: flex-start; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <section class="hero">
-      <div class="header-titles">
+  <div class="container">
+    <section class="top-bar">
+      <div class="brand-section">
         <h1>Tarjetas de Crédito — Deckar Revestimientos</h1>
-        <div class="sub">
-          <span class="badge">Act: 10/11/2025</span>
-          <span class="muted">Condiciones de cuotas por entidad bancaria</span>
+        <div class="meta-info">
+          <span class="date-badge">Act: 10/11/2025</span>
+          <span class="meta-desc">Condiciones y cuotas sin interés por entidad</span>
         </div>
       </div>
 
-      <div class="filters">
-        <div class="field">
+      <div class="filter-group">
+        <div class="input-box">
           <label for="searchInput">Buscar</label>
-          <input type="text" id="searchInput" placeholder="Banco, tarjeta o medio...">
+          <input type="text" id="searchInput" placeholder="Filtrar fila...">
         </div>
 
-        <div class="field">
+        <div class="input-box">
           <label for="vigenciaFilter">Vigencia</label>
           <select id="vigenciaFilter">
             <option value="">Todas</option>
           </select>
         </div>
 
-        <div class="field">
+        <div class="input-box">
           <label for="beneficioFilter">Beneficio</label>
           <select id="beneficioFilter">
             <option value="">Todos</option>
@@ -324,18 +326,21 @@
           </select>
         </div>
 
-        <a href="https://www.deckar.com.ar/inicio" class="link-button" target="_blank" rel="noopener">Web Deckar</a>
+        <a href="https://www.deckar.com.ar/inicio" class="action-btn" target="_blank" rel="noopener">Sitio Web</a>
       </div>
     </section>
 
-    <section class="card">
-      <div class="table-toolbar">
-        <div class="table-title">Promociones Vigentes</div>
-        <div class="table-count"><span id="visibleCount">0</span> ítems</div>
+    <section class="data-card">
+      <div class="data-header">
+        <div class="data-title">Promociones Activas</div>
+        <div class="counter-tag"><span id="visibleCount">0</span> registros</div>
       </div>
 
-      <div class="table-wrap">
+      <div class="scroll-container">
         <table>
+          <colgroup>
+            <col><col><col><col><col><col><col><col><col>
+          </colgroup>
           <thead>
             <tr>
               <th>Entidad Financiera</th>
@@ -350,7 +355,7 @@
             </tr>
           </thead>
           <tbody id="tablaPromociones">
-            <tr class="loading-row"><td colspan="9">Cargando datos...</td></tr>
+            <tr class="loading-row"><td colspan="9">Sincronizando con base de datos...</td></tr>
           </tbody>
         </table>
       </div>
@@ -388,17 +393,17 @@
         const numeroComercio = fila[9] || "";
 
         const badgeNoAplicable = tarjetasNoAplicables.trim() 
-          ? `<span class="no-applicable" title="${escapeAttr(tarjetasNoAplicables)}">${escapeHTML(tarjetasNoAplicables)}</span>` 
+          ? `<span class="danger-badge" title="${escapeAttr(tarjetasNoAplicables)}">${escapeHTML(tarjetasNoAplicables)}</span>` 
           : "—";
 
         return `
           <tr data-vigencia="${escapeAttr(vigencia)}" data-beneficio="${escapeAttr(tipoBeneficio)}">
-            <td class="bank" title="${escapeAttr(entidad)}">${escapeHTML(entidad)}</td>
+            <td class="bank-name" title="${escapeAttr(entidad)}">${escapeHTML(entidad)}</td>
             <td>${escapeHTML(vigencia)}</td>
-            <td><div class="tag-container">${crearBeneficio(beneficio, tipoBeneficio)}</div></td>
+            <td><div class="tags-wrapper">${crearBeneficio(beneficio, tipoBeneficio)}</div></td>
             <td title="${escapeAttr(dias)}">${escapeHTML(dias)}</td>
-            <td class="wrap-cell" title="${escapeAttr(tarjetasAplicables)}">${escapeHTML(tarjetasAplicables)}</td>
-            <td class="wrap-cell">${badgeNoAplicable}</td>
+            <td title="${escapeAttr(tarjetasAplicables)}">${escapeHTML(tarjetasAplicables)}</td>
+            <td>${badgeNoAplicable}</td>
             <td title="${escapeAttr(medioFisico)}">${escapeHTML(medioFisico) || "—"}</td>
             <td title="${escapeAttr(medioElectronico)}">${escapeHTML(medioElectronico) || "—"}</td>
             <td><code>${escapeHTML(numeroComercio) || "—"}</code></td>
@@ -411,7 +416,7 @@
       filterTable();
     } catch (error) {
       console.error(error);
-      tablaPromociones.innerHTML = `<tr class="empty-row"><td colspan="9">Error al sincronizar con Google Sheets.</td></tr>`;
+      tablaPromociones.innerHTML = `<tr class="empty-row"><td colspan="9">Error de conexión con la hoja de cálculo.</td></tr>`;
       visibleCount.textContent = "0";
     }
   }
@@ -426,81 +431,10 @@
       const extra = partes.slice(1).join("+").trim();
 
       return `
-        <span class="tag tag-6">${escapeHTML(base)}</span>
-        ${extra ? `<span class="tag tag-reintegro">${escapeHTML(extra)}</span>` : ""}
+        <span class="micro-tag t-6">${escapeHTML(base)}</span>
+        ${extra ? `<span class="micro-tag t-reintegro">${escapeHTML(extra)}</span>` : ""}
       `;
     }
 
-    if (tipoLimpio === "12") return `<span class="tag tag-12">${beneficioSeguro}</span>`;
-    if (tipoLimpio === "6") return `<span class="tag tag-6">${beneficioSeguro}</span>`;
-    if (tipoLimpio === "3y6") return `<span class="tag tag-3y6">${beneficioSeguro}</span>`;
-
-    return `<span class="tag tag-default">${beneficioSeguro}</span>`;
-  }
-
-  function actualizarFiltrosVigencia(datos) {
-    const vigencias = [...new Set(datos.map(fila => fila[1]).filter(Boolean))];
-    let opciones = `<option value="">Todas</option>`;
-    vigencias.forEach(v => { opciones += `<option value="${escapeAttr(v)}">${escapeHTML(v)}</option>`; });
-    vigenciaFilter.innerHTML = opciones;
-  }
-
-  function filterTable() {
-    const q = (searchInput.value || '').toLowerCase().trim();
-    const v = vigenciaFilter.value;
-    const b = beneficioFilter.value;
-    let visibles = 0;
-
-    tableRows.forEach(row => {
-      const txt = row.innerText.toLowerCase();
-      const matchQ = !q || txt.includes(q);
-      const matchV = !v || row.dataset.vigencia === v;
-      const matchB = !b || row.dataset.beneficio === b;
-      const visible = matchQ && matchV && matchB;
-
-      row.style.display = visible ? '' : 'none';
-      if (visible) visibles++;
-    });
-
-    visibleCount.textContent = visibles;
-
-    const oldEmpty = document.getElementById('emptyRow');
-    if (oldEmpty) oldEmpty.remove();
-
-    if (visibles === 0 && tableRows.length > 0) {
-      tablaPromociones.insertAdjacentHTML(
-        'beforeend',
-        `<tr id="emptyRow" class="empty-row"><td colspan="9">Sin resultados.</td></tr>`
-      );
-    }
-  }
-
-  function parseCSV(text) {
-    const rows = []; let row = []; let value = ""; let insideQuotes = false;
-    for (let i = 0; i < text.length; i++) {
-      const char = text[i]; const nextChar = text[i + 1];
-      if (char === '"' && insideQuotes && nextChar === '"') { value += '"'; i++; }
-      else if (char === '"') { insideQuotes = !insideQuotes; }
-      else if (char === "," && !insideQuotes) { row.push(value.trim()); value = ""; }
-      else if ((char === "\n" || char === "\r") && !insideQuotes) {
-        if (char === "\r" && nextChar === "\n") i++;
-        if (value || row.length) { row.push(value.trim()); rows.push(row); row = []; value = ""; }
-      } else { value += char; }
-    }
-    if (value || row.length) { row.push(value.trim()); rows.push(row); }
-    return rows;
-  }
-
-  function escapeHTML(value) {
-    return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
-  }
-
-  function escapeAttr(value) { return escapeHTML(value).replaceAll("`", "&#096;"); }
-
-  searchInput.addEventListener('input', filterTable);
-  vigenciaFilter.addEventListener('change', filterTable);
-  beneficioFilter.addEventListener('change', filterTable);
-  cargarDatos();
-</script>
-</body>
-</html>
+    if (tipoLimpio === "12") return `<span class="micro-tag t-12">${beneficioSeguro}</span>`;
+    if (tipoLimpio === "6")
