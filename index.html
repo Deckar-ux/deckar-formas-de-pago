@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+¡Entendido perfectamente! Buscamos una interfaz de alta densidad de datos (tipo panel de control o planilla compacta), donde lo primordial sea meter la mayor cantidad de información en pantalla sin tener que hacer scroll vertical infinito.Para lograrlo, apliqué las siguientes optimizaciones quirúrgicas:Filas ultra acotadas: Reduje el padding vertical de las celdas al mínimo (5px 10px) y forcé una altura de línea (line-height: 1.2) para que los textos no dispersen la fila.Columnas optimizadas y títulos compactos: Modifiqué los nombres de las cabeceras en el HTML por versiones más cortas ("Tarjetas Aprec." $\rightarrow$ "Tarjetas", "Medio de venta electrónico" $\rightarrow$ "M. Elec", etc.) y ajusté sus anchos relativos en el CSS para aprovechar cada píxel.Tipografía condensada: Bajé el tamaño de la fuente a 12px generales (y 11px para datos secundarios) usando grosores de fuente limpios para mantener una legibilidad impecable a escala micro.Tags y Badges miniaturizados: Las etiquetas de beneficios ahora ocupan una sola línea horizontal, usan paddings mínimos y esquinas apenas redondeadas para no estirar la fila hacia abajo.Aquí tienes el código completo modificado para máxima compresión visual:HTML<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
@@ -11,9 +11,7 @@
     :root {
       --deckar-blue: #0A6CFF;
       --deckar-blue-700: #074FB8;
-      --deckar-blue-600: #0A56C9;
       --deckar-blue-100: #E9F1FF;
-      --deckar-blue-50: #F4F8FF;
       --text: #1E293B;
       --text-soft: #475569;
       --muted: #64748B;
@@ -22,79 +20,67 @@
       --bg: #F8FAFC;
       --card: #FFFFFF;
       --row-even: #F8FAFC;
-      --row-hover: #F0F6FF;
-      --danger: #EF4444;
+      --row-hover: #EBF3FF;
+      --danger: #DC2626;
       --danger-bg: #FEE2E2;
-      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+      --shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05);
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
-      margin: 0;
-      padding: 0;
       min-height: 100%;
       color: var(--text);
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: 
-        radial-gradient(circle at top right, rgba(10, 108, 255, 0.06), transparent 40%),
-        linear-gradient(180deg, #FFFFFF 0%, var(--bg) 100%);
+      background: var(--bg);
       -webkit-font-smoothing: antialiased;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: url('DECKAR.jpg');
-      background-size: min(600px, 70vw);
-      background-repeat: no-repeat;
-      background-position: center 65%;
-      opacity: .025;
-      pointer-events: none;
-      z-index: -1;
     }
 
     .page {
       width: 100%;
-      max-width: 1600px;
+      max-width: 1700px;
       margin: 0 auto;
-      padding: 32px 24px;
+      padding: 12px 16px;
     }
 
     .hero {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: #FFFFFF;
       border: 1px solid var(--border-soft);
-      border-radius: 20px;
-      padding: 32px;
+      border-radius: 10px;
+      padding: 12px 18px;
       box-shadow: var(--shadow);
-      margin-bottom: 24px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .header-titles {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
 
     h1 {
-      font-size: clamp(22px, 2vw, 30px);
-      margin: 0 0 8px;
+      font-size: 18px;
       font-weight: 800;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
       color: #0F172A;
     }
 
     .sub {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 28px;
-      flex-wrap: wrap;
+      gap: 8px;
     }
 
     .badge {
       display: inline-flex;
-      align-items: center;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 11px;
       font-weight: 700;
       background: var(--deckar-blue-100);
       color: var(--deckar-blue-700);
@@ -102,21 +88,21 @@
 
     .muted {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 500;
     }
 
     .filters {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr auto;
-      gap: 16px;
-      align-items: flex-end;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     .field {
       display: flex;
-      flex-direction: column;
-      gap: 8px;
+      align-items: center;
+      gap: 6px;
     }
 
     .filters label {
@@ -124,65 +110,47 @@
       font-weight: 700;
       color: var(--text-soft);
       text-transform: uppercase;
-      letter-spacing: .05em;
     }
 
     .filters input,
     .filters select {
-      width: 100%;
-      min-height: 44px;
-      padding: 10px 14px;
+      min-height: 32px;
+      padding: 4px 10px;
       border: 1px solid var(--border);
-      border-radius: 10px;
-      font-size: 14px;
-      font-family: inherit;
+      border-radius: 6px;
+      font-size: 12px;
       background: #FFFFFF;
       color: var(--text);
       outline: none;
-      transition: border-color .15s, box-shadow .15s;
     }
+
+    .filters input { width: 180px; }
+    .filters select { padding-right: 24px; cursor: pointer; }
 
     .filters input:focus,
     .filters select:focus {
       border-color: var(--deckar-blue);
-      box-shadow: 0 0 0 4px rgba(10, 108, 255, 0.15);
-    }
-
-    .filters input::placeholder { color: #94A3B8; }
-
-    .filters select {
-      appearance: none;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23475569" height="16" viewBox="0 0 20 20" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 7.5l4.5 4.5 4.5-4.5H5.5z"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      background-size: 14px;
-      padding-right: 40px;
-      cursor: pointer;
     }
 
     .link-button {
-      min-height: 44px;
+      min-height: 32px;
       display: inline-flex;
       align-items: center;
-      justify-content:center;
-      padding: 10px 24px;
-      border-radius: 10px;
+      padding: 0 14px;
+      border-radius: 6px;
       background: var(--deckar-blue);
       color: #fff;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 700;
-      transition: background-color .15s;
     }
 
-    .link-button:hover {
-      background: var(--deckar-blue-700);
-    }
+    .link-button:hover { background: var(--deckar-blue-700); }
 
     .card {
       background: var(--card);
       border: 1px solid var(--border-soft);
-      border-radius: 20px;
+      border-radius: 10px;
       box-shadow: var(--shadow);
       overflow: hidden;
     }
@@ -191,26 +159,24 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      padding: 18px 24px;
+      padding: 8px 14px;
       border-bottom: 1px solid var(--border-soft);
       background: #FFFFFF;
     }
 
     .table-title {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 700;
       color: #0F172A;
     }
 
     .table-count {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       background: var(--bg);
       color: var(--text-soft);
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
+      padding: 2px 8px;
+      border-radius: 4px;
     }
 
     .table-wrap {
@@ -220,8 +186,9 @@
 
     table {
       width: 100%;
-      min-width: 1200px;
+      min-width: 1250px;
       border-collapse: collapse;
+      table-layout: fixed;
     }
 
     thead th {
@@ -229,28 +196,36 @@
       position: sticky;
       top: 0;
       z-index: 2;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      font-size: 11px;
-      letter-spacing: .05em;
+      background: #EDF2F7;
+      border-bottom: 1.5px solid var(--border);
+      font-size: 10px;
+      letter-spacing: .03em;
       text-transform: uppercase;
       color: var(--text-soft);
-      padding: 14px 18px;
+      padding: 6px 10px;
       font-weight: 700;
     }
 
     tbody td {
-      padding: 16px 18px;
+      padding: 5px 10px;
       border-bottom: 1px solid var(--border-soft);
-      font-size: 13px;
-      line-height: 1.5;
+      font-size: 12px;
+      line-height: 1.25;
       vertical-align: middle;
       color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Columnas específicas que permiten quiebre por si el texto es largo */
+    tbody td.wrap-cell {
+      white-space: normal;
+      word-break: break-word;
     }
 
     tbody tr:nth-child(even) { background: var(--row-even); }
     tbody tr:hover { background: var(--row-hover); }
-    tbody tr:last-child td { border-bottom: none; }
 
     .bank {
       font-weight: 700;
@@ -259,17 +234,17 @@
 
     .tag-container {
       display: flex;
-      flex-direction: column;
-      gap: 4px;
-      align-items: flex-start;
+      gap: 3px;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     .tag {
       display: inline-flex;
       align-items: center;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 11px;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -282,72 +257,54 @@
 
     .no-applicable {
       display: inline-block;
-      padding: 2px 6px;
+      padding: 1px 4px;
       background: var(--danger-bg);
       color: var(--danger);
-      border-radius: 4px;
-      font-size: 11px;
+      border-radius: 3px;
+      font-size: 10px;
       font-weight: 600;
     }
 
     .empty-row td,
     .loading-row td {
       text-align: center;
-      padding: 48px 16px;
+      padding: 24px 16px;
       color: var(--muted);
-      font-weight: 500;
-      background: #fff;
+      font-size: 12px;
     }
 
-    /* Distribución de anchos proporcional adaptable */
-    table th:nth-child(1), table td:nth-child(1) { width: 14%; }
-    table th:nth-child(2), table td:nth-child(2) { width: 11%; }
-    table th:nth-child(3), table td:nth-child(3) { width: 16%; }
-    table th:nth-child(4), table td:nth-child(4) { width: 10%; }
-    table th:nth-child(5), table td:nth-child(5) { width: 12%; }
-    table th:nth-child(6), table td:nth-child(6) { width: 11%; }
-    table th:nth-child(7), table td:nth-child(7) { width: 9%; }
-    table th:nth-child(8), table td:nth-child(8) { width: 9%; }
-    table th:nth-child(9), table td:nth-child(9) { width: 8%; }
+    /* Control estricto de anchos para optimizar espacio horizontal */
+    table th:nth-child(1), table td:nth-child(1) { width: 14%; } /* Entidad */
+    table th:nth-child(2), table td:nth-child(2) { width: 9%; }  /* Vigencia */
+    table th:nth-child(3), table td:nth-child(3) { width: 16%; } /* Beneficio */
+    table th:nth-child(4), table td:nth-child(4) { width: 9%; }  /* Días */
+    table th:nth-child(5), table td:nth-child(5) { width: 15%; } /* Tarjetas */
+    table th:nth-child(6), table td:nth-child(6) { width: 11%; } /* No Apl. */
+    table th:nth-child(7), table td:nth-child(7) { width: 8%; }  /* M. Físico */
+    table th:nth-child(8), table td:nth-child(8) { width: 8%; }  /* M. Elec */
+    table th:nth-child(9), table td:nth-child(9) { width: 10%; } /* Nº Comercio */
 
     @media (max-width: 1024px) {
-      .filters { grid-template-columns: 1fr 1fr; }
-      .link-button { grid-column: span 2; }
-    }
-
-    @media (max-width: 640px) {
-      .page { padding: 16px 12px; }
-      .hero { padding: 20px; }
-      .filters { grid-template-columns: 1fr; }
-      .link-button { grid-column: span 1; }
-      .table-toolbar { flex-direction: column; align-items: flex-start; gap: 8px; }
-    }
-
-    @media print {
-      @page { size: A4 landscape; margin: 10mm; }
-      body { background: #fff; }
-      body::before, .filters, .link-button { display: none; }
-      .page { max-width: none; margin: 0; padding: 0; }
-      .hero { box-shadow: none; border: none; padding: 0 0 20px; margin: 0; }
-      .card { box-shadow: none; border-radius: 0; }
-      thead th { position: static; background: #fff; border-bottom: 2px solid #000; }
-      tbody td { border-bottom: 1px solid #ddd; }
+      .hero { flex-direction: column; align-items: flex-start; }
+      .filters { width: 100%; justify-content: flex-start; }
     }
   </style>
 </head>
 <body>
   <div class="page">
     <section class="hero">
-      <h1>Formas de pago tarjetas de crédito — Deckar Revestimientos</h1>
-      <div class="sub">
-        <span class="badge">Actualizado: 10/11/2025</span>
-        <span class="muted">Cuotas sin interés, vigencias y condiciones por entidad</span>
+      <div class="header-titles">
+        <h1>Tarjetas de Crédito — Deckar Revestimientos</h1>
+        <div class="sub">
+          <span class="badge">Act: 10/11/2025</span>
+          <span class="muted">Condiciones de cuotas por entidad bancaria</span>
+        </div>
       </div>
 
       <div class="filters">
         <div class="field">
           <label for="searchInput">Buscar</label>
-          <input type="text" id="searchInput" placeholder="Banco, tarjeta, medio...">
+          <input type="text" id="searchInput" placeholder="Banco, tarjeta o medio...">
         </div>
 
         <div class="field">
@@ -361,39 +318,39 @@
           <label for="beneficioFilter">Beneficio</label>
           <select id="beneficioFilter">
             <option value="">Todos</option>
-            <option value="3y6">3 y 6 cuotas sin interés</option>
-            <option value="6">6 cuotas sin interés</option>
-            <option value="12">Hasta 12 cuotas sin interés</option>
+            <option value="3y6">3 y 6 cuotas</option>
+            <option value="6">6 cuotas</option>
+            <option value="12">Hasta 12 cuotas</option>
           </select>
         </div>
 
-        <a href="https://www.deckar.com.ar/inicio" class="link-button" target="_blank" rel="noopener">Ir a deckar.com.ar</a>
+        <a href="https://www.deckar.com.ar/inicio" class="link-button" target="_blank" rel="noopener">Web Deckar</a>
       </div>
     </section>
 
     <section class="card">
       <div class="table-toolbar">
-        <div class="table-title">Promociones vigentes</div>
-        <div class="table-count"><span id="visibleCount">0</span> resultados</div>
+        <div class="table-title">Promociones Vigentes</div>
+        <div class="table-count"><span id="visibleCount">0</span> ítems</div>
       </div>
 
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th>Entidad financiera</th>
+              <th>Entidad Financiera</th>
               <th>Vigencia</th>
               <th>Beneficio</th>
-              <th>Días aplicables</th>
-              <th>Tarjetas aplicables</th>
-              <th>No aplicables</th>
-              <th>Medio físico</th>
-              <th>Medio elec.</th>
+              <th>Días</th>
+              <th>Tarjetas</th>
+              <th>No Aplica</th>
+              <th>M. Físico</th>
+              <th>M. Elec.</th>
               <th>Nº Comercio</th>
             </tr>
           </thead>
           <tbody id="tablaPromociones">
-            <tr class="loading-row"><td colspan="9">Cargando promociones...</td></tr>
+            <tr class="loading-row"><td colspan="9">Cargando datos...</td></tr>
           </tbody>
         </table>
       </div>
@@ -416,12 +373,9 @@
       const response = await fetch(CSV_URL, { cache: "no-store" });
       const csv = await response.text();
       const filas = parseCSV(csv);
-      
-      // Saltamos la cabecera y removemos filas vacías
       const datos = filas.slice(1).filter(fila => fila.some(celda => (celda || "").trim() !== ""));
 
       tablaPromociones.innerHTML = datos.map(fila => {
-        // Desestructuración segura mapeada por índices exactos del CSV estándar
         const entidad = fila[0] || "";
         const vigencia = fila[1] || "";
         const beneficio = fila[2] || "";
@@ -434,19 +388,19 @@
         const numeroComercio = fila[9] || "";
 
         const badgeNoAplicable = tarjetasNoAplicables.trim() 
-          ? `<span class="no-applicable">${escapeHTML(tarjetasNoAplicables)}</span>` 
+          ? `<span class="no-applicable" title="${escapeAttr(tarjetasNoAplicables)}">${escapeHTML(tarjetasNoAplicables)}</span>` 
           : "—";
 
         return `
           <tr data-vigencia="${escapeAttr(vigencia)}" data-beneficio="${escapeAttr(tipoBeneficio)}">
-            <td class="bank">${escapeHTML(entidad)}</td>
+            <td class="bank" title="${escapeAttr(entidad)}">${escapeHTML(entidad)}</td>
             <td>${escapeHTML(vigencia)}</td>
             <td><div class="tag-container">${crearBeneficio(beneficio, tipoBeneficio)}</div></td>
-            <td>${escapeHTML(dias)}</td>
-            <td>${escapeHTML(tarjetasAplicables)}</td>
-            <td>${badgeNoAplicable}</td>
-            <td>${escapeHTML(medioFisico) || "—"}</td>
-            <td>${escapeHTML(medioElectronico) || "—"}</td>
+            <td title="${escapeAttr(dias)}">${escapeHTML(dias)}</td>
+            <td class="wrap-cell" title="${escapeAttr(tarjetasAplicables)}">${escapeHTML(tarjetasAplicables)}</td>
+            <td class="wrap-cell">${badgeNoAplicable}</td>
+            <td title="${escapeAttr(medioFisico)}">${escapeHTML(medioFisico) || "—"}</td>
+            <td title="${escapeAttr(medioElectronico)}">${escapeHTML(medioElectronico) || "—"}</td>
             <td><code>${escapeHTML(numeroComercio) || "—"}</code></td>
           </tr>
         `;
@@ -457,7 +411,7 @@
       filterTable();
     } catch (error) {
       console.error(error);
-      tablaPromociones.innerHTML = `<tr class="empty-row"><td colspan="9">No se pudieron cargar los datos de Google Sheets.</td></tr>`;
+      tablaPromociones.innerHTML = `<tr class="empty-row"><td colspan="9">Error al sincronizar con Google Sheets.</td></tr>`;
       visibleCount.textContent = "0";
     }
   }
@@ -468,7 +422,7 @@
 
     if (beneficio.toLowerCase().includes("reintegro")) {
       const partes = beneficio.split("+");
-      const base = partes[0]?.trim() || "Cuotas sin interés";
+      const base = partes[0]?.trim() || "Cuotas c/i";
       const extra = partes.slice(1).join("+").trim();
 
       return `
@@ -487,11 +441,7 @@
   function actualizarFiltrosVigencia(datos) {
     const vigencias = [...new Set(datos.map(fila => fila[1]).filter(Boolean))];
     let opciones = `<option value="">Todas</option>`;
-    
-    vigencias.forEach(vigencia => {
-      opciones += `<option value="${escapeAttr(vigencia)}">${escapeHTML(vigencia)}</option>`;
-    });
-    
+    vigencias.forEach(v => { opciones += `<option value="${escapeAttr(v)}">${escapeHTML(v)}</option>`; });
     vigenciaFilter.innerHTML = opciones;
   }
 
@@ -520,67 +470,36 @@
     if (visibles === 0 && tableRows.length > 0) {
       tablaPromociones.insertAdjacentHTML(
         'beforeend',
-        `<tr id="emptyRow" class="empty-row"><td colspan="9">Sin resultados para los filtros seleccionados.</td></tr>`
+        `<tr id="emptyRow" class="empty-row"><td colspan="9">Sin resultados.</td></tr>`
       );
     }
   }
 
   function parseCSV(text) {
-    const rows = [];
-    let row = [];
-    let value = "";
-    let insideQuotes = false;
-
+    const rows = []; let row = []; let value = ""; let insideQuotes = false;
     for (let i = 0; i < text.length; i++) {
-      const char = text[i];
-      const nextChar = text[i + 1];
-
-      if (char === '"' && insideQuotes && nextChar === '"') {
-        value += '"';
-        i++;
-      } else if (char === '"') {
-        insideQuotes = !insideQuotes;
-      } else if (char === "," && !insideQuotes) {
-        row.push(value.trim());
-        value = "";
-      } else if ((char === "\n" || char === "\r") && !insideQuotes) {
+      const char = text[i]; const nextChar = text[i + 1];
+      if (char === '"' && insideQuotes && nextChar === '"') { value += '"'; i++; }
+      else if (char === '"') { insideQuotes = !insideQuotes; }
+      else if (char === "," && !insideQuotes) { row.push(value.trim()); value = ""; }
+      else if ((char === "\n" || char === "\r") && !insideQuotes) {
         if (char === "\r" && nextChar === "\n") i++;
-        if (value || row.length) {
-          row.push(value.trim());
-          rows.push(row);
-          row = [];
-          value = "";
-        }
-      } else {
-        value += char;
-      }
+        if (value || row.length) { row.push(value.trim()); rows.push(row); row = []; value = ""; }
+      } else { value += char; }
     }
-
-    if (value || row.length) {
-      row.push(value.trim());
-      rows.push(row);
-    }
-
+    if (value || row.length) { row.push(value.trim()); rows.push(row); }
     return rows;
   }
 
   function escapeHTML(value) {
-    return String(value ?? "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+    return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
   }
 
-  function escapeAttr(value) {
-    return escapeHTML(value).replaceAll("`", "&#096;");
-  }
+  function escapeAttr(value) { return escapeHTML(value).replaceAll("`", "&#096;"); }
 
   searchInput.addEventListener('input', filterTable);
   vigenciaFilter.addEventListener('change', filterTable);
   beneficioFilter.addEventListener('change', filterTable);
-
   cargarDatos();
 </script>
 </body>
