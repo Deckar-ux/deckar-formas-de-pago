@@ -185,7 +185,7 @@
       box-shadow:0 10px 22px rgba(10,108,255,.30);
     }
 
-    /* ESTILOS DEL NUEVO CALENDARIO SEMANAL */
+    /* ESTILOS DEL CALENDARIO SEMANAL */
     .calendar-section {
       background: var(--card);
       border: 1px solid var(--border-soft);
@@ -310,10 +310,10 @@
     }
 
     .table-title{
-      font-size:13px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.08em;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
     }
 
     .table-count{
@@ -715,6 +715,9 @@
 
       // Mapear días correspondientes de forma flexible
       diasClaves.forEach(dia => {
+        // EXCLUSIÓN SOLICITADA: El domingo queda siempre excluido del calendario semanal de promos
+        if (dia === 'domingo') return;
+
         let aplicaDia = false;
         if (diasTexto.includes("todos") || diasTexto.includes("diario")) {
           aplicaDia = true;
@@ -733,7 +736,7 @@
       });
     });
 
-    // Rellenar días vacíos
+    // Rellenar días vacíos (incluyendo siempre el domingo)
     diasClaves.forEach(dia => {
       if (contadorPromos[dia] === 0) {
         document.getElementById(`cal-${dia}`).innerHTML = `<div class="cal-empty">Sin promos</div>`;
@@ -804,4 +807,3 @@
 </script>
 </body>
 </html>
-    
