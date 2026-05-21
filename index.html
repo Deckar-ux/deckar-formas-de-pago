@@ -8,367 +8,330 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --deckar-blue:#0A6CFF;
-      --deckar-blue-700:#074FB8;
-      --deckar-blue-600:#0A56C9;
-      --deckar-blue-100:#E9F1FF;
-      --deckar-blue-50:#F4F8FF;
-      --text:#0F172A;
-      --text-soft:#334155;
-      --muted:#64748B;
-      --border:#CBD5E1;
-      --border-soft:#E2E8F0;
-      --bg:#F6F8FC;
-      --card:#FFFFFF;
-      --row:#F8FAFC;
-      --row-hover:#EEF6FF;
-      --danger:#C62828;
-      --shadow:0 18px 45px rgba(15,23,42,.10);
+    :root {
+      --deckar-blue: #0A6CFF;
+      --deckar-blue-700: #074FB8;
+      --deckar-blue-600: #0A56C9;
+      --deckar-blue-100: #E9F1FF;
+      --deckar-blue-50: #F4F8FF;
+      --text: #1E293B;
+      --text-soft: #475569;
+      --muted: #64748B;
+      --border: #CBD5E1;
+      --border-soft: #E2E8F0;
+      --bg: #F8FAFC;
+      --card: #FFFFFF;
+      --row-even: #F8FAFC;
+      --row-hover: #F0F6FF;
+      --danger: #EF4444;
+      --danger-bg: #FEE2E2;
+      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
     }
 
-    *{box-sizing:border-box}
+    * { box-sizing: border-box; }
 
-    html,body{
-      margin:0;
-      padding:0;
-      min-height:100%;
-      color:var(--text);
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(10,108,255,.11), transparent 34%),
-        linear-gradient(180deg,#FFFFFF 0%,var(--bg) 100%);
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: 
+        radial-gradient(circle at top right, rgba(10, 108, 255, 0.06), transparent 40%),
+        linear-gradient(180deg, #FFFFFF 0%, var(--bg) 100%);
+      -webkit-font-smoothing: antialiased;
     }
 
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background-image:url('DECKAR.jpg');
-      background-size:min(720px,80vw);
-      background-repeat:no-repeat;
-      background-position:center 58%;
-      opacity:.035;
-      pointer-events:none;
-      z-index:-1;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url('DECKAR.jpg');
+      background-size: min(600px, 70vw);
+      background-repeat: no-repeat;
+      background-position: center 65%;
+      opacity: .025;
+      pointer-events: none;
+      z-index: -1;
     }
 
-    .page{
-      width:100%;
-      max-width:1760px;
-      margin:0 auto;
-      padding:26px 34px 42px;
+    .page {
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 32px 24px;
     }
 
-    .hero{
-      background:rgba(255,255,255,.86);
-      border:1px solid var(--border-soft);
-      border-radius:24px;
-      padding:24px 28px 20px;
-      box-shadow:0 10px 30px rgba(15,23,42,.06);
-      margin-bottom:18px;
+    .hero {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--border-soft);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
     }
 
-    h1{
-      text-align:center;
-      font-size:clamp(24px,2.2vw,34px);
-      margin:0 0 14px;
-      font-weight:800;
-      letter-spacing:-.035em;
-      line-height:1.14;
+    h1 {
+      font-size: clamp(22px, 2vw, 30px);
+      margin: 0 0 8px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #0F172A;
     }
 
-    .sub{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:20px;
-      justify-content:center;
-      text-align:center;
-      flex-wrap:wrap;
+    .sub {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
     }
 
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:7px 12px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:700;
-      background:var(--deckar-blue-100);
-      color:var(--deckar-blue-700);
-      border:1px solid #CFE0FF;
-      white-space:nowrap;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--deckar-blue-100);
+      color: var(--deckar-blue-700);
     }
 
-    .muted{
-      color:var(--muted);
-      font-size:14px;
-      font-weight:500;
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
     }
 
-    .filters{
-      display:grid;
-      grid-template-columns:minmax(220px,1.1fr) minmax(220px,.9fr) minmax(210px,.8fr) auto;
-      gap:12px;
-      align-items:end;
-      max-width:1120px;
-      margin:0 auto;
+    .filters {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr auto;
+      gap: 16px;
+      align-items: flex-end;
     }
 
-    .field{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    .filters label{
-      font-size:12px;
-      font-weight:700;
-      color:var(--text-soft);
-      text-transform:uppercase;
-      letter-spacing:.04em;
+    .filters label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: .05em;
     }
 
     .filters input,
-    .filters select{
-      width:100%;
-      min-height:42px;
-      padding:9px 12px;
-      border:1px solid #C9D7F5;
-      border-radius:12px;
-      font-size:14px;
-      background:#FFFFFF;
-      color:var(--text);
-      outline:none;
-      box-shadow:0 1px 2px rgba(15,23,42,.04);
-      transition:border-color .18s, box-shadow .18s, background .18s;
+    .filters select {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: inherit;
+      background: #FFFFFF;
+      color: var(--text);
+      outline: none;
+      transition: border-color .15s, box-shadow .15s;
     }
 
     .filters input:focus,
-    .filters select:focus{
-      border-color:var(--deckar-blue);
-      box-shadow:0 0 0 4px rgba(10,108,255,.12);
+    .filters select:focus {
+      border-color: var(--deckar-blue);
+      box-shadow: 0 0 0 4px rgba(10, 108, 255, 0.15);
     }
 
-    .filters input::placeholder{color:#94A3B8}
+    .filters input::placeholder { color: #94A3B8; }
 
-    .filters select{
-      appearance:none;
-      background-image:url('data:image/svg+xml;utf8,<svg fill="%230A6CFF" height="16" viewBox="0 0 20 20" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 7.5l4.5 4.5 4.5-4.5H5.5z"/></svg>');
-      background-repeat:no-repeat;
-      background-position:right 12px center;
-      background-size:14px;
-      padding-right:34px;
-      cursor:pointer;
+    .filters select {
+      appearance: none;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23475569" height="16" viewBox="0 0 20 20" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 7.5l4.5 4.5 4.5-4.5H5.5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 14px;
+      padding-right: 40px;
+      cursor: pointer;
     }
 
-    .link-button{
-      min-height:42px;
-      display:inline-flex;
-      align-items:center;
+    .link-button {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
       justify-content:center;
-      padding:10px 18px;
-      border-radius:999px;
-      background:linear-gradient(135deg,var(--deckar-blue) 0%,#55A8FF 100%);
-      color:#fff;
-      text-decoration:none;
-      font-size:14px;
-      font-weight:800;
-      line-height:1;
-      box-shadow:0 8px 18px rgba(10,108,255,.25);
-      white-space:nowrap;
-      transition:transform .16s, box-shadow .16s;
+      padding: 10px 24px;
+      border-radius: 10px;
+      background: var(--deckar-blue);
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background-color .15s;
     }
 
-    .link-button:hover{
-      transform:translateY(-1px);
-      box-shadow:0 10px 22px rgba(10,108,255,.30);
+    .link-button:hover {
+      background: var(--deckar-blue-700);
     }
 
-    .card{
-      background:var(--card);
-      border:1px solid var(--border-soft);
-      border-radius:22px;
-      box-shadow:var(--shadow);
-      overflow:hidden;
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border-soft);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
-    .table-toolbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      padding:14px 18px;
-      background:linear-gradient(90deg,var(--deckar-blue-700),var(--deckar-blue));
-      color:#fff;
+    .table-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border-soft);
+      background: #FFFFFF;
     }
 
-    .table-title{
-      font-size:13px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.08em;
+    .table-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0F172A;
     }
 
-    .table-count{
-      font-size:12px;
-      font-weight:700;
-      background:rgba(255,255,255,.18);
-      border:1px solid rgba(255,255,255,.28);
-      padding:6px 10px;
-      border-radius:999px;
-      white-space:nowrap;
+    .table-count {
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--bg);
+      color: var(--text-soft);
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
     }
 
-    .table-wrap{
-      width:100%;
-      overflow-x:auto;
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
     }
 
-    table{
-      width:100%;
-      min-width:1320px;
-      border-collapse:separate;
-      border-spacing:0;
-      table-layout:fixed;
+    table {
+      width: 100%;
+      min-width: 1200px;
+      border-collapse: collapse;
     }
 
-    thead th{
-      text-align:center;
-      position:sticky;
-      top:0;
-      z-index:2;
-      background:#F1F6FF;
-      border-bottom:2px solid #111827;
-      border-right:2px solid #111827;
-      font-size:11px;
-      line-height:1.2;
-      letter-spacing:.04em;
-      text-transform:uppercase;
-      color:#334155;
-      padding:12px 10px;
-      font-weight:800;
-      vertical-align:middle;
+    thead th {
+      text-align: left;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      padding: 14px 18px;
+      font-weight: 700;
     }
 
-    thead th:last-child{border-right:none}
-
-    tbody td{
-      padding:11px 12px;
-      border-bottom:1px solid var(--border-soft);
-      border-right:2px solid #111827;
-      font-size:13px;
-      line-height:1.35;
-      vertical-align:middle;
-      min-height:46px;
-      color:#263244;
-      background:transparent;
-      word-break:normal;
-      overflow-wrap:break-word;
+    tbody td {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border-soft);
+      font-size: 13px;
+      line-height: 1.5;
+      vertical-align: middle;
+      color: var(--text);
     }
 
-    tbody td:last-child{border-right:none}
+    tbody tr:nth-child(even) { background: var(--row-even); }
+    tbody tr:hover { background: var(--row-hover); }
+    tbody tr:last-child td { border-bottom: none; }
 
-    tbody tr:nth-child(even){background:var(--row)}
-    tbody tr:hover{background:var(--row-hover)}
-
-    tbody tr:last-child td{border-bottom:none}
-
-    .bank{
-      font-weight:800;
-      color:#0F172A;
+    .bank {
+      font-weight: 700;
+      color: #0F172A;
     }
 
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:5px 10px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:800;
-      line-height:1.15;
-      text-transform:uppercase;
-      border:1px solid transparent;
-      white-space:normal;
-      max-width:100%;
+    .tag-container {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-start;
     }
 
-    .tag-12{
-      background:#E3F2FD;
-      color:#0B5CAB;
-      border-color:#BBDEFB;
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
-    .tag-6{
-      background:#FFF3E0;
-      color:#C45A00;
-      border-color:#FFD7A3;
-    }
+    .tag-12 { background: #E0F2FE; color: #0369A1; }
+    .tag-6 { background: #FFEDD5; color: #C2410C; }
+    .tag-3y6 { background: #DCFCE7; color: #15803D; }
+    .tag-default { background: #F1F5F9; color: #475569; }
+    .tag-reintegro { background: #CCFBF1; color: #0F766E; }
 
-    .tag-3y6{
-      background:#E8F5E9;
-      color:#217A35;
-      border-color:#BFE7C5;
-    }
-
-    .tag-reintegro{
-      margin-top:5px;
-      background:#ECFDF5;
-      color:#047857;
-      border-color:#B8F1D5;
-    }
-
-    .nowrap{
-      white-space:normal;
-      font-weight:600;
-      color:#334155;
-    }
-
-    .highlight-no{
-      color:var(--danger);
-      font-weight:800;
+    .no-applicable {
+      display: inline-block;
+      padding: 2px 6px;
+      background: var(--danger-bg);
+      color: var(--danger);
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
     }
 
     .empty-row td,
-    .loading-row td{
-      text-align:center;
-      padding:30px 16px;
-      color:var(--muted);
-      font-weight:700;
-      background:#fff;
+    .loading-row td {
+      text-align: center;
+      padding: 48px 16px;
+      color: var(--muted);
+      font-weight: 500;
+      background: #fff;
     }
 
-    colgroup col:nth-child(1){width:13%}
-    colgroup col:nth-child(2){width:12%}
-    colgroup col:nth-child(3){width:18%}
-    colgroup col:nth-child(4){width:9%}
-    colgroup col:nth-child(5){width:13%}
-    colgroup col:nth-child(6){width:11%}
-    colgroup col:nth-child(7){width:12%}
-    colgroup col:nth-child(8){width:12%}
-    colgroup col:nth-child(9){width:12%}
+    /* Distribución de anchos proporcional adaptable */
+    table th:nth-child(1), table td:nth-child(1) { width: 14%; }
+    table th:nth-child(2), table td:nth-child(2) { width: 11%; }
+    table th:nth-child(3), table td:nth-child(3) { width: 16%; }
+    table th:nth-child(4), table td:nth-child(4) { width: 10%; }
+    table th:nth-child(5), table td:nth-child(5) { width: 12%; }
+    table th:nth-child(6), table td:nth-child(6) { width: 11%; }
+    table th:nth-child(7), table td:nth-child(7) { width: 9%; }
+    table th:nth-child(8), table td:nth-child(8) { width: 9%; }
+    table th:nth-child(9), table td:nth-child(9) { width: 8%; }
 
-    @media (max-width:980px){
-      .page{padding:18px 14px 30px}
-      .hero{padding:20px 16px}
-      .filters{grid-template-columns:1fr}
-      .link-button{width:100%}
-      .table-toolbar{align-items:flex-start;flex-direction:column}
+    @media (max-width: 1024px) {
+      .filters { grid-template-columns: 1fr 1fr; }
+      .link-button { grid-column: span 2; }
     }
 
-    @media print{
-      @page{size:A4 landscape;margin:12mm}
-      body{background:#fff}
-      body::before,.filters,.link-button{display:none}
-      .page{max-width:none;margin:0;padding:0}
-      .hero{box-shadow:none;border:none;padding:0 0 12px;margin:0}
-      .card{box-shadow:none;border-radius:0}
-      .table-toolbar{background:#fff;color:#000;border-bottom:1px solid #000}
-      table{min-width:0}
-      thead th{position:static}
+    @media (max-width: 640px) {
+      .page { padding: 16px 12px; }
+      .hero { padding: 20px; }
+      .filters { grid-template-columns: 1fr; }
+      .link-button { grid-column: span 1; }
+      .table-toolbar { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+
+    @media print {
+      @page { size: A4 landscape; margin: 10mm; }
+      body { background: #fff; }
+      body::before, .filters, .link-button { display: none; }
+      .page { max-width: none; margin: 0; padding: 0; }
+      .hero { box-shadow: none; border: none; padding: 0 0 20px; margin: 0; }
+      .card { box-shadow: none; border-radius: 0; }
+      thead th { position: static; background: #fff; border-bottom: 2px solid #000; }
+      tbody td { border-bottom: 1px solid #ddd; }
     }
   </style>
 </head>
@@ -384,7 +347,7 @@
       <div class="filters">
         <div class="field">
           <label for="searchInput">Buscar</label>
-          <input type="text" id="searchInput" placeholder="Banco, tarjeta, medio de cobro...">
+          <input type="text" id="searchInput" placeholder="Banco, tarjeta, medio...">
         </div>
 
         <div class="field">
@@ -404,7 +367,7 @@
           </select>
         </div>
 
-        <a href="https://www.deckar.com.ar/inicio" class="link-button" target="_blank" rel="noopener">deckar.com.ar/inicio</a>
+        <a href="https://www.deckar.com.ar/inicio" class="link-button" target="_blank" rel="noopener">Ir a deckar.com.ar</a>
       </div>
     </section>
 
@@ -416,9 +379,6 @@
 
       <div class="table-wrap">
         <table>
-          <colgroup>
-            <col><col><col><col><col><col><col><col><col>
-          </colgroup>
           <thead>
             <tr>
               <th>Entidad financiera</th>
@@ -426,10 +386,10 @@
               <th>Beneficio</th>
               <th>Días aplicables</th>
               <th>Tarjetas aplicables</th>
-              <th>Tarjetas <span class="highlight-no">NO</span> aplicables</th>
-              <th>Medio de venta físico</th>
-              <th>Medio de venta electrónico</th>
-              <th>Nº de comercio<br>(POSNET / LINK DE PAGOS)</th>
+              <th>No aplicables</th>
+              <th>Medio físico</th>
+              <th>Medio elec.</th>
+              <th>Nº Comercio</th>
             </tr>
           </thead>
           <tbody id="tablaPromociones">
@@ -456,33 +416,38 @@
       const response = await fetch(CSV_URL, { cache: "no-store" });
       const csv = await response.text();
       const filas = parseCSV(csv);
+      
+      // Saltamos la cabecera y removemos filas vacías
       const datos = filas.slice(1).filter(fila => fila.some(celda => (celda || "").trim() !== ""));
 
       tablaPromociones.innerHTML = datos.map(fila => {
-        const [
-          entidad,
-          vigencia,
-          beneficio,
-          tipoBeneficio,
-          dias,
-          tarjetasAplicables,
-          tarjetasNoAplicables,
-          medioFisico,
-          medioElectronico,
-          numeroComercio
-        ] = fila;
+        // Desestructuración segura mapeada por índices exactos del CSV estándar
+        const entidad = fila[0] || "";
+        const vigencia = fila[1] || "";
+        const beneficio = fila[2] || "";
+        const tipoBeneficio = fila[3] || "";
+        const dias = fila[4] || "";
+        const tarjetasAplicables = fila[5] || "";
+        const tarjetasNoAplicables = fila[6] || "";
+        const medioFisico = fila[7] || "";
+        const medioElectronico = fila[8] || "";
+        const numeroComercio = fila[9] || "";
+
+        const badgeNoAplicable = tarjetasNoAplicables.trim() 
+          ? `<span class="no-applicable">${escapeHTML(tarjetasNoAplicables)}</span>` 
+          : "—";
 
         return `
           <tr data-vigencia="${escapeAttr(vigencia)}" data-beneficio="${escapeAttr(tipoBeneficio)}">
             <td class="bank">${escapeHTML(entidad)}</td>
-            <td class="nowrap">${escapeHTML(vigencia)}</td>
-            <td>${crearBeneficio(beneficio || "", tipoBeneficio || "")}</td>
+            <td>${escapeHTML(vigencia)}</td>
+            <td><div class="tag-container">${crearBeneficio(beneficio, tipoBeneficio)}</div></td>
             <td>${escapeHTML(dias)}</td>
             <td>${escapeHTML(tarjetasAplicables)}</td>
-            <td>${tarjetasNoAplicables ? escapeHTML(tarjetasNoAplicables) : ""}</td>
-            <td>${escapeHTML(medioFisico)}</td>
-            <td>${escapeHTML(medioElectronico)}</td>
-            <td>${escapeHTML(numeroComercio)}</td>
+            <td>${badgeNoAplicable}</td>
+            <td>${escapeHTML(medioFisico) || "—"}</td>
+            <td>${escapeHTML(medioElectronico) || "—"}</td>
+            <td><code>${escapeHTML(numeroComercio) || "—"}</code></td>
           </tr>
         `;
       }).join("");
@@ -491,6 +456,7 @@
       actualizarFiltrosVigencia(datos);
       filterTable();
     } catch (error) {
+      console.error(error);
       tablaPromociones.innerHTML = `<tr class="empty-row"><td colspan="9">No se pudieron cargar los datos de Google Sheets.</td></tr>`;
       visibleCount.textContent = "0";
     }
@@ -502,12 +468,12 @@
 
     if (beneficio.toLowerCase().includes("reintegro")) {
       const partes = beneficio.split("+");
-      const base = partes[0]?.trim() || "6 CUOTAS SIN INTERÉS";
+      const base = partes[0]?.trim() || "Cuotas sin interés";
       const extra = partes.slice(1).join("+").trim();
 
       return `
         <span class="tag tag-6">${escapeHTML(base)}</span>
-        ${extra ? `<span class="tag tag-reintegro">+${escapeHTML(extra)}</span>` : ""}
+        ${extra ? `<span class="tag tag-reintegro">${escapeHTML(extra)}</span>` : ""}
       `;
     }
 
@@ -515,17 +481,18 @@
     if (tipoLimpio === "6") return `<span class="tag tag-6">${beneficioSeguro}</span>`;
     if (tipoLimpio === "3y6") return `<span class="tag tag-3y6">${beneficioSeguro}</span>`;
 
-    return beneficioSeguro;
+    return `<span class="tag tag-default">${beneficioSeguro}</span>`;
   }
 
   function actualizarFiltrosVigencia(datos) {
     const vigencias = [...new Set(datos.map(fila => fila[1]).filter(Boolean))];
-
-    vigenciaFilter.innerHTML = `<option value="">Todas</option>`;
-
+    let opciones = `<option value="">Todas</option>`;
+    
     vigencias.forEach(vigencia => {
-      vigenciaFilter.innerHTML += `<option value="${escapeAttr(vigencia)}">${escapeHTML(vigencia)}</option>`;
+      opciones += `<option value="${escapeAttr(vigencia)}">${escapeHTML(vigencia)}</option>`;
     });
+    
+    vigenciaFilter.innerHTML = opciones;
   }
 
   function filterTable() {
