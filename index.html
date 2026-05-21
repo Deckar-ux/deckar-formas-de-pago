@@ -437,4 +437,75 @@
     }
 
     if (tipoLimpio === "12") return `<span class="micro-tag t-12">${beneficioSeguro}</span>`;
-    if (tipoLimpio === "6")
+    if (tipoLimpio === "6") return `<span class="micro-tag t-6">${beneficioSeguro}</span>`;
+    if (tipoLimpio === "3y6") return `<span class="micro-tag t-3y6">${beneficioSeguro}</span>`;
+
+    return `<span class="micro-tag t-def">${beneficioSeguro}</span>`;
+  }
+
+  function actualizarFiltrosVigencia(datos) {
+    const vigencias = [...new Set(datos.map(fila => fila[1]).filter(Boolean))];
+    let opciones = `<option value="">Todas</option>`;
+    vigencias.forEach(v => { opciones += `<option value="${escapeAttr(v)}">${escapeHTML(v)}</option>`; });
+    vigenciaFilter.innerHTML = opciones;
+  }
+
+  function filterTable() {
+    const q = (searchInput.value || '').toLowerCase().trim();
+    const v = vigenciaFilter.value;
+    const b = beneficioFilter.value;
+    let visibles = 0;
+
+    tableRows.forEach(row => {
+      const txt = row.innerText.toLowerCase();
+      const matchQ = !q || txt.includes(q);
+      const matchV = !v || row.dataset.vigencia === v;
+      const matchB = !b || row.dataset.beneficio === b;
+      const visible = matchQ && matchV && matchB;
+
+      row.style.display = visible ? '' : 'none';
+      if (visible) visibles++;
+    });
+
+    visibleCount.textContent = visibles;
+
+    const oldEmpty = document.getElementById('emptyRow');
+    if (oldEmpty) oldEmpty.remove();
+
+    if (visibles === 0 && tableRows.length > 0) {
+      tablaPromociones.insertAdjacentHTML(
+        'beforeend',
+        `<tr id="emptyRow" class="empty-row"><td colspan="9">Sin coincidencias.</td></tr>`
+      );
+    }
+  }
+
+  function parseCSV(text) {
+    const rows = []; let row = []; let value = ""; let insideQuotes = false;
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i]; const nextChar = text[i + 1];
+      if (char === '"' && insideQuotes && nextChar === '"') { value += '"'; i++; }
+      else if (char === '"') { insideQuotes = !insideQuotes; }
+      else if (char === "," && !insideQuotes) { row.push(value.trim()); value = ""; }
+      else if ((char === "\n" || char === "\r") && !insideQuotes) {
+        if (char === "\r" && nextChar === "\n") i++;
+        if (value || row.length) { row.push(value.trim()); rows.push(row); row = []; value = ""; }
+      } else { value += char; }
+    }
+    if (value || row.length) { row.push(value.trim()); rows.push(row); }
+    return rows;
+  }
+
+  function escapeHTML(value) {
+    return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+  }
+
+  function escapeAttr(value) { return escapeHTML(value).replaceAll("`", "&#096;"); }
+
+  searchInput.addEventListener('input', filterTable);
+  vigenciaFilter.addEventListener('change', filterTable);
+  beneficioFilter.addEventListener('change', filterTable);
+  cargarDatos();
+</script>
+</body>
+</html>
